@@ -5,16 +5,21 @@ import HomePage from './Pages/HomePage';
 import SignupPage from './Pages/SignupPage';
 import LoginPage from './Pages/LoginPage';
 import { AuthContext, FirebaseContext } from './Store/Context';
+import CreatePage from './Pages/CreatePage';
+import ViewPost from './Pages/ViewPost';
 
 function App() {
+
    const { setUser } = useContext(AuthContext);
    const { firebase } = useContext(FirebaseContext);
+
    useEffect(() => {
       // console.log(user);
       firebase.auth().onAuthStateChanged(user => {
          setUser(user);
       });
    });
+
    return (
       <div>
          <Router>
@@ -26,6 +31,12 @@ function App() {
             </Route>
             <Route path='/login' >
                <LoginPage />
+            </Route>
+            <Route path='/create' >
+               <CreatePage />
+            </Route>
+            <Route path='/view' >
+               <ViewPost />
             </Route>
          </Router>
       </div>
