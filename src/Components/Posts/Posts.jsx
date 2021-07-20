@@ -20,13 +20,14 @@ function Posts() {
             };
          });
          setProducts(allPost);
+         console.log(allPost);
       });
    });
 
    return (
       <div className="postParentDiv">
          <div className="moreView">
-            <div className="heading">
+            <div className="heading1">
                <span>Quick Menu</span>
                <span>View more</span>
             </div>

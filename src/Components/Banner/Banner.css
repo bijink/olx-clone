@@ -1,40 +1,71 @@
 .bannerParentDiv {
-  padding-top: 4em;
+   padding-top: 4.2em;
 }
+
+.categoryMenu {
+   position: absolute;
+   font-size: 0.95rem;
+   /* display: flex; */
+}
+
 .bannerParentDiv .bannerChildDiv {
 }
+
 .bannerParentDiv .bannerChildDiv .menuBar {
-  display: flex;
-  padding: 10px 16px 10px 16px;
+   display: flex;
+   padding: 12px 18px;
+   /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.7); */
+   /* z-index: 9999; */
 }
 
 .bannerParentDiv .bannerChildDiv .menuBar span {
 }
 
 .bannerParentDiv .bannerChildDiv .menuBar .categoryMenu span {
-  margin-right: 16px;
-  font-weight: bolder;
+   margin-right: 16px;
+   font-family: "Rubik", sans-serif;
+   letter-spacing: 0.01rem;
+   font-weight: 600;
+   font-size: 0.87rem;
+}
+
+.bannerParentDiv .bannerChildDiv .menuBar .categoryMenu svg {
+   margin-left: -0.5rem;
 }
 
 .bannerParentDiv .bannerChildDiv .menuBar .otherQuickOptions {
+   margin-left: 10rem;
+   display: flex;
+   word-wrap: break-word;
 }
+
 .bannerParentDiv .bannerChildDiv .menuBar .otherQuickOptions span {
-  padding: 10px;
+   padding: 0 10px;
+   font-size: 0.87rem;
+   font-family: "Rubik", sans-serif;
 }
 
 .bannerChildDiv .banner {
-  position: relative;
-  width: 100vw;
+   background-image: url("https://statics.olx.in/external/base/img/hero-bg-in.jpg");
+   background-repeat: no-repeat;
+   background-position: center;
+   height: 250px;
+   /* background-image: url('banner\ copy.png'); */
+   /* position: relative; */
+   /* width: 100%; */
+   /* background-size: cover; */
+   /* background-attachment: fixed; */
 }
-.bannerChildDiv .banner img{
-  width: 100vw;
+
+.bannerChildDiv .banner img {
+   width: 100%;
 }
 
 @media only screen and (max-width: 700px) {
-  .otherQuickOptions {
-    display: none;
-  }
-  .bannerChildDiv .banner {
-    position: relative;
-  }
+   .otherQuickOptions {
+      display: none;
+   }
+   .bannerChildDiv .banner {
+      position: relative;
+   }
 }

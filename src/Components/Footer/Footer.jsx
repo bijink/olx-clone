@@ -1,5 +1,4 @@
 import React from 'react';
-
 import './Footer.css';
 
 function Footer() {
@@ -12,10 +11,23 @@ function Footer() {
                </div>
                <div className="list">
                   <ul>
-                     <li>kolkata</li>
+                     <li>Kolkata</li>
                      <li>Mumbai</li>
                      <li>Chennai</li>
                      <li>Pune</li>
+                  </ul>
+               </div>
+            </div>
+            <div>
+               <div className="heading">
+                  <p>TRENDING LOCATIONS</p>
+               </div>
+               <div className="list">
+                  <ul>
+                     <li>Bhubaneshwar</li>
+                     <li>Hyderabad</li>
+                     <li>Chandigarh</li>
+                     <li>Nashik</li>
                   </ul>
                </div>
             </div>
@@ -29,9 +41,11 @@ function Footer() {
                      <li>Careers</li>
                      <li>Contact Us</li>
                      <li>OLXPeople</li>
+                     <li>Waah Jobs</li>
                   </ul>
                </div>
             </div>
+
             <div>
                <div className="heading">
                   <p>OLX</p>
@@ -46,8 +60,8 @@ function Footer() {
             </div>
          </div>
          <div className="footer">
-            <p>Other Countries Pakistan - South Africa - Indonesia</p>
-            <p>Free Classifieds in India. © 2006-2021 OLX</p>
+            <p><span>Other Countries</span>Pakistan - South Africa - Indonesia</p>
+            <p><span>Free Classifieds in India</span>. © 2006-2021 OLX</p>
          </div>
       </div>
    );
