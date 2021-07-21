@@ -4,7 +4,7 @@ import Logo from '../../olx-logo.png';
 import { FirebaseContext } from '../../Store/Context';
 import { useHistory } from 'react-router-dom';
 
-export default function Signup() {
+function Signup() {
 
    const history = useHistory();
    const [username, setUsername] = useState('');
@@ -92,3 +92,5 @@ export default function Signup() {
       </div>
    );
 }
+
+export default Signup;

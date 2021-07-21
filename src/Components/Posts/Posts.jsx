@@ -6,6 +6,7 @@ import { PostContext } from '../../Store/PostContext';
 import './Post.css';
 
 function Posts() {
+
    const { firebase } = useContext(FirebaseContext);
    const [products, setProducts] = useState([]);
    const { setPostDetails } = useContext(PostContext);
@@ -20,7 +21,6 @@ function Posts() {
             };
          });
          setProducts(allPost);
-         console.log(allPost);
       });
    });
 
@@ -81,6 +81,9 @@ function Posts() {
                      <span>10/5/2021</span>
                   </div>
                </div>
+            </div>
+            <div className="loadMore">
+               <button><span>Load more</span></button>
             </div>
          </div>
       </div>

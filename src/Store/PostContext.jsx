@@ -10,5 +10,3 @@ export default function PostCon({ children }) {
       </PostContext.Provider>
    );
 }
-
-// export default PostCon;

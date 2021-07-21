@@ -36,7 +36,15 @@
 .bannerParentDiv .bannerChildDiv .menuBar .otherQuickOptions {
    margin-left: 10rem;
    display: flex;
-   word-wrap: break-word;
+   align-items: center;
+   width: calc(100% - 152px);
+}
+
+.bannerParentDiv .bannerChildDiv .menuBar .otherQuickOptions div {
+   white-space: nowrap;
+   overflow: hidden;
+   text-overflow: ellipsis;
+   min-width: 60px;
 }
 
 .bannerParentDiv .bannerChildDiv .menuBar .otherQuickOptions span {

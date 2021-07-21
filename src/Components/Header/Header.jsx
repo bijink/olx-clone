@@ -9,9 +9,11 @@ import { useHistory } from 'react-router-dom';
 import { AuthContext, FirebaseContext } from '../../Store/Context';
 
 function Header() {
+
    const history = useHistory();
    const { user } = useContext(AuthContext);
    const { firebase } = useContext(FirebaseContext);
+
    return (
       <div className="headerParentDiv">
          <div className="headerChildDiv">
@@ -51,7 +53,6 @@ function Header() {
                }}>Log Out</span>
                <hr />
             </div>}
-
             <div className="sellMenu" onClick={() => {
                history.push('/create');
             }}>

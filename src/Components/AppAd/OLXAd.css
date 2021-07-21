@@ -1,10 +1,10 @@
 .appAd {
-   background: rgba(0, 47, 52, .03);
+   background: rgba(0, 47, 52, 0.03);
    height: 198px;
    display: grid;
    /* justify-content: center; */
    /* align-items: center; */
-   grid-template-columns: 42% 30.7% .3% 27%;
+   grid-template-columns: 42% 30.7% 0.3% 27%;
 }
 
 /* .appAd::before {
@@ -14,7 +14,9 @@
    background-color: tomato;
 } */
 
-.appAd h1, p, h5 {
+.appAd h1,
+p,
+h5 {
    color: #002f34;
 }
 
@@ -39,7 +41,7 @@
 
 .appAd .adText p {
    font-size: 20px;
-   font-family: 'Rubik', sans-serif;
+   font-family: "Rubik", sans-serif;
 }
 
 .appAd .line {
@@ -64,17 +66,17 @@
 }
 
 .appAd .linksChild h5 {
-   font-family: 'Rubik', sans-serif;
+   font-family: "Rubik", sans-serif;
    font-size: 14px;
    font-weight: 600;
    /* margin-top: 1rem; */
 }
 
-.appAd .linksChild img {
-   width: 8rem;
-   margin: .15rem 0;
+.appAd .linksChild div a {
+   text-decoration: none;
 }
 
-.appAd .linksChild a {
-   text-decoration: none;
+.appAd .linksChild div img {
+   width: 8rem;
+   margin: 0.15rem 0;
 }

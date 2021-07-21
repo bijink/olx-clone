@@ -1,4 +1,8 @@
 import React from 'react';
+import Facebook from '../../assets/Facebook';
+import Instagrame from '../../assets/Instagrame';
+import Twitter from '../../assets/Twitter';
+import YouTube from '../../assets/YouTube';
 import './Footer.css';
 
 function Footer() {
@@ -45,7 +49,6 @@ function Footer() {
                   </ul>
                </div>
             </div>
-
             <div>
                <div className="heading">
                   <p>OLX</p>
@@ -56,6 +59,21 @@ function Footer() {
                      <li>Sitemap</li>
                      <li>Legal & Privacy information</li>
                   </ul>
+               </div>
+            </div>
+            <div className="follow">
+               <div className="heading">
+                  <p>FOLLOW US</p>
+               </div>
+               <div className="socialMedia">
+                  <Facebook />
+                  <Instagrame />
+                  <Twitter />
+                  <YouTube />
+               </div>
+               <div>
+                  <a href="https://apps.apple.com/in/app/olx-buy-sell-near-you/id913492792?utm_source=desktop_ios&utm_medium=home_banner&utm_campaign=home"><img src="https://statics.olx.in/external/base/img/appstore_2x.webp" alt="" /></a>
+                  <a href="https://play.google.com/store/apps/details?id=com.olx.southasia&hl=en_IN&utm_source=desktop_android&utm_medium=home_banner&utm_campaign=home"> <img src="https://statics.olx.in/external/base/img/playstore_2x.webp" alt="" /></a>
                </div>
             </div>
          </div>

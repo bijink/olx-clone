@@ -1,7 +1,7 @@
 .moreView {
    /* margin: 16px 16px 24px; */
    margin: 16px auto;
-   padding: 16px 16px 32px;
+   padding: 16px 0 0 16px;
    background-color: #ebeeef;
    border-radius: 4px;
    width: 95%;
@@ -24,16 +24,14 @@
    font-weight: 700;
    color: #002f34;
    text-decoration: underline;
-}
-
-.recommendations .cards {
-   display: flex;
+   margin-right: 16px;
 }
 
 .moreView .cards {
    white-space: nowrap;
    overflow-x: scroll;
    overflow-y: hidden;
+   padding: 0.5rem 0 0.85rem 0;
    scrollbar-width: none;
 }
 
@@ -97,7 +95,29 @@
    padding: 10px 16px;
 }
 
+.recommendations .cards {
+   display: flex;
+}
+
 .recommendations .heading span {
    font-size: 24px;
    color: #002f34;
+}
+
+.loadMore button {
+   background-color: white;
+   width: 6.6rem;
+   height: 3rem;
+   border: 2px solid #002f34;
+   border-radius: 4px;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   margin: 1rem auto;
+   color: #002f34;
+   font-weight: bold;
+}
+
+.loadMore button:hover {
+   border-width: 5px;
 }

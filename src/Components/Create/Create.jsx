@@ -10,11 +10,9 @@ const Create = () => {
    const [category, setCategory] = useState('');
    const [price, setPrice] = useState('');
    const [image, setImage] = useState(null);
-
    const { firebase } = useContext(FirebaseContext);
    const { user } = useContext(AuthContext);
    const history = useHistory();
-
    const date = new Date();
 
    const handleSubmit = () => {
