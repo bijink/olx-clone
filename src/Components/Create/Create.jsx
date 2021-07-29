@@ -3,6 +3,8 @@ import './Create.css';
 import Header from '../Header/Header';
 import { FirebaseContext, AuthContext } from '../../Store/Context';
 import { useHistory } from 'react-router-dom';
+import { LoadContext } from '../../Store/LoadContext';
+import LoadingBar from 'react-top-loading-bar';
 
 const Create = () => {
 
@@ -14,8 +16,12 @@ const Create = () => {
    const { user } = useContext(AuthContext);
    const history = useHistory();
    const date = new Date();
+   const { loading, setLoading } = useContext(LoadContext);
+   // const [loading, setLoading] = useState(0);
+
 
    const handleSubmit = () => {
+      setLoading(99.999);
       firebase.storage().ref(`/images/${image.name}`).put(image).then(({ ref }) => {
          ref.getDownloadURL().then(url => {
             // console.log(url);
@@ -28,6 +34,7 @@ const Create = () => {
                createdAt: date.toDateString()
             }).then(() => {
                history.push('/');
+               setLoading(0);
             });
          });
       });
@@ -36,6 +43,14 @@ const Create = () => {
    return (
 
       <Fragment>
+         <LoadingBar
+            color='#00e8dc'
+            loaderSpeed='9000'
+            height='3px'
+            shadow={false}
+            progress={loading}
+         // onLoaderFinished={() => setLoading(100)}
+         />
          <Header />
          <card>
             <div className="centerDiv">

@@ -1,0 +1,105 @@
+.quickMenu1 {
+   background-color: #ebeeef;
+   margin: 16px auto;
+   padding: 16px 0 0 16px;
+   border-radius: 4px;
+   width: 95%;
+}
+
+.quickMenu1 .heading1 {
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+}
+
+.quickMenu1 .heading1 :first-child {
+   font-size: 24px;
+   color: #002f34;
+}
+
+.quickMenu1 .heading1 :last-child {
+   font-size: 14px;
+   font-weight: 700;
+   color: #002f34;
+   text-decoration: underline;
+   margin-right: 16px;
+}
+
+.quickMenu1 .cardParent1 {
+   display: flex;
+   overflow-x: scroll;
+   overflow-y: hidden;
+   scrollbar-width: none;
+}
+
+.quickMenu1 .cardParent1::-webkit-scrollbar {
+   display: none;
+}
+
+.quickMenu1 .cardParent1 .card1 {
+   margin: .5rem .5rem;
+   padding: 3px 10px;
+   border: solid 1px rgb(213, 213, 213);
+   border-radius: 5px;
+   /* width: 15rem;
+   height: 15rem; */
+}
+
+.quickMenu1 .cardParent1 .card1 .imgFav {
+   display: flex;
+   justify-content: center;
+}
+
+.quickMenu1 .cardParent1 .card1 .imgFav .image1 {
+   width: 14.5rem;
+   height: 9rem;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   margin: 5px 0;
+}
+
+.quickMenu1 .cardParent1 .card1 .imgFav .image1 img {
+   position: relative;
+   max-width: 13rem;
+   max-height: 8rem;
+   margin: 0 0 1.4rem 1.3rem;
+}
+
+.quickMenu1 .cardParent1 .card1 .imgFav .favorite1 svg {
+   margin: 0 -.2rem 0 0;
+}
+
+.quickMenu1 .cardParent1 .card1 .content1 {}
+
+.quickMenu1 .cardParent1 .card1 .content1 p {
+   margin-bottom: 0;
+}
+
+.quickMenu1 .cardParent1 .card1 .content1 .price1 {
+   /* margin-top: 10px; */
+   font-size: larger;
+   font-weight: bold;
+}
+
+.quickMenu1 .cardParent1 .card1 .content1 .name1 {
+   font-size: large;
+   color: #002f34;
+}
+
+.quickMenu1 .cardParent1 .card1 .content1 .category1 {
+   font-size: smaller;
+}
+
+.quickMenu1 .cardParent1 .card1 .date1 {
+   display: flex;
+   justify-content: flex-end;
+   font-size: small;
+   color: gray;
+}
+
+.quickMenu1 .cardParent1 .card1 .date1 span {
+   display: flex;
+   justify-content: flex-end;
+   align-items: center;
+}

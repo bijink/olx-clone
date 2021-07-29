@@ -4,6 +4,7 @@ import Heart from '../../assets/Heart';
 import { FirebaseContext } from '../../Store/Context';
 import { PostContext } from '../../Store/PostContext';
 import './Post.css';
+import './Posts1.css';
 
 function Posts() {
 
@@ -26,6 +27,7 @@ function Posts() {
 
    return (
       <div className="postParentDiv">
+
          <div className="moreView">
             <div className="heading1">
                <span>Quick Menu</span>
@@ -60,6 +62,7 @@ function Posts() {
                }
             </div>
          </div>
+
          <div className="recommendations">
             <div className="heading">
                <span>Fresh recommendations</span>
@@ -86,6 +89,46 @@ function Posts() {
                <button><span>Load more</span></button>
             </div>
          </div>
+
+         {/* jhgghfghg */}
+
+         <div className="quickMenu1">
+            <div className="heading1">
+               <span>Quick Menu</span>
+               <span>View more</span>
+            </div>
+            <div className="cardParent1">
+               {
+                  products.map((product) => {
+                     return (
+                        <div className="card1"
+                           onClick={() => {
+                              setPostDetails(product);
+                              history.push('/view');
+                           }}>
+                           <div className="imgFav">
+                              <div className="image1">
+                                 <img src={product.url} alt="" />
+                              </div>
+                              <div className="favorite1">
+                                 <Heart></Heart>
+                              </div>
+                           </div>
+                           <div className="content1">
+                              <p className="price1">&#x20B9; {product.price} </p>
+                              <p className="name1">{product.name}</p>
+                              <p className="category1">{product.category}</p>
+                           </div>
+                           <div className="date1">
+                              <span>{product.createdAt}</span>
+                           </div>
+                        </div>
+                     );
+                  })
+               }
+            </div>
+         </div>
+
       </div>
    );
 }

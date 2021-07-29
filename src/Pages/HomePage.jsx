@@ -11,8 +11,8 @@ function HomePage(props) {
          <Header />
          <Banner />
          <Posts />
-         <OLXAd />
-         <Footer />
+         {/* <OLXAd />
+         <Footer /> */}
       </div>
    );
 }

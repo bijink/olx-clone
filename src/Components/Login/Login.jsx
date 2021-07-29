@@ -7,6 +7,8 @@ import { useHistory } from 'react-router-dom';
 function Login() {
 
    const history = useHistory();
+   const history2 = useHistory();
+
    const [email, setEmail] = useState('');
    const [password, setPassword] = useState('');
    const { firebase } = useContext(FirebaseContext);

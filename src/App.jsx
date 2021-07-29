@@ -8,12 +8,14 @@ import { AuthContext, FirebaseContext } from './Store/Context';
 import CreatePage from './Pages/CreatePage';
 import ViewPost from './Pages/ViewPost';
 import * as ReactBootstrap from 'react-bootstrap';
+// import LoadingBar from 'react-top-loading-bar';
 
 function App() {
 
    const { setUser } = useContext(AuthContext);
    const { firebase } = useContext(FirebaseContext);
    const [loading, setLoading] = useState(null);
+   // const [progress, setProgress] = useState(0);
 
    // const loader = css`
    //    margin : 45%;
@@ -24,6 +26,7 @@ function App() {
       firebase.auth().onAuthStateChanged(user => {
          setUser(user);
          setLoading(true);
+         // setProgress(100);
       });
    });
 

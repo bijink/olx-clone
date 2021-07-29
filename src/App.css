@@ -3,6 +3,11 @@
    padding: 0;
 }
 
+p {
+   margin-bottom: 0;
+   padding-bottom: 0;
+}
+
 .parentSpinnerDiv {
    display: flex;
    justify-content: center;
