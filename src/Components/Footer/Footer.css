@@ -29,6 +29,10 @@
    margin-top: -0.5rem;
 }
 
+.footerParentDiv .content .list ul {
+   padding: 0;
+}
+
 .footerParentDiv .content .list li {
    list-style-type: none;
    color: #4d7276;

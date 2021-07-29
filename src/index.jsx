@@ -4,6 +4,7 @@ import App from './App';
 import Context, { FirebaseContext } from "./Store/Context";
 import firebase from './Firebase/Config';
 import PostCon from './Store/PostContext';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 ReactDOM.render(
    <React.StrictMode>

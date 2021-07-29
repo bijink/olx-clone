@@ -62,7 +62,7 @@ h5 {
 .appAd .linksChild {
    display: grid;
    grid-template-rows: auto auto;
-   padding: 0 1.5rem;
+   padding: 0 0 0 1.5rem;
 }
 
 .appAd .linksChild h5 {
@@ -79,4 +79,26 @@ h5 {
 .appAd .linksChild div img {
    width: 8rem;
    margin: 0.15rem 0;
+}
+
+@media screen and (max-width: 1000px) {
+   .appAd .adText {
+      display: none;
+   }
+   .appAd {
+      display: grid;
+      grid-template-columns: 72.7% 0.3% 27%;
+   }
+}
+
+@media screen and (max-width: 520px) {
+   .appAd .line {
+      display: none;
+   }
+}
+
+@media screen and (max-width: 270px) {
+   .appAd .adImg {
+      display: none;
+   }
 }
