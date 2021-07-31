@@ -6,6 +6,9 @@ import firebase from './Firebase/Config';
 import PostCon from './Store/PostContext';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Loading from './Store/LoadContext';
+import PopUpCon from './Store/PopUpContext';
+// import Logged from './Store/IfLoggedIn';
+import SignUpUsername from './Store/SignUpUsernameContext';
 
 ReactDOM.render(
    <React.StrictMode>
@@ -13,7 +16,11 @@ ReactDOM.render(
          <Context>
             <PostCon>
                <Loading>
-                  <App />
+                  <PopUpCon>
+                     <SignUpUsername>
+                        <App />
+                     </SignUpUsername>
+                  </PopUpCon>
                </Loading>
             </PostCon>
          </Context>

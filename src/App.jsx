@@ -8,27 +8,28 @@ import { AuthContext, FirebaseContext } from './Store/Context';
 import CreatePage from './Pages/CreatePage';
 import ViewPost from './Pages/ViewPost';
 import * as ReactBootstrap from 'react-bootstrap';
-// import LoadingBar from 'react-top-loading-bar';
+// import './App2.css';
+
 
 function App() {
 
    const { setUser } = useContext(AuthContext);
    const { firebase } = useContext(FirebaseContext);
    const [loading, setLoading] = useState(null);
-   // const [progress, setProgress] = useState(0);
-
-   // const loader = css`
-   //    margin : 45%;
-   // `;
 
    useEffect(() => {
-      // console.log(user);
       firebase.auth().onAuthStateChanged(user => {
          setUser(user);
          setLoading(true);
-         // setProgress(100);
+
+         // if (user) {
+         //    const c = firebase.auth().currentUser.displayName;
+         //    console.log(c);
+         // }
       });
    });
+
+
 
    return (
       <div>

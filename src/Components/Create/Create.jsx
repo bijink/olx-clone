@@ -25,6 +25,7 @@ const Create = () => {
       firebase.storage().ref(`/images/${image.name}`).put(image).then(({ ref }) => {
          ref.getDownloadURL().then(url => {
             // console.log(url);
+
             firebase.firestore().collection('products').add({
                name,
                category,

@@ -3,7 +3,7 @@ import './OLXAd.css';
 
 function OLXAd() {
    return (
-      <div className="parentDiv">
+      <div className="parentDivOLXAd">
          <div className="appAd">
             <div className="adImg"></div>
             <div className="adText">

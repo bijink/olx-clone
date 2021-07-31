@@ -1,23 +1,25 @@
 import React, { useState, useContext } from 'react';
 import './Login.css';
 import Logo from '../../olx-logo.png';
-import { FirebaseContext } from '../../Store/Context';
+import { AuthContext, FirebaseContext } from '../../Store/Context';
 import { useHistory } from 'react-router-dom';
+import { PopUpContext } from '../../Store/PopUpContext';
 
 function Login() {
 
    const history = useHistory();
-   const history2 = useHistory();
-
    const [email, setEmail] = useState('');
    const [password, setPassword] = useState('');
    const { firebase } = useContext(FirebaseContext);
+   const { setBtnPopUp, setPageId } = useContext(PopUpContext);
+   const { setUser } = useContext(AuthContext);
 
    const handleSubmit = (e) => {
       e.preventDefault();
+      setBtnPopUp(false);
       // console.log(email, password);
+
       firebase.auth().signInWithEmailAndPassword(email, password).then(() => {
-         // console.log('logged in');
          history.push('/');
       }).catch(error => {
          // Handle Errors here.
@@ -32,40 +34,52 @@ function Login() {
       });
    };
 
+   const handleSubmit2 = (e) => {
+      e.preventDefault();
+      // history.push('/signup');
+      setBtnPopUp(true);
+      setPageId('signup');
+   };
+
    return (
-      <div>
-         <div className="loginParentDiv">
-            <img width="200px" height="200px" src={Logo}></img>
-            <form onSubmit={handleSubmit}>
-               <label htmlFor="fname">Email</label>
-               <br />
-               <input
-                  className="input"
-                  type="email"
-                  id="fname"
-                  name="email"
-                  defaultValue="John"
-                  value={email}
-                  onChange={e => setEmail(e.target.value)}
-               />
-               <br />
-               <label htmlFor="lname">Password</label>
-               <br />
-               <input
-                  className="input"
-                  type="password"
-                  id="lname"
-                  name="password"
-                  defaultValue="Doe"
-                  value={password}
-                  onChange={e => setPassword(e.target.value)}
-               />
-               <br />
-               <br />
-               <button>Login</button>
-            </form>
-            <a>Signup</a>
+      <div className="loginParentDiv">
+         <i class="fas fa-times btnClose" onClick={() => setBtnPopUp(false)}></i>
+         <div className="imgDiv">
+            <img src={Logo}></img>
          </div>
+         <h4 align='center' >Login</h4>
+         <form onSubmit={handleSubmit}>
+            <label htmlFor="fname">Email</label>
+            <br />
+            <input
+               className="input"
+               type="email"
+               id="fname"
+               name="email"
+               defaultValue="John"
+               placeholder="example@email.com"
+               value={email}
+               onChange={e => setEmail(e.target.value)}
+            />
+            <br />
+            <label htmlFor="lname">Password</label>
+            <br />
+            <input
+               className="input"
+               type="password"
+               id="lname"
+               name="password"
+               defaultValue="Doe"
+               value={password}
+               onChange={e => setPassword(e.target.value)}
+            />
+            <br />
+            <br />
+            <button>Login</button>
+         </form>
+         <form className="signup" onSubmit={handleSubmit2}>
+            <button>Signup</button>
+         </form>
       </div>
    );
 }

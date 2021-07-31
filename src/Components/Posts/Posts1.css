@@ -1,56 +1,60 @@
-.quickMenu1 {
+.quickMenu {
    background-color: #ebeeef;
-   margin: 16px auto;
-   padding: 16px 0 0 16px;
+   margin: 2rem auto;
+   padding: 16px;
    border-radius: 4px;
-   width: 95%;
+   width: 90%;
 }
 
-.quickMenu1 .heading1 {
+.quickMenu .heading {
    display: flex;
    justify-content: space-between;
    align-items: center;
 }
 
-.quickMenu1 .heading1 :first-child {
+.quickMenu .heading :first-child {
    font-size: 24px;
    color: #002f34;
 }
 
-.quickMenu1 .heading1 :last-child {
+.quickMenu .heading :last-child {
    font-size: 14px;
    font-weight: 700;
    color: #002f34;
    text-decoration: underline;
-   margin-right: 16px;
+   margin-right: 0;
 }
 
-.quickMenu1 .cardParent1 {
+.quickMenu .cardParent {
    display: flex;
    overflow-x: scroll;
    overflow-y: hidden;
    scrollbar-width: none;
 }
 
-.quickMenu1 .cardParent1::-webkit-scrollbar {
+.quickMenu .cardParent::-webkit-scrollbar {
    display: none;
 }
 
-.quickMenu1 .cardParent1 .card1 {
-   margin: .5rem .5rem;
-   padding: 3px 10px;
-   border: solid 1px rgb(213, 213, 213);
+.quickMenu .cardParent .cards {
+   margin: 0.5rem 0.9rem;
+   padding: 3px 10px 5px 10px;
+   border: solid 1px rgb(197, 197, 197);
    border-radius: 5px;
-   /* width: 15rem;
-   height: 15rem; */
+   background-color: #fff;
+   cursor: pointer;
 }
 
-.quickMenu1 .cardParent1 .card1 .imgFav {
+.quickMenu .cardParent .cards:first-child {
+   margin: 0.5rem 0.5rem 0.5rem 0;
+}
+
+.quickMenu .cardParent .cards .imgFav {
    display: flex;
    justify-content: center;
 }
 
-.quickMenu1 .cardParent1 .card1 .imgFav .image1 {
+.quickMenu .cardParent .cards .imgFav .image {
    width: 14.5rem;
    height: 9rem;
    display: flex;
@@ -59,46 +63,48 @@
    margin: 5px 0;
 }
 
-.quickMenu1 .cardParent1 .card1 .imgFav .image1 img {
+.quickMenu .cardParent .cards .imgFav .image img {
    position: relative;
    max-width: 13rem;
    max-height: 8rem;
    margin: 0 0 1.4rem 1.3rem;
 }
 
-.quickMenu1 .cardParent1 .card1 .imgFav .favorite1 svg {
-   margin: 0 -.2rem 0 0;
+.quickMenu .cardParent .cards .imgFav .favorite svg {
+   margin: 0 -0.2rem 0 0;
 }
 
-.quickMenu1 .cardParent1 .card1 .content1 {}
+.quickMenu .cardParent .cards .content {
+   padding-bottom: 1rem;
+}
 
-.quickMenu1 .cardParent1 .card1 .content1 p {
+.quickMenu .cardParent .cards .content p {
    margin-bottom: 0;
 }
 
-.quickMenu1 .cardParent1 .card1 .content1 .price1 {
+.quickMenu .cardParent .cards .content .price {
    /* margin-top: 10px; */
    font-size: larger;
    font-weight: bold;
 }
 
-.quickMenu1 .cardParent1 .card1 .content1 .name1 {
+.quickMenu .cardParent .cards .content .name {
    font-size: large;
    color: #002f34;
 }
 
-.quickMenu1 .cardParent1 .card1 .content1 .category1 {
+.quickMenu .cardParent .cards .content .category {
    font-size: smaller;
 }
 
-.quickMenu1 .cardParent1 .card1 .date1 {
+.quickMenu .cardParent .cards .date {
    display: flex;
    justify-content: flex-end;
    font-size: small;
    color: gray;
 }
 
-.quickMenu1 .cardParent1 .card1 .date1 span {
+.quickMenu .cardParent .cards .date span {
    display: flex;
    justify-content: flex-end;
    align-items: center;
