@@ -9,20 +9,21 @@ import { useHistory } from 'react-router-dom';
 import { AuthContext, FirebaseContext } from '../../Store/Context';
 import { PopUpContext } from '../../Store/PopUpContext';
 import { SignUpUsernameContext } from '../../Store/SignUpUsernameContext';
+import PopUpUserProfile from '../../PopUps/PopUpUserProfile/PopUpUserProfile';
+import UserProfile from '../UserProfile/UserProfile';
+import { useState } from 'react';
+import { UserProfilePopUpTriggerCon } from '../../Store/UserProfilePopUpTriggerContext';
 
 function Header() {
 
    const history = useHistory();
-   const { setUser, user } = useContext(AuthContext);
+   const { user } = useContext(AuthContext);
    const { firebase } = useContext(FirebaseContext);
    const { setBtnPopUp, setPageId } = useContext(PopUpContext);
    const { signUpName, setSignUpName } = useContext(SignUpUsernameContext);
-   // const cc = () => {
-   //    if (user) {
-   //       var c = firebase.auth().currentUser.displayName;
-   //    }
-   //    return c;
-   // };
+   // const [userProfilePopUpTrigger, setUserProfilePopUpTrigger] = useState(false);
+   const { userProfilePopUpTrigger, setUserProfilePopUpTrigger } = useContext(UserProfilePopUpTriggerCon);
+
 
    return (
       <div className="headerParentDiv">
@@ -50,22 +51,70 @@ function Header() {
                <span> ENGLISH </span>
                <Arrow></Arrow>
             </div>
+
+            {/* <div className="parentUserProfile">
+               <div className="childUserProfile" onClick={() => {
+                  !userProfilePopUpTrigger ? setUserProfilePopUpTrigger(true) : setUserProfilePopUpTrigger(false);
+               }}>
+                  <div className="icon"></div>
+                  <Arrow></Arrow>
+               </div>
+               {
+                  userProfilePopUpTrigger && (<PopUpUserProfile>
+                     <UserProfile />
+                  </PopUpUserProfile>)
+               }
+            </div> */}
+
             <div className="loginPage">
-               {user ? (user.displayName ? user.displayName : signUpName) : <span onClick={() => {
-                  // history.push('/login');
-                  setBtnPopUp(true);
-                  setPageId('login');
-               }}>Login</span>}
-               <hr />
+               {/* {user ? (user.displayName ? user.displayName : signUpName) : <span onClick={() => { */}
+               {
+                  user ? (user.displayName ? (
+                     <div className="parentUserProfile">
+                        <div className="childUserProfile" onClick={() => {
+                           !userProfilePopUpTrigger ? setUserProfilePopUpTrigger(true) : setUserProfilePopUpTrigger(false);
+                        }}>
+                           <div className="icon"><h1>{user ? user.displayName.charAt(0).toUpperCase() : 'h'}</h1></div>
+                           <Arrow></Arrow>
+                        </div>
+                        {
+                           userProfilePopUpTrigger && (<PopUpUserProfile>
+                              <UserProfile />
+                           </PopUpUserProfile>)
+                        }
+                     </div>) : (
+                     <div className="parentUserProfile">
+                        <div className="childUserProfile" onClick={() => {
+                           !userProfilePopUpTrigger ? setUserProfilePopUpTrigger(true) : setUserProfilePopUpTrigger(false);
+                        }}>
+                           <div className="icon"><h1>{signUpName.charAt(0).toUpperCase()}</h1></div>
+                           <Arrow></Arrow>
+                        </div>
+                        {
+                           userProfilePopUpTrigger && (<PopUpUserProfile>
+                              <UserProfile />
+                           </PopUpUserProfile>)
+                        }
+                     </div>)
+                  ) :
+                     <span onClick={() => {
+                        // history.push('/login');
+                        setBtnPopUp(true);
+                        setPageId('login');
+                     }}>Login</span>
+               }
+
             </div>
-            {user && <div className="loginPage">
+
+            {/* {user && <div className="loginPage">
                <span onClick={() => {
                   firebase.auth().signOut();
                   history.push('/');
                   setSignUpName('');
                }}>Log Out</span>
                <hr />
-            </div>}
+            </div>} */}
+
             <div className="sellMenu" onClick={() => {
                history.push('/create');
             }}>

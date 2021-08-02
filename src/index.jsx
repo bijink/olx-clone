@@ -9,6 +9,7 @@ import Loading from './Store/LoadContext';
 import PopUpCon from './Store/PopUpContext';
 // import Logged from './Store/IfLoggedIn';
 import SignUpUsername from './Store/SignUpUsernameContext';
+import UserProfilePopUpTriggerContext from './Store/UserProfilePopUpTriggerContext';
 
 ReactDOM.render(
    <React.StrictMode>
@@ -18,7 +19,9 @@ ReactDOM.render(
                <Loading>
                   <PopUpCon>
                      <SignUpUsername>
-                        <App />
+                        <UserProfilePopUpTriggerContext>
+                           <App />
+                        </UserProfilePopUpTriggerContext>
                      </SignUpUsername>
                   </PopUpCon>
                </Loading>

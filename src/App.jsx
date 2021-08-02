@@ -8,8 +8,6 @@ import { AuthContext, FirebaseContext } from './Store/Context';
 import CreatePage from './Pages/CreatePage';
 import ViewPost from './Pages/ViewPost';
 import * as ReactBootstrap from 'react-bootstrap';
-// import './App2.css';
-
 
 function App() {
 
@@ -21,15 +19,10 @@ function App() {
       firebase.auth().onAuthStateChanged(user => {
          setUser(user);
          setLoading(true);
-
-         // if (user) {
-         //    const c = firebase.auth().currentUser.displayName;
-         //    console.log(c);
-         // }
       });
+      // const u = firebase.auth().currentUser;
+      // console.log(u);
    });
-
-
 
    return (
       <div>

@@ -1,0 +1,76 @@
+.parentDiv p {
+   margin: 0;
+   padding: 0;
+}
+
+.parentDiv {
+   width: 18rem;
+   /* height: 20rem; */
+   /* background-color: rgb(185, 195, 247); */
+   background-color: #fff;
+   /* border: 1px solid; */
+   border-radius: 4px;
+   box-shadow: 0 0 5px gray;
+   color: #002f34;
+}
+
+.parentDiv .UserDetails {
+   display: flex;
+   align-items: center;
+}
+
+.parentDiv .UserDetails .icon {
+   width: 4rem;
+   height: 4rem;
+   background-color: cadetblue;
+   border-radius: 50%;
+   margin: .8rem .8rem;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+
+.parentDiv .UserDetails .icon h1 {
+   margin: auto;
+}
+
+.parentDiv .UserDetails .details p {
+   font-size: small;
+   color: rgb(110, 110, 110);
+}
+
+.parentDiv .UserDetails .details h2 {
+   font-size: x-large;
+}
+
+.parentDiv .UserDetails .details h3 {
+   font-size: medium;
+}
+
+.parentDiv .features {
+   cursor: pointer;
+}
+
+.parentDiv .features .logout:hover {
+   /* background-color: #00e8dc; */
+   background-color: #cdf8f8;
+}
+
+.parentDiv .features .logout {
+   height: 3rem;
+   display: flex;
+   align-items: center;
+   /* background-color: chocolate; */
+   border-top: 1px solid rgb(199, 199, 199);
+}
+
+.parentDiv .features .logout .logo i {
+   transform: rotate(180deg);
+   font-size: x-large;
+   margin: .19rem .7rem 0 .5rem;
+}
+
+.parentDiv .features .logout span {
+   font-size: larger;
+   /* margin: 0 0 .19rem 0; */
+}
