@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import './Header.css';
+import './Header.scss';
 import OlxLogo from '../../assets/OlxLogo';
 import Search from '../../assets/Search';
 import Arrow from '../../assets/Arrow';
@@ -69,33 +69,32 @@ function Header() {
             <div className="loginPage">
                {/* {user ? (user.displayName ? user.displayName : signUpName) : <span onClick={() => { */}
                {
-                  user ? (user.displayName ? (
-                     <div className="parentUserProfile">
-                        <div className="childUserProfile" onClick={() => {
-                           !userProfilePopUpTrigger ? setUserProfilePopUpTrigger(true) : setUserProfilePopUpTrigger(false);
-                        }}>
-                           <div className="icon"><h1>{user ? user.displayName.charAt(0).toUpperCase() : 'h'}</h1></div>
-                           <Arrow></Arrow>
+                  user ? (
+                     user.displayName ? (
+                        <div className="parentUserProfile">
+                           <div className="childUserProfile" onClick={() => {
+                              !userProfilePopUpTrigger ? setUserProfilePopUpTrigger(true) : setUserProfilePopUpTrigger(false);
+                           }}>
+                              <div className="icon"><h1>{user && user.displayName.charAt(0).toUpperCase()}</h1></div>
+                              <Arrow></Arrow>
+                           </div>
+                           {
+                              userProfilePopUpTrigger && <UserProfile />
+                           }
                         </div>
-                        {
-                           userProfilePopUpTrigger && (<PopUpUserProfile>
-                              <UserProfile />
-                           </PopUpUserProfile>)
-                        }
-                     </div>) : (
-                     <div className="parentUserProfile">
-                        <div className="childUserProfile" onClick={() => {
-                           !userProfilePopUpTrigger ? setUserProfilePopUpTrigger(true) : setUserProfilePopUpTrigger(false);
-                        }}>
-                           <div className="icon"><h1>{signUpName.charAt(0).toUpperCase()}</h1></div>
-                           <Arrow></Arrow>
+                     ) : (
+                        <div className="parentUserProfile">
+                           <div className="childUserProfile" onClick={() => {
+                              !userProfilePopUpTrigger ? setUserProfilePopUpTrigger(true) : setUserProfilePopUpTrigger(false);
+                           }}>
+                              <div className="icon"><h1>{signUpName.charAt(0).toUpperCase()}</h1></div>
+                              <Arrow></Arrow>
+                           </div>
+                           {
+                              userProfilePopUpTrigger && <UserProfile />
+                           }
                         </div>
-                        {
-                           userProfilePopUpTrigger && (<PopUpUserProfile>
-                              <UserProfile />
-                           </PopUpUserProfile>)
-                        }
-                     </div>)
+                     )
                   ) :
                      <span onClick={() => {
                         // history.push('/login');

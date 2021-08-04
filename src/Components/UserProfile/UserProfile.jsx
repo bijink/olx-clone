@@ -4,7 +4,7 @@ import { useHistory } from 'react-router-dom';
 import { AuthContext, FirebaseContext } from '../../Store/Context';
 import { SignUpUsernameContext } from '../../Store/SignUpUsernameContext';
 import { UserProfilePopUpTriggerCon } from '../../Store/UserProfilePopUpTriggerContext';
-import './UserProfile.css';
+import './UserProfile.scss';
 
 
 function UserProfile() {
@@ -32,16 +32,16 @@ function UserProfile() {
             </div>
          </div>
          <div className="features">
-            <span className="logout">
+            <span className="logout" onClick={() => {
+               setUserProfilePopUpTrigger(false);
+               firebase.auth().signOut();
+               history.push('/');
+               setSignUpName('');
+            }} >
                <div className="logo">
                   <i class="fas fa-sign-out-alt"></i>
                </div>
-               <span onClick={() => {
-                  setUserProfilePopUpTrigger(false);
-                  firebase.auth().signOut();
-                  history.push('/');
-                  setSignUpName('');
-               }}>Logout</span>
+               <span>Logout</span>
             </span>
          </div>
       </div>

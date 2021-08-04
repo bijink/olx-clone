@@ -3,8 +3,8 @@ import { useHistory } from 'react-router-dom';
 import Heart from '../../assets/Heart';
 import { FirebaseContext } from '../../Store/Context';
 import { PostContext } from '../../Store/PostContext';
-import './Posts1.css';
-import './Posts2.css';
+import './Posts1.scss';
+import './Posts2.scss';
 
 function Posts() {
 

@@ -1,0 +1,65 @@
+.parentDiv {
+   p {
+      margin: 0;
+      padding: 0;
+   }
+   width: 18rem;
+   background-color: #fff;
+   border-radius: 4px;
+   box-shadow: 0 0 5px gray;
+   color: #002f34;
+   position: fixed;
+   top: 4.2rem;
+   right: 1rem;
+   .UserDetails {
+      display: flex;
+      align-items: center;
+      .icon {
+         width: 4rem;
+         height: 4rem;
+         background-color: cadetblue;
+         border-radius: 50%;
+         margin: 0.8rem 0.8rem;
+         display: flex;
+         justify-content: center;
+         align-items: center;
+         h1 {
+            margin: auto;
+         }
+      }
+      .details {
+         p {
+            font-size: small;
+            color: rgb(110, 110, 110);
+         }
+         h2 {
+            font-size: x-large;
+         }
+         h3 {
+            font-size: medium;
+         }
+      }
+   }
+   .features {
+      cursor: pointer;
+      .logout {
+         &:hover {
+            background-color: #cdf8f8;
+         }
+         height: 3rem;
+         display: flex;
+         align-items: center;
+         border-top: 1px solid rgb(199, 199, 199);
+         .logo {
+            i {
+               transform: rotate(180deg);
+               font-size: x-large;
+               margin: 0.19rem 0.7rem 0 0.5rem;
+            }
+         }
+         span {
+            font-size: larger;
+         }
+      }
+   }
+}

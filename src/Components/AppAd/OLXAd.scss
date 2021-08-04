@@ -1,0 +1,93 @@
+/* .appAd::before {
+   content: "";
+   width: 5rem;
+   height: 5rem;
+   background-color: tomato;
+} */
+.appAd {
+   background: rgba(0, 47, 52, 0.03);
+   height: 198px;
+   display: grid;
+   grid-template-columns: 42% 30.7% 0.3% 27%;
+   h1 {
+      color: #002f34;
+   }
+   .adImg {
+      background-image: url("https://statics.olx.in/external/base/img/phone-app.webp");
+      background-repeat: no-repeat;
+      background-position-x: center;
+   }
+   .adText {
+      padding-right: 1rem;
+      h1 {
+         font-size: xx-large;
+         font-weight: bold;
+         margin-bottom: 1rem;
+         margin-top: 1.7rem;
+      }
+      p {
+         font-size: 20px;
+         font-family: "Rubik", sans-serif;
+      }
+   }
+   .line {
+      width: 2px;
+      height: 8rem;
+      margin-right: 1rem;
+      background-color: #c6c6c6;
+      margin: auto 0;
+      border-radius: 1rem;
+   }
+   .linksParent {
+      display: flex;
+      align-items: center;
+   }
+   .linksChild {
+      display: grid;
+      grid-template-rows: auto auto;
+      padding: 0 0 0 1.5rem;
+      h5 {
+         font-family: "Rubik", sans-serif;
+         font-size: 14px;
+         font-weight: 600;
+      }
+      div {
+         a {
+            text-decoration: none;
+         }
+         img {
+            width: 8rem;
+            margin: 0.15rem 0;
+         }
+      }
+   }
+}
+p {
+   color: #002f34;
+}
+h5 {
+   color: #002f34;
+}
+@media screen and (max-width: 1000px) {
+   .appAd {
+      .adText {
+         display: none;
+      }
+      display: grid;
+      grid-template-columns: 72.7% 0.3% 27%;
+   }
+}
+@media screen and (max-width: 520px) {
+   .appAd {
+      .line {
+         display: none;
+      }
+   }
+}
+@media screen and (max-width: 270px) {
+   .appAd {
+      .adImg {
+         display: none;
+      }
+   }
+}

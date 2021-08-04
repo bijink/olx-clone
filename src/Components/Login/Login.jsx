@@ -1,5 +1,5 @@
 import React, { useState, useContext } from 'react';
-import './Login.css';
+import './Login.scss';
 import Logo from '../../olx-logo.png';
 import { AuthContext, FirebaseContext } from '../../Store/Context';
 import { useHistory } from 'react-router-dom';

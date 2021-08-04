@@ -1,5 +1,5 @@
 import React from 'react';
-import './PopUpSignLog.css';
+import './PopUpSignLog.scss';
 
 function PopUpSignLog(props) {
 

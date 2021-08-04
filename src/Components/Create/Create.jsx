@@ -1,5 +1,5 @@
 import React, { Fragment, useContext, useState } from 'react';
-import './Create.css';
+import './Create.scss';
 import Header from '../Header/Header';
 import { FirebaseContext, AuthContext } from '../../Store/Context';
 import { useHistory } from 'react-router-dom';

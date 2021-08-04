@@ -1,0 +1,59 @@
+.loginParentDiv {
+   border: 1px solid black;
+   width: max-content;
+   padding: 10px;
+   border-radius: 6px;
+   background-color: #fff;
+   .btnClose {
+      font-size: 1.5rem;
+      margin-left: 95%;
+      color: rgb(80, 80, 80);
+      cursor: pointer;
+   }
+   .imgDiv {
+      display: flex;
+      justify-content: center;
+      img {
+         width: 200px;
+         height: 200px;
+      }
+   }
+   .input {
+      border-top-color: transparent;
+      border-left-color: transparent;
+      border-right-color: transparent;
+      outline-color: transparent;
+      width: 24rem;
+   }
+   button {
+      width: 100%;
+      height: 48px;
+      border-color: transparent;
+      background-color: #002f34;
+      color: whitesmoke;
+      font-weight: 900;
+      border-radius: 6px;
+      font-weight: 900;
+      margin-bottom: 0.2rem;
+      &:hover {
+         background-color: honeydew;
+         color: #002f34;
+         border: 2px solid #002f34;
+      }
+   }
+   a {
+      display: flex;
+      justify-content: center;
+      cursor: pointer;
+   }
+   .signup {
+      button {
+         color: #002f34;
+         background-color: #fff;
+         border: 2px solid #002f34;
+         &:hover {
+            background-color: honeydew;
+         }
+      }
+   }
+}

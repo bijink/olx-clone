@@ -1,0 +1,63 @@
+.bannerParentDiv {
+   padding-top: 4.2em;
+   .bannerChildDiv {
+      .menuBar {
+         display: flex;
+         padding: 12px 18px;
+         .categoryMenu {
+            span {
+               margin-right: 16px;
+               font-family: "Rubik", sans-serif;
+               letter-spacing: 0.01rem;
+               font-weight: 600;
+               font-size: 0.87rem;
+            }
+            svg {
+               margin-left: -0.5rem;
+            }
+         }
+         .otherQuickOptions {
+            margin-left: 10rem;
+            display: flex;
+            align-items: center;
+            width: calc(100% - 152px);
+            div {
+               white-space: nowrap;
+               overflow: hidden;
+               text-overflow: ellipsis;
+               min-width: 60px;
+            }
+            span {
+               padding: 0 10px;
+               font-size: 0.87rem;
+               font-family: "Rubik", sans-serif;
+            }
+         }
+      }
+   }
+}
+.categoryMenu {
+   position: absolute;
+   font-size: 0.95rem;
+}
+.bannerChildDiv {
+   .banner {
+      background-image: url("https://statics.olx.in/external/base/img/hero-bg-in.jpg");
+      background-repeat: no-repeat;
+      background-position: center;
+      height: 250px;
+      img {
+         width: 100%;
+      }
+   }
+}
+@media only screen and (max-width: 700px) {
+   .otherQuickOptions {
+      display: none;
+   }
+   .bannerChildDiv {
+      .banner {
+         position: relative;
+      }
+   }
+}

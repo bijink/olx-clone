@@ -1,5 +1,5 @@
 import React from 'react';
-import './OLXAd.css';
+import './OLXAd.scss';
 
 function OLXAd() {
    return (
