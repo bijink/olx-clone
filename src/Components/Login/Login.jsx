@@ -5,8 +5,7 @@ import { AuthContext, FirebaseContext } from '../../Store/Context';
 import { useHistory } from 'react-router-dom';
 import { PopUpContext } from '../../Store/PopUpContext';
 
-function Login() {
-
+const Login = () => {
    const history = useHistory();
    const [email, setEmail] = useState('');
    const [password, setPassword] = useState('');
@@ -18,7 +17,6 @@ function Login() {
       e.preventDefault();
       setBtnPopUp(false);
       // console.log(email, password);
-
       firebase.auth().signInWithEmailAndPassword(email, password).then(() => {
          history.push('/');
       }).catch(error => {
@@ -82,6 +80,6 @@ function Login() {
          </form>
       </div>
    );
-}
+};
 
 export default Login;

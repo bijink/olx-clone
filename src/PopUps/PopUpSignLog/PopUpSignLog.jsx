@@ -1,8 +1,7 @@
 import React from 'react';
 import './PopUpSignLog.scss';
 
-function PopUpSignLog(props) {
-
+const PopUpSignLog = (props) => {
    // const { setBtnPopUp } = useContext(PopUpContext);
 
    return (
@@ -11,6 +10,6 @@ function PopUpSignLog(props) {
          {/* <button onClick={() => setBtnPopUp(false)}>Close</button> */}
       </div>
    );
-}
+};
 
 export default PopUpSignLog;

@@ -2,7 +2,7 @@ import React from 'react';
 import './Banner.scss';
 import Arrow from '../../assets/Arrow';
 
-function Banner() {
+const Banner = () => {
    return (
       <div className="bannerParentDiv">
          <div className="bannerChildDiv">
@@ -39,6 +39,6 @@ function Banner() {
          </div>
       </div>
    );
-}
+};
 
 export default Banner;

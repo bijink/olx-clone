@@ -6,8 +6,7 @@ import { useHistory } from 'react-router-dom';
 import { PopUpContext } from '../../Store/PopUpContext';
 import { SignUpUsernameContext } from '../../Store/SignUpUsernameContext';
 
-function Signup() {
-
+const Signup = () => {
    const history = useHistory();
    const [username, setUsername] = useState('');
    const [email, setEmail] = useState('');
@@ -17,7 +16,6 @@ function Signup() {
    const { setBtnPopUp, setPageId } = useContext(PopUpContext);
    const { setUser } = useContext(AuthContext);
    const { setSignUpName } = useContext(SignUpUsernameContext);
-
 
    const handleSubmit = (e) => {
       e.preventDefault();
@@ -49,8 +47,6 @@ function Signup() {
    };
 
    return (
-      // <div className="main">
-
       <div className="signupParentDiv">
          <i class="fas fa-times btnClose" onClick={() => setBtnPopUp(false)}></i>
          <div className="imgDiv">
@@ -118,7 +114,6 @@ function Signup() {
             <button>Login</button>
          </form>
       </div>
-      // </div>
    );
 };
 

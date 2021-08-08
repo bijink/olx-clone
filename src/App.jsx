@@ -8,9 +8,9 @@ import { AuthContext, FirebaseContext } from './Store/Context';
 import CreatePage from './Pages/CreatePage';
 import ViewPost from './Pages/ViewPost';
 import * as ReactBootstrap from 'react-bootstrap';
+import FavouritePage from './Pages/FavouritePage';
 
-function App() {
-
+const App = () => {
    const { setUser } = useContext(AuthContext);
    const { firebase } = useContext(FirebaseContext);
    const [loading, setLoading] = useState(null);
@@ -45,6 +45,9 @@ function App() {
                   <Route path='/view' >
                      <ViewPost />
                   </Route>
+                  <Route path='/favourite' >
+                     <FavouritePage />
+                  </Route>
                </Router>
                :
                <div className="parentSpinnerDiv">
@@ -55,6 +58,6 @@ function App() {
          }
       </div>
    );
-}
+};
 
 export default App;

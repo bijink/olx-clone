@@ -1,9 +1,11 @@
 .headerParentDiv {
    padding: 0.6rem 0.5rem;
-   background-color: whitesmoke;
+   // background-color: whitesmoke;
+   background: #ebeeef;
    position: fixed;
    width: 100vw;
    z-index: 999;
+   box-shadow: 0 0 12px gray;
    .headerChildDiv {
       width: 100%;
       display: flex;
@@ -60,8 +62,6 @@
          height: 48px;
          border: 2px solid #002f34;
          border-radius: 4px;
-         display: flex;
-         align-items: center;
          background-color: white;
          display: flex;
          align-items: center;

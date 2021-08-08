@@ -1,5 +1,4 @@
-import React from 'react';
-import { useContext } from 'react';
+import React, { useContext } from 'react';
 import { useHistory } from 'react-router-dom';
 import { AuthContext, FirebaseContext } from '../../Store/Context';
 import { SignUpUsernameContext } from '../../Store/SignUpUsernameContext';
@@ -7,8 +6,7 @@ import { UserProfilePopUpTriggerCon } from '../../Store/UserProfilePopUpTriggerC
 import './UserProfile.scss';
 
 
-function UserProfile() {
-
+const UserProfile = () => {
    const { user } = useContext(AuthContext);
    const { firebase } = useContext(FirebaseContext);
    const history = useHistory();
@@ -21,7 +19,7 @@ function UserProfile() {
 
    return (
       <div className="parentDiv">
-         <div className="UserDetails">
+         <div className="userDetails">
             <div className="icon"><h1>{user ? (user.displayName.charAt(0).toUpperCase()) : ''}</h1></div>
             <div className="details">
                <p>Hello,</p>
@@ -32,7 +30,16 @@ function UserProfile() {
             </div>
          </div>
          <div className="features">
-            <span className="logout" onClick={() => {
+            <div className="featuresChild favourite" onClick={() => {
+               setUserProfilePopUpTrigger(false);
+               history.push('/favourite');
+            }}>
+               <div className="logo">
+                  <i class="far fa-heart"></i>
+               </div>
+               <span>Favorite</span>
+            </div>
+            <div className="featuresChild logout" onClick={() => {
                setUserProfilePopUpTrigger(false);
                firebase.auth().signOut();
                history.push('/');
@@ -42,10 +49,10 @@ function UserProfile() {
                   <i class="fas fa-sign-out-alt"></i>
                </div>
                <span>Logout</span>
-            </span>
+            </div>
          </div>
       </div>
    );
-}
+};
 
 export default UserProfile;

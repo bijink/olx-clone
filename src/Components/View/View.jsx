@@ -3,8 +3,7 @@ import './View.scss';
 import { FirebaseContext } from '../../Store/Context';
 import { PostContext } from '../../Store/PostContext';
 
-function View() {
-
+const View = () => {
    const { firebase } = useContext(FirebaseContext);
    const { postDetails } = useContext(PostContext);
    const [userDetails, setUserDetails] = useState();
@@ -40,5 +39,6 @@ function View() {
          </div>
       </div>
    );
-}
+};
+
 export default View;

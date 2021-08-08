@@ -11,18 +11,22 @@
    position: fixed;
    top: 4.2rem;
    right: 1rem;
-   .UserDetails {
+   .userDetails {
       display: flex;
       align-items: center;
       .icon {
          width: 4rem;
          height: 4rem;
-         background-color: cadetblue;
-         border-radius: 50%;
-         margin: 0.8rem 0.8rem;
          display: flex;
          justify-content: center;
          align-items: center;
+         position: fixed;
+         top: 4.2rem;
+         right: 1rem;
+         margin: 0.8rem 0.8rem;
+         background-color: cadetblue;
+         color: #002f34;
+         border-radius: 50%;
          h1 {
             margin: auto;
          }
@@ -42,7 +46,7 @@
    }
    .features {
       cursor: pointer;
-      .logout {
+      .featuresChild {
          &:hover {
             background-color: #cdf8f8;
          }
@@ -52,13 +56,19 @@
          border-top: 1px solid rgb(199, 199, 199);
          .logo {
             i {
-               transform: rotate(180deg);
                font-size: x-large;
                margin: 0.19rem 0.7rem 0 0.5rem;
             }
          }
          span {
             font-size: larger;
+         }
+      }
+      .logout {
+         .logo {
+            i {
+               transform: rotate(180deg);
+            }
          }
       }
    }

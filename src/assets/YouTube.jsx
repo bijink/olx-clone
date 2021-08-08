@@ -1,6 +1,6 @@
 import React from 'react';
 
-function YouTube() {
+export default () => {
    return (
       <a href="https://www.youtube.com/user/OLXInTv">
          <svg width="48px" height="48px" viewBox="0 0 1024 1024" data-aut-id="icon" class="" fill-rule="evenodd">
@@ -8,6 +8,4 @@ function YouTube() {
          </svg>
       </a>
    );
-}
-
-export default YouTube;
+};

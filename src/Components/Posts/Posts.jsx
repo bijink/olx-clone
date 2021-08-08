@@ -6,8 +6,7 @@ import { PostContext } from '../../Store/PostContext';
 import './Posts1.scss';
 import './Posts2.scss';
 
-function Posts() {
-
+const Posts = () => {
    const { firebase } = useContext(FirebaseContext);
    const [products, setProducts] = useState([]);
    const { setPostDetails } = useContext(PostContext);
@@ -69,7 +68,6 @@ function Posts() {
             <div className="heading">
                <span>Fresh recommendations</span>
             </div>
-
             <div className="cardParent">
                {
                   products.map((product) => {
@@ -100,7 +98,6 @@ function Posts() {
                   })
                }
             </div>
-
             <div className="loadMore">
                <button><span>Load more</span></button>
             </div>
@@ -108,6 +105,6 @@ function Posts() {
 
       </div>
    );
-}
+};
 
 export default Posts;

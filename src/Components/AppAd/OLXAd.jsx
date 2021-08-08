@@ -1,7 +1,7 @@
 import React from 'react';
 import './OLXAd.scss';
 
-function OLXAd() {
+const OLXAd = () => {
    return (
       <div className="parentDivOLXAd">
          <div className="appAd">
@@ -23,6 +23,6 @@ function OLXAd() {
          </div>
       </div>
    );
-}
+};
 
 export default OLXAd;

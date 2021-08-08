@@ -1,0 +1,98 @@
+.favouriteParent {
+   // padding: 6rem 0 0;
+   .favoriteChild {
+      display: grid;
+      grid-template-columns: auto auto;
+      .sideBar {
+         height: 100%;
+         // background-color: rgb(238, 238, 238);
+         background: #ebeeef;
+         // border-right: 2px solid rgb(150, 150, 150);
+         border-right: thin solid #c6c6c6;
+         // border-width: thin;
+         padding: 6rem 0 0 0;
+         width: 14rem;
+      }
+      .cardParent1 {
+         padding: 6rem 0 0;
+         margin: 0 auto;
+         width: 95%;
+         display: flex;
+         .cards1 {
+            margin: 0 1.5rem 1rem 0;
+            padding: 3px 10px;
+            border: solid 1px rgb(197, 197, 197);
+            border-radius: 5px;
+            background-color: #fff;
+            // background-color: #002f34;
+            cursor: pointer;
+            width: 22.9%;
+            height: 16.5rem;
+            display: inline-block;
+            .imgFav {
+               display: flex;
+               justify-content: center;
+               .image {
+                  // width: 14.5rem;
+                  width: 10rem;
+                  height: 9rem;
+                  display: flex;
+                  justify-content: center;
+                  align-items: center;
+                  margin-bottom: 1.1rem;
+                  img {
+                     max-width: 90%;
+                     max-height: 75%;
+                     margin: 0 0 1.4rem 1.3rem;
+                  }
+               }
+            }
+            .content {
+               p {
+                  margin-bottom: 0;
+               }
+               .price {
+                  font-size: larger;
+                  font-weight: bold;
+               }
+               .name {
+                  font-size: large;
+                  color: #002f34;
+               }
+               .category {
+                  font-size: smaller;
+               }
+            }
+            .date {
+               display: flex;
+               justify-content: flex-end;
+               font-size: small;
+               color: gray;
+               span {
+                  display: flex;
+                  justify-content: flex-end;
+                  align-items: center;
+               }
+            }
+         }
+         .loadMore {
+            button {
+               background-color: white;
+               width: 6.6rem;
+               height: 3rem;
+               border: 2px solid #002f34;
+               border-radius: 4px;
+               display: flex;
+               justify-content: center;
+               align-items: center;
+               margin: 1rem auto;
+               color: #002f34;
+               font-weight: bold;
+               &:hover {
+                  border-width: 5px;
+               }
+            }
+         }
+      }
+   }
+}

@@ -7,7 +7,6 @@ import { LoadContext } from '../../Store/LoadContext';
 import LoadingBar from 'react-top-loading-bar';
 
 const Create = () => {
-
    const [name, setName] = useState('');
    const [category, setCategory] = useState('');
    const [price, setPrice] = useState('');
@@ -19,13 +18,11 @@ const Create = () => {
    const { loading, setLoading } = useContext(LoadContext);
    // const [loading, setLoading] = useState(0);
 
-
    const handleSubmit = () => {
       setLoading(99.999);
       firebase.storage().ref(`/images/${image.name}`).put(image).then(({ ref }) => {
          ref.getDownloadURL().then(url => {
             // console.log(url);
-
             firebase.firestore().collection('products').add({
                name,
                category,
@@ -42,7 +39,6 @@ const Create = () => {
    };
 
    return (
-
       <Fragment>
          <LoadingBar
             color='#00e8dc'
