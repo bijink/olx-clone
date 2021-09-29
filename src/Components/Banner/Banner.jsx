@@ -4,8 +4,8 @@ import Arrow from '../../assets/Arrow';
 
 const Banner = () => {
    return (
-      <div className="bannerParentDiv">
-         <div className="bannerChildDiv">
+      <div className="parentDivBanner">
+         <div className="childDivBanner">
             <div className="menuBar">
                <div className="categoryMenu">
                   <span>ALL CATEGORIES</span>

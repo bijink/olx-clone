@@ -1,4 +1,4 @@
-.parentDiv {
+.parentDivUserProfile {
    p {
       margin: 0;
       padding: 0;
@@ -20,9 +20,10 @@
          display: flex;
          justify-content: center;
          align-items: center;
-         position: fixed;
-         top: 4.2rem;
-         right: 1rem;
+         // position: fixed;
+         // top: 4.2rem;
+         // right: 1rem;
+         // left: 1rem;
          margin: 0.8rem 0.8rem;
          background-color: cadetblue;
          color: #002f34;
@@ -46,14 +47,15 @@
    }
    .features {
       cursor: pointer;
-      .featuresChild {
-         &:hover {
-            background-color: #cdf8f8;
-         }
+      .rows {
          height: 3rem;
          display: flex;
          align-items: center;
+         // justify-content: center;
          border-top: 1px solid rgb(199, 199, 199);
+         &:hover {
+            background-color: #cdf8f8;
+         }
          .logo {
             i {
                font-size: x-large;

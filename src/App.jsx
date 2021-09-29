@@ -27,8 +27,7 @@ const App = () => {
    return (
       <div>
          {
-            loading
-               ?
+            loading ?
                <Router>
                   <Route exact path='/'>
                      <HomePage />

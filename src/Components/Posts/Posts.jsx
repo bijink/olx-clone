@@ -11,6 +11,7 @@ const Posts = () => {
    const [products, setProducts] = useState([]);
    const { setPostDetails } = useContext(PostContext);
    const history = useHistory();
+   // const [fav, setFav] = useState(false);
 
    useEffect(() => {
       firebase.firestore().collection('products').get().then((snap) => {
@@ -23,6 +24,10 @@ const Posts = () => {
          setProducts(allPost);
       });
    });
+
+   // const handelFavourite = () => {
+   // 
+   // };
 
    return (
       <div className="postParentDiv">
@@ -37,19 +42,23 @@ const Posts = () => {
                   products.map((product) => {
                      return (
                         <div className="cards"
-                           onClick={() => {
+                        >
+                           <div className="imgFav">
+                              <div className="image" onClick={() => {
+                                 setPostDetails(product);
+                                 history.push('/view');
+                              }} >
+                                 <img src={product.url} alt="" />
+                              </div>
+                              <div className="favorite" onClick={() => setFav(true)}>
+                                 {/* <Heart></Heart> */}
+                                 {/* {fav ? <i class="fas fa-heart"></i> : <i class="far fa-heart"></i>} */}
+                              </div>
+                           </div>
+                           <div className="content" onClick={() => {
                               setPostDetails(product);
                               history.push('/view');
                            }}>
-                           <div className="imgFav">
-                              <div className="image">
-                                 <img src={product.url} alt="" />
-                              </div>
-                              <div className="favorite">
-                                 <Heart></Heart>
-                              </div>
-                           </div>
-                           <div className="content">
                               <p className="price">&#x20B9; {product.price} </p>
                               <p className="name">{product.name}</p>
                               <p className="category">{product.category}</p>

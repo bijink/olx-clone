@@ -18,7 +18,7 @@ const UserProfile = () => {
    // const uu = u.email;
 
    return (
-      <div className="parentDiv">
+      <div className="parentDivUserProfile">
          <div className="userDetails">
             <div className="icon"><h1>{user ? (user.displayName.charAt(0).toUpperCase()) : ''}</h1></div>
             <div className="details">
@@ -30,7 +30,7 @@ const UserProfile = () => {
             </div>
          </div>
          <div className="features">
-            <div className="featuresChild favourite" onClick={() => {
+            <div className="rows favourite" onClick={() => {
                setUserProfilePopUpTrigger(false);
                history.push('/favourite');
             }}>
@@ -39,7 +39,7 @@ const UserProfile = () => {
                </div>
                <span>Favorite</span>
             </div>
-            <div className="featuresChild logout" onClick={() => {
+            <div className="rows logout" onClick={() => {
                setUserProfilePopUpTrigger(false);
                firebase.auth().signOut();
                history.push('/');

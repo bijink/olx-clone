@@ -14,28 +14,6 @@
       > * {
          margin: 0 0.5rem;
       }
-      .parentUserProfile {
-         .childUserProfile {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            .icon {
-               width: 2.3rem;
-               height: 2.3rem;
-               background-color: #35d5ee;
-               border-radius: 50%;
-               margin: 0 0.12rem;
-               display: flex;
-               justify-content: center;
-               h1 {
-                  font-size: 1.8rem;
-               }
-            }
-            svg {
-               width: 1.2rem;
-            }
-         }
-      }
       .placeSearch {
          width: 16em;
          height: 48px;
@@ -108,23 +86,49 @@
             margin-right: 5px;
          }
       }
-      .span {
-         text-decoration: none;
-         font-size: 16px;
-         white-space: normal;
-         text-overflow: ellipsis;
-         font-weight: bolder;
-      }
+      // .span {
+      //    text-decoration: none;
+      //    font-size: 16px;
+      //    white-space: normal;
+      //    text-overflow: ellipsis;
+      //    font-weight: bolder;
+      // }
       .loginPage {
          cursor: pointer;
-         hr {
-            margin: 0;
-            background-color: black;
-            height: 2px;
+         .parentUserProfile {
+            .childUserProfile {
+               display: flex;
+               justify-content: center;
+               align-items: center;
+               .icon {
+                  width: 2.3rem;
+                  height: 2.3rem;
+                  background-color: #35d5ee;
+                  border-radius: 50%;
+                  margin: 0 0.12rem;
+                  display: flex;
+                  justify-content: center;
+                  h1 {
+                     font-size: 1.8rem;
+                  }
+               }
+               svg {
+                  width: 1.2rem;
+               }
+            }
          }
-         a {
-            text-decoration: none;
+         .login {
+            color: black;
+            text-decoration: 2px underline;
          }
+         // hr {
+         //    margin: 0;
+         //    background-color: black;
+         //    height: 2px;
+         // }
+         // a {
+         //    text-decoration: none;
+         // }
       }
       .sellMenu {
          position: relative;
@@ -161,6 +165,7 @@
       }
    }
 }
+
 @media only screen and (max-width: 700px) {
    .placeSearch {
       display: none;

@@ -3,7 +3,7 @@ import { createContext } from "react";
 
 export const SignUpUsernameContext = createContext();
 
-export default function SignUpUsername({ children }) {
+export default ({ children }) => {
    const [signUpName, setSignUpName] = useState('');
 
    return (

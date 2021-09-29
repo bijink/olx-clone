@@ -1,6 +1,7 @@
 import React, { useContext, useState } from 'react';
 import './Signup.scss';
 import Logo from '../../olx-logo.png';
+// import Logo from '../../../public/Images/olx-logo.png';
 import { AuthContext, FirebaseContext } from '../../Store/Context';
 import { useHistory } from 'react-router-dom';
 import { PopUpContext } from '../../Store/PopUpContext';

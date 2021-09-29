@@ -34,10 +34,7 @@ const Header = () => {
             </div>
             <div className="productSearch">
                <div className="input">
-                  <input
-                     type="text"
-                     placeholder="Find car,mobile phone and more..."
-                  />
+                  <input type="text" placeholder="Find car,mobile phone and more..." />
                </div>
                <div className="searchAction">
                   <Search color="#ffffff"></Search>
@@ -68,22 +65,13 @@ const Header = () => {
                   user ?
                      (user.displayName ? <Login_UserProfile value1={user} /> : <Login_UserProfile value2={signUpName} />)
                      :
-                     <span onClick={() => {
+                     <span className="login" onClick={() => {
                         // history.push('/login');
                         setBtnPopUp(true);
                         setPageId('login');
                      }}>Login</span>
                }
             </div>
-
-            {/* {user && <div className="loginPage">
-               <span onClick={() => {
-                  firebase.auth().signOut();
-                  history.push('/');
-                  setSignUpName('');
-               }}>Log Out</span>
-               <hr />
-            </div>} */}
 
             <div className="sellMenu" onClick={() => {
                history.push('/create');

@@ -4,7 +4,7 @@ export const FirebaseContext = createContext(null);
 
 export const AuthContext = createContext(null);
 
-export default function Context({ children }) {
+const Context = ({ children }) => {
    const [user, setUser] = useState(null);
 
    return (
@@ -13,3 +13,5 @@ export default function Context({ children }) {
       </AuthContext.Provider>
    );
 };
+
+export default Context;

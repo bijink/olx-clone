@@ -4,7 +4,7 @@ import { createContext } from 'react';
 
 export const UserProfilePopUpTriggerCon = createContext();
 
-export default function UserProfilePopUpTriggerContext(props) {
+export default (props) => {
    const [userProfilePopUpTrigger, setUserProfilePopUpTrigger] = useState(false);
 
    return (

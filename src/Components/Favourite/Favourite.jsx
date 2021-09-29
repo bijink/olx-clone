@@ -24,8 +24,8 @@ const Favourite = () => {
    });
 
    return (
-      <div className="favouriteParent">
-         <article className="favoriteChild">
+      <div className="parentDivFavourite">
+         <article className="childDivFavourite">
             <aside className="sideBar">1111111111</aside>
             <div className="cardParent1">
                {

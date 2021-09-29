@@ -1,10 +1,12 @@
-.bannerParentDiv {
+.parentDivBanner {
    padding-top: 4.2em;
-   .bannerChildDiv {
+   .childDivBanner {
       .menuBar {
          display: flex;
          padding: 12px 18px;
          .categoryMenu {
+            position: absolute;
+            font-size: 0.95rem;
             span {
                margin-right: 16px;
                font-family: "Rubik", sans-serif;
@@ -26,36 +28,31 @@
                overflow: hidden;
                text-overflow: ellipsis;
                min-width: 60px;
+               span {
+                  padding: 0 10px;
+                  font-size: 0.87rem;
+                  font-family: "Rubik", sans-serif;
+               }
             }
-            span {
-               padding: 0 10px;
-               font-size: 0.87rem;
-               font-family: "Rubik", sans-serif;
-            }
+         }
+      }
+      .banner {
+         background-image: url("https://statics.olx.in/external/base/img/hero-bg-in.jpg");
+         background-repeat: no-repeat;
+         background-position: center;
+         height: 250px;
+         img {
+            width: 100%;
          }
       }
    }
 }
-.categoryMenu {
-   position: absolute;
-   font-size: 0.95rem;
-}
-.bannerChildDiv {
-   .banner {
-      background-image: url("https://statics.olx.in/external/base/img/hero-bg-in.jpg");
-      background-repeat: no-repeat;
-      background-position: center;
-      height: 250px;
-      img {
-         width: 100%;
-      }
-   }
-}
+
 @media only screen and (max-width: 700px) {
-   .otherQuickOptions {
-      display: none;
-   }
-   .bannerChildDiv {
+   .childDivBanner {
+      .otherQuickOptions {
+         display: none;
+      }
       .banner {
          position: relative;
       }

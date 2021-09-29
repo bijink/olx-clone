@@ -2,7 +2,7 @@ import { useState, createContext } from "react";
 
 export const PopUpContext = createContext(null);
 
-export default function PopUpCon({ children }) {
+const PopUpCon = ({ children }) => {
    const [btnPopUp, setBtnPopUp] = useState(false);
    const [pageId, setPageId] = useState('');
 
@@ -12,3 +12,5 @@ export default function PopUpCon({ children }) {
       </PopUpContext.Provider>
    );
 };
+
+export default PopUpCon;

@@ -2,7 +2,7 @@ import { createContext, useState } from "react";
 
 export const PostContext = createContext(null);
 
-export default function PostCon({ children }) {
+const PostCon = ({ children }) => {
    const [postDetails, setPostDetails] = useState(null);
 
    return (
@@ -11,3 +11,5 @@ export default function PostCon({ children }) {
       </PostContext.Provider>
    );
 };
+
+export default PostCon;
