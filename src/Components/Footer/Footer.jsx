@@ -71,7 +71,7 @@ const Footer = () => {
                   <Twitter />
                   <YouTube />
                </div>
-               <div>
+               <div className="appLink">
                   <a href="https://apps.apple.com/in/app/olx-buy-sell-near-you/id913492792?utm_source=desktop_ios&utm_medium=home_banner&utm_campaign=home"><img src="https://statics.olx.in/external/base/img/appstore_2x.webp" alt="ios-app-store" /></a>
                   <a href="https://play.google.com/store/apps/details?id=com.olx.southasia&hl=en_IN&utm_source=desktop_android&utm_medium=home_banner&utm_campaign=home"> <img src="https://statics.olx.in/external/base/img/playstore_2x.webp" alt="android-app-store" /></a>
                </div>

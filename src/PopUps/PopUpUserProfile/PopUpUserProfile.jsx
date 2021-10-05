@@ -4,7 +4,7 @@ import './PopUpUserProfile.scss';
 const PopUpUserProfile = (props) => {
    return (
       <div className="parentDivPopUp2">
-         {props.children}
+         {/* {props.children} */}
       </div>
    );
 };

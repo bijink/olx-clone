@@ -8,16 +8,20 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      &:first-child {
+      > :first-child {
          font-size: 24px;
          color: #002f34;
       }
-      &:last-child {
+      > :last-child {
          font-size: 14px;
          font-weight: 700;
          color: #002f34;
          text-decoration: underline;
          margin-right: 0;
+         cursor: pointer;
+         &:hover {
+            text-decoration: none;
+         }
       }
    }
    .cardParent {
@@ -35,7 +39,10 @@
          border-radius: 5px;
          background-color: #fff;
          cursor: pointer;
-         &:first-child {
+         // width: 22.9%;
+         width: 16rem;
+         // width: 30rem;
+         > :first-child {
             margin: 0.5rem 0.5rem 0.5rem 0;
          }
          .imgFav {
@@ -50,8 +57,10 @@
                margin: 5px 0;
                img {
                   position: relative;
-                  max-width: 13rem;
-                  max-height: 8rem;
+                  // max-width: 13rem;
+                  // max-height: 8rem;
+                  max-width: 90%;
+                  max-height: 75%;
                   margin: 0 0 1.4rem 1.3rem;
                }
             }
@@ -71,6 +80,9 @@
             padding-bottom: 1rem;
             p {
                margin-bottom: 0;
+               white-space: nowrap;
+               overflow: hidden;
+               text-overflow: ellipsis;
             }
             .price {
                font-size: larger;

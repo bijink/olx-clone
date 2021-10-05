@@ -9,10 +9,12 @@ import CreatePage from './Pages/CreatePage';
 import ViewPost from './Pages/ViewPost';
 import * as ReactBootstrap from 'react-bootstrap';
 import FavouritePage from './Pages/FavouritePage';
+import { UserProfilePopUpTriggerCon } from './Store/UserProfilePopUpTriggerContext';
 
 const App = () => {
    const { setUser } = useContext(AuthContext);
    const { firebase } = useContext(FirebaseContext);
+   const { userProfilePopUpTrigger, setUserProfilePopUpTrigger } = useContext(UserProfilePopUpTriggerCon);
    const [loading, setLoading] = useState(null);
 
    useEffect(() => {
@@ -25,7 +27,7 @@ const App = () => {
    });
 
    return (
-      <div>
+      <div onClick={() => userProfilePopUpTrigger && setUserProfilePopUpTrigger(false)}>
          {
             loading ?
                <Router>

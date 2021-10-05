@@ -3,35 +3,87 @@
    .childDivBanner {
       .menuBar {
          display: flex;
-         padding: 12px 18px;
+         justify-content: start;
+         padding: 10px 0 10px 35px;
+         // width: 100%;
          .categoryMenu {
-            position: absolute;
-            font-size: 0.95rem;
+            // position: absolute;
+            display: flex;
+            align-items: center;
+            // font-size: 0.95rem;
+            // margin: 0 -8rem 0 0;
+            cursor: pointer;
             span {
-               margin-right: 16px;
+               // margin-right: 16px;
                font-family: "Rubik", sans-serif;
                letter-spacing: 0.01rem;
                font-weight: 600;
                font-size: 0.87rem;
             }
-            svg {
-               margin-left: -0.5rem;
+            // svg {
+            .arrow {
+               margin: 0 0 0 0.5rem;
+               // width: 1.3rem;
+               transition: transform;
+               transform: rotate(0deg);
+               animation: rotate-keyframe0 400ms;
+               animation-timing-function: ease-in-out;
+            }
+            .arrowRotate {
+               margin: 0 0 0 0.5rem;
+               // width: 1.3rem;
+               transition: transform;
+               transform: rotate(180deg);
+               animation: rotate-keyframe1 400ms;
+               animation-timing-function: ease-in-out;
+            }
+            @keyframes rotate-keyframe0 {
+               from {
+                  transform: rotate(180deg);
+               }
+               to {
+                  transform: rotate(0deg);
+               }
+            }
+            @keyframes rotate-keyframe1 {
+               from {
+                  transform: rotate(0deg);
+               }
+               to {
+                  transform: rotate(180deg);
+               }
+            }
+            &:hover {
+               color: #004e57;
+               fill: #004e57;
             }
          }
          .otherQuickOptions {
-            margin-left: 10rem;
+            // margin-left: 10rem;
+            // margin: 0 0 0 -5rem;
+            // padding: 0 0 0 2rem;
+            padding: 0 0 0 1.5rem;
             display: flex;
+            justify-content: start;
             align-items: center;
             width: calc(100% - 152px);
+            > :first-child {
+               margin: 0 -1.2rem 0 0;
+            }
             div {
                white-space: nowrap;
                overflow: hidden;
                text-overflow: ellipsis;
                min-width: 60px;
                span {
-                  padding: 0 10px;
+                  padding: 0 8px;
                   font-size: 0.87rem;
                   font-family: "Rubik", sans-serif;
+                  cursor: pointer;
+                  color: #003d44;
+                  &:hover {
+                     color: #0296a7;
+                  }
                }
             }
          }

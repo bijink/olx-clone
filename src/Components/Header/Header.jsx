@@ -22,7 +22,7 @@ const Header = () => {
    const { userProfilePopUpTrigger, setUserProfilePopUpTrigger } = useContext(UserProfilePopUpTriggerCon);
 
    return (
-      <div className="headerParentDiv">
+      <div className="headerParentDiv" >
          <div className="headerChildDiv">
             <div className="brandLogo">
                <OlxLogo></OlxLogo>
@@ -74,7 +74,8 @@ const Header = () => {
             </div>
 
             <div className="sellMenu" onClick={() => {
-               history.push('/create');
+               !userProfilePopUpTrigger &&
+                  history.push('/create');
             }}>
                <SellButton></SellButton>
                <div className="sellMenuContent">

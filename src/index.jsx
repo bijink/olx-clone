@@ -10,6 +10,8 @@ import PopUpCon from './Store/PopUpContext';
 // import Logged from './Store/IfLoggedIn';
 import SignUpUsername from './Store/SignUpUsernameContext';
 import UserProfilePopUpTriggerContext from './Store/UserProfilePopUpTriggerContext';
+import { Provider } from 'react-redux';
+import store from './Redux/Store';
 
 ReactDOM.render(
    <React.StrictMode>
@@ -20,7 +22,9 @@ ReactDOM.render(
                   <PopUpCon>
                      <SignUpUsername>
                         <UserProfilePopUpTriggerContext>
+                           {/* <Provider store={store}> */}
                            <App />
+                           {/* </Provider> */}
                         </UserProfilePopUpTriggerContext>
                      </SignUpUsername>
                   </PopUpCon>

@@ -1,13 +1,13 @@
 import React from 'react';
 
-export default () => {
+export default (props) => {
    return (
       <svg
          width="24px"
          height="24px"
          viewBox="0 0 1024 1024"
          data-aut-id="icon"
-         className
+         className={props.rotate ? "arrowRotate" : "arrow"}
          fillRule="evenodd"
       >
          <path

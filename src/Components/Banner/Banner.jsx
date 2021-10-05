@@ -1,15 +1,18 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Banner.scss';
 import Arrow from '../../assets/Arrow';
+import Categories from '../Categories/Categories';
 
 const Banner = () => {
+   const [catPop, setCatPop] = useState(false);
+
    return (
       <div className="parentDivBanner">
          <div className="childDivBanner">
             <div className="menuBar">
-               <div className="categoryMenu">
-                  <span>ALL CATEGORIES</span>
-                  <Arrow></Arrow>
+               <div onClick={() => !catPop ? setCatPop(true) : setCatPop(false)} className="categoryMenu">
+                  <span >ALL CATEGORIES</span>
+                  <Arrow rotate={catPop} />
                </div>
                <div className="otherQuickOptions">
                   <div>
@@ -35,6 +38,7 @@ const Banner = () => {
                   </div>
                </div>
             </div>
+            {catPop && <Categories />}
             <div className="banner"></div>
          </div>
       </div>

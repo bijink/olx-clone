@@ -31,7 +31,7 @@ const UserProfile = () => {
          </div>
          <div className="features">
             <div className="rows favourite" onClick={() => {
-               setUserProfilePopUpTrigger(false);
+               // setUserProfilePopUpTrigger(false);
                history.push('/favourite');
             }}>
                <div className="logo">
@@ -40,7 +40,7 @@ const UserProfile = () => {
                <span>Favorite</span>
             </div>
             <div className="rows logout" onClick={() => {
-               setUserProfilePopUpTrigger(false);
+               // setUserProfilePopUpTrigger(false);
                firebase.auth().signOut();
                history.push('/');
                setSignUpName('');
