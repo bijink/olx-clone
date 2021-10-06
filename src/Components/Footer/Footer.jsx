@@ -6,6 +6,18 @@ import YouTube from '../../assets/YouTube';
 import './Footer.scss';
 
 const Footer = () => {
+   // const date = new Date();
+   // console.log(date);
+   // console.log(date.toDateString());
+   // var yesterday = new Date((new Date()).valueOf() - 1000 * 60 * 60 * 24);
+   // console.log(yesterday.toDateString());
+   // let today = new Date();
+   // let yesterday = new Date();
+
+   // yesterday.setDate(today.getDate() - 2);
+
+   // console.log(yesterday.toDateString());
+
    return (
       <div className="footerParentDiv">
          <div className="content">

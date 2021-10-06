@@ -1,0 +1,84 @@
+.postParentDiv {
+   .quickMenu {
+      background-color: #ebeeef;
+      margin: 2rem auto;
+      // padding: 5px;
+      padding: 1rem;
+      border-radius: 4px;
+      width: 92%;
+      // width: 80rem;
+      .heading {
+         display: flex;
+         justify-content: space-between;
+         align-items: center;
+         color: #002f34;
+         > :first-child {
+            font-size: 24px;
+            // margin: 0 0 0 0.6rem;
+         }
+         > :last-child {
+            font-size: 14px;
+            font-weight: 700;
+            text-decoration: underline;
+            // margin: 0 0.6rem 0 0;
+            cursor: pointer;
+            &:hover {
+               text-decoration: none;
+            }
+         }
+      }
+      .cardParent {
+         .cardsParentDiv {
+            display: flex;
+            overflow-x: scroll;
+            // overflow-y: hidden;
+            scrollbar-width: none;
+            // padding: 0.5rem 0.6rem;
+            &::-webkit-scrollbar {
+               display: none;
+            }
+            > :first-child {
+               margin-left: 0;
+            }
+            > :last-child {
+               margin-right: 0;
+            }
+         }
+      }
+   }
+   .recommendations {
+      margin: 2rem auto;
+      // padding: 16px;
+      // padding: 0 0.6rem;
+      // padding: 0 0.45rem;
+      padding: 0 0.5rem;
+      width: 92%;
+      // width: 80rem;
+      .heading {
+         display: flex;
+         justify-content: space-between;
+         align-items: center;
+         font-size: 24px;
+         color: #002f34;
+         margin: 0 0 0 0.5rem;
+      }
+      .loadMore {
+         button {
+            background-color: white;
+            width: 6.6rem;
+            height: 3rem;
+            border: 2px solid #002f34;
+            border-radius: 4px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 1rem auto;
+            color: #002f34;
+            font-weight: bold;
+            &:hover {
+               border-width: 5px;
+            }
+         }
+      }
+   }
+}
