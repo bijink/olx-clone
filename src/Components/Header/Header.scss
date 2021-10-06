@@ -1,42 +1,62 @@
 .headerParentDiv {
-   padding: 0.6rem 0.5rem;
-   // background-color: whitesmoke;
-   background: #ebeeef;
+   // padding: 0.6rem 0.5rem;
+   padding: 0.6rem 2.5%;
+   background-color: whitesmoke;
+   // background-color: #ebeeef;
    position: fixed;
-   width: 100vw;
+   width: 100%;
+   // height: 5rem;
    z-index: 999;
-   box-shadow: 0 0 12px gray;
+   // box-shadow: 0 0 12px gray;
+   box-shadow: 0 0 5px gray;
    .headerChildDiv {
       width: 100%;
       display: flex;
-      justify-content: space-between;
+      // justify-content: space-between;
+      // justify-content: space-evenly;
+      justify-content: center;
       align-items: center;
       > * {
          margin: 0 0.5rem;
       }
+      .brandLogo {
+         margin: 0 2.5% 0 0;
+      }
       .placeSearch {
-         width: 16em;
+         width: 17rem;
          height: 48px;
          display: flex;
+         justify-content: center;
          align-items: center;
          border: 2px solid #002f34;
          border-radius: 4px;
          background-color: white;
-         svg {
-            padding: 0 0.2rem;
+         .search {
+            svg {
+               width: 1.05rem;
+            }
          }
-         &::selection {
+         .text {
+            input {
+               border-color: transparent;
+               outline-color: transparent;
+               width: 12.5rem;
+               height: 2rem;
+               margin: 0 0.5rem;
+            }
+         }
+         .arrow {
+            svg {
+               width: 1.2rem;
+            }
+         }
+         & ::selection {
             border-color: #23e5db;
-            outline-color: #23e5db;
-         }
-         input {
-            border-color: transparent;
-            outline-color: transparent;
-            width: 13em;
+            // outline-color: #23e5db;
          }
       }
       .productSearch {
-         width: 35em;
+         width: 30rem;
          height: 48px;
          border: 2px solid #002f34;
          border-radius: 4px;
@@ -44,7 +64,7 @@
          display: flex;
          align-items: center;
          justify-content: space-between;
-         margin-left: -0.5rem;
+         // margin-left: -0.5rem;
          .input {
             width: 100%;
             height: 100%;
@@ -78,6 +98,7 @@
          height: 48px;
          display: flex;
          align-items: center;
+         margin: 0 1rem;
          span {
             font-size: 15px;
             white-space: normal;
@@ -95,6 +116,8 @@
       // }
       .loginPage {
          cursor: pointer;
+         margin: 0 1.5rem;
+
          .parentUserProfile {
             .childUserProfile {
                display: flex;
@@ -133,6 +156,7 @@
       .sellMenu {
          position: relative;
          cursor: pointer;
+         // margin: 0 0 0 1.8rem;
          .all {
             fill: white;
          }

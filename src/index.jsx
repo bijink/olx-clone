@@ -22,9 +22,9 @@ ReactDOM.render(
                   <PopUpCon>
                      <SignUpUsername>
                         <UserProfilePopUpTriggerContext>
-                           {/* <Provider store={store}> */}
-                           <App />
-                           {/* </Provider> */}
+                           <Provider store={store}>
+                              <App />
+                           </Provider>
                         </UserProfilePopUpTriggerContext>
                      </SignUpUsername>
                   </PopUpCon>

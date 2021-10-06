@@ -1,77 +1,94 @@
-.parentDivUserProfile {
+.userProfileParentDiv {
    p {
       margin: 0;
       padding: 0;
    }
-   width: 18rem;
-   background-color: #fff;
-   border-radius: 4px;
-   box-shadow: 0 0 5px gray;
-   color: #002f34;
    position: fixed;
    top: 4.2rem;
-   right: 1rem;
-   .userDetails {
-      display: flex;
-      align-items: center;
-      .icon {
-         width: 4rem;
-         height: 4rem;
+   .userProfileChildDiv {
+      width: 18rem;
+      background-color: #fff;
+      position: relative;
+      right: 14rem;
+      border-radius: 4px;
+      // box-shadow: 0px 4px 6px 0.1px rgba(114, 114, 114, 0.534);
+      box-shadow: 0 0 4px rgb(98, 98, 98);
+      color: #002f34;
+      .userDetails {
          display: flex;
-         justify-content: center;
          align-items: center;
-         // position: fixed;
-         // top: 4.2rem;
-         // right: 1rem;
-         // left: 1rem;
-         margin: 0.8rem 0.8rem;
-         background-color: cadetblue;
-         color: #002f34;
-         border-radius: 50%;
-         h1 {
-            margin: auto;
+         cursor: default;
+         .icon {
+            width: 4rem;
+            height: 4rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            // position: fixed;
+            // top: 4.2rem;
+            // right: 1rem;
+            // left: 1rem;
+            margin: 0.8rem 0.8rem;
+            background-color: cadetblue;
+            color: #002f34;
+            border-radius: 50%;
+            h1 {
+               margin: auto;
+            }
+         }
+         .details {
+            p {
+               font-size: small;
+               color: rgb(110, 110, 110);
+            }
+            h2 {
+               font-size: x-large;
+            }
+            h3 {
+               font-size: medium;
+            }
          }
       }
-      .details {
-         p {
-            font-size: small;
-            color: rgb(110, 110, 110);
+      .features {
+         cursor: pointer;
+         .rows {
+            height: 3rem;
+            display: flex;
+            align-items: center;
+            // justify-content: center;
+            border-top: 1px solid rgb(199, 199, 199);
+            &:hover {
+               background-color: #cdf8f8;
+            }
+            .logo {
+               i {
+                  font-size: x-large;
+                  margin: 0.19rem 0.7rem 0 0.5rem;
+               }
+            }
+            span {
+               font-size: larger;
+            }
          }
-         h2 {
-            font-size: x-large;
-         }
-         h3 {
-            font-size: medium;
+         .logout {
+            .logo {
+               i {
+                  transform: rotate(180deg);
+               }
+            }
          }
       }
    }
-   .features {
-      cursor: pointer;
-      .rows {
-         height: 3rem;
-         display: flex;
-         align-items: center;
-         // justify-content: center;
-         border-top: 1px solid rgb(199, 199, 199);
-         &:hover {
-            background-color: #cdf8f8;
-         }
-         .logo {
-            i {
-               font-size: x-large;
-               margin: 0.19rem 0.7rem 0 0.5rem;
-            }
-         }
-         span {
-            font-size: larger;
-         }
-      }
-      .logout {
-         .logo {
-            i {
-               transform: rotate(180deg);
-            }
-         }
-      }
+   .userProfileChildDiv::after {
+      bottom: 100%;
+      right: 2rem;
+      content: " ";
+      height: 0;
+      width: 0;
+      position: absolute;
+      pointer-events: none;
+      border: 12px solid transparent;
+      border-bottom-color: #fff;
+      // border-bottom-color: rgb(199, 25, 25);
    }
 }

@@ -1,16 +1,18 @@
-import { SET_USER } from "./Action";
+import { SET_LOADMORE } from "./Action";
 
 const initialState = {
-
+   noOfItemToLoad: 2
 };
 
-const userReducer = (state, action) => {
+const loadMoreReducer = (state = initialState, action) => {
    switch (action.type) {
-      case SET_USER: return {
-         ...state,
-         user: action.payload
+      case SET_LOADMORE: return {
+         // ...state,
+         // load: state + 2
+         load: state
       };
+      default: return state;
    }
 };
 
-export default userReducer;
+export default loadMoreReducer;

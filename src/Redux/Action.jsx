@@ -1,8 +1,8 @@
-export const SET_USER = 'SET_USER';
+export const SET_LOADMORE = 'SET_LOADMORE';
 
-export const setUser = (user) => {
+export const setLoadMore = () => {
    return {
-      type: SET_USER,
-      payload: user
+      type: SET_LOADMORE,
+      // payload: user
    };
 };

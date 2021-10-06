@@ -11,7 +11,7 @@ const Posts = () => {
                <span>View more</span>
             </div>
             <div className="cardParent">
-               <PostsCards />
+               <PostsCards quickMenu />
             </div>
          </div>
          <div className="recommendations">

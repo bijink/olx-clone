@@ -53,7 +53,6 @@ const Create = () => {
          // onLoaderFinished={() => setLoading(100)}
          />
          <Header />
-         {/* <card> */}
          <div className="parentDivCreate">
             <h1>POST YOUR AD</h1>
             <div className="parentDetailDiv">
@@ -109,7 +108,7 @@ const Create = () => {
                               </>
                               :
                               <div>
-                                 <i class="fas fa-file-image"></i>
+                                 <i className="fas fa-file-image"></i>
                                  <p>Add Photo</p>
                               </div>
                         }
@@ -118,8 +117,6 @@ const Create = () => {
                   </div>
                   {image && <i onClick={() => setImage(null)} class="fas fa-times closeImg"></i>}
                </div>
-               {/* <img alt="" width="120px" height="120px" src={image ? URL.createObjectURL(image) : ''} /> */}
-               {/* <input onChange={e => setImage(e.target.files[0])} style={{ visibility: 'hidden' }} type="file" /> */}
             </div>
             <button onClick={handleSubmit} className="uploadBtn">Post now</button>
          </div>

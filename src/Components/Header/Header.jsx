@@ -28,9 +28,15 @@ const Header = () => {
                <OlxLogo></OlxLogo>
             </div>
             <div className="placeSearch">
-               <Search></Search>
-               <input type="text" />
-               <Arrow></Arrow>
+               <div className="search">
+                  <Search></Search>
+               </div>
+               <div className="text">
+                  <input type="text" placeholder="Search city, area or locality" />
+               </div>
+               <div className="arrow">
+                  <Arrow></Arrow>
+               </div>
             </div>
             <div className="productSearch">
                <div className="input">
@@ -44,23 +50,7 @@ const Header = () => {
                <span> ENGLISH </span>
                <Arrow></Arrow>
             </div>
-
-            {/* <div className="parentUserProfile">
-               <div className="childUserProfile" onClick={() => {
-                  !userProfilePopUpTrigger ? setUserProfilePopUpTrigger(true) : setUserProfilePopUpTrigger(false);
-               }}>
-                  <div className="icon"></div>
-                  <Arrow></Arrow>
-               </div>
-               {
-                  userProfilePopUpTrigger && (<PopUpUserProfile>
-                     <UserProfile />
-                  </PopUpUserProfile>)
-               }
-            </div> */}
-
             <div className="loginPage">
-               {/* {user ? (user.displayName ? user.displayName : signUpName) : <span onClick={() => { */}
                {
                   user ?
                      (user.displayName ? <Login_UserProfile value1={user} /> : <Login_UserProfile value2={signUpName} />)
@@ -74,8 +64,7 @@ const Header = () => {
             </div>
 
             <div className="sellMenu" onClick={() => {
-               !userProfilePopUpTrigger &&
-                  history.push('/create');
+               user ? history.push('/create') : alert('Please Login to sell item.');
             }}>
                <SellButton></SellButton>
                <div className="sellMenuContent">
@@ -107,8 +96,6 @@ const Login_UserProfile = (props) => {
          <div className="childUserProfile" onClick={() => {
             !userProfilePopUpTrigger ? setUserProfilePopUpTrigger(true) : setUserProfilePopUpTrigger(false);
          }}>
-            {/* <div className="icon"><h1>{user && user.displayName.charAt(0).toUpperCase()}</h1></div>
-               <div className="icon"><h1>{signUpName.charAt(0).toUpperCase()}</h1></div> */}
             {component}
             <Arrow></Arrow>
          </div>
