@@ -1,12 +1,12 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import { useHistory } from 'react-router';
-import Heart from '../../../assets/Heart';
-import { FirebaseContext } from '../../../Store/Context';
-import { PostContext } from '../../../Store/PostContext';
-import './PostsCards.scss';
+import Heart from '../../assets/Heart';
+import { FirebaseContext } from '../../Store/Context';
+import { PostContext } from '../../Store/PostContext';
+import './Cards.scss';
 
-const PostsCards = (props) => {
+const Cards = (props) => {
    const { firebase } = useContext(FirebaseContext);
    const { setPostDetails } = useContext(PostContext);
 
@@ -58,35 +58,36 @@ const PostsCards = (props) => {
    return (
       <div className="cardsParentDiv">
          {
-            products.slice(0, (props.quickMenu ? 2 : props.noOfItemToLoad)).map((product, index) => {
-               // products.map((product, index) => {
-               return (
-                  <div key={index} className="cards"
-                     onClick={() => {
-                        setPostDetails(product);
-                        history.push('/view');
-                     }}>
-                     <div className="imgFav">
-                        <div className="image">
-                           <img src={product.url} alt="" />
+            products.slice(0, (props.quickMenu ? 3 : (props.fav ? props.noOfItemToLoadFav : props.noOfItemToLoadPost)))
+               .map((product, index) => {
+                  // products.map((product, index) => {
+                  return (
+                     <div key={index} className="cardsMap"
+                        onClick={() => {
+                           setPostDetails(product);
+                           history.push('/view');
+                        }}>
+                        <div className="imgFav">
+                           <div className="image">
+                              <img src={product.url} alt="" />
+                           </div>
+                           <div className="favorite">
+                              <Heart />
+                           </div>
                         </div>
-                        <div className="favorite">
-                           <Heart />
+                        <div className="content">
+                           <p className="price">&#x20B9; {product.price} </p>
+                           <p className="name">{product.name}</p>
+                           <p className="category">{product.category}</p>
+                        </div>
+                        <div className="date">
+                           <span>
+                              {atDate(product.createdAt)}
+                           </span>
                         </div>
                      </div>
-                     <div className="content">
-                        <p className="price">&#x20B9; {product.price} </p>
-                        <p className="name">{product.name}</p>
-                        <p className="category">{product.category}</p>
-                     </div>
-                     <div className="date">
-                        <span>
-                           {atDate(product.createdAt)}
-                        </span>
-                     </div>
-                  </div>
-               );
-            })
+                  );
+               })
          }
       </div>
    );
@@ -94,8 +95,9 @@ const PostsCards = (props) => {
 
 const mapStateToProps = (state) => {
    return {
-      noOfItemToLoad: state.noOfItemToLoad
+      noOfItemToLoadPost: state.post.noOfItemToLoadPost,
+      noOfItemToLoadFav: state.favorite.noOfItemToLoadFav
    };
 };
 
-export default connect(mapStateToProps)(PostsCards);
+export default connect(mapStateToProps)(Cards);

@@ -2,7 +2,7 @@ import React from 'react';
 import Header from '../Components/Header/Header';
 import View from '../Components/View/View';
 
-const ViewPost = () => {
+const ViewPostPage = () => {
    return (
       <div>
          <Header />
@@ -11,4 +11,4 @@ const ViewPost = () => {
    );
 };
 
-export default ViewPost;
+export default ViewPostPage;

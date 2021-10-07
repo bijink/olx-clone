@@ -12,7 +12,6 @@ import { SignUpUsernameContext } from '../../Store/SignUpUsernameContext';
 import UserProfile from '../UserProfile/UserProfile';
 import { UserProfilePopUpTriggerCon } from '../../Store/UserProfilePopUpTriggerContext';
 import { connect } from 'react-redux';
-import { setLoadMore } from '../../Redux/Action';
 // import PopUpUserProfile from '../../PopUps/PopUpUserProfile/PopUpUserProfile';
 
 const Header = (props) => {
@@ -26,7 +25,6 @@ const Header = (props) => {
 
    return (
       <div className="headerParentDiv" >
-
          <div className="headerChildDiv">
             <div className="brandLogo">
                <OlxLogo></OlxLogo>

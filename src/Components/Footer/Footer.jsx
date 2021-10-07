@@ -4,7 +4,6 @@ import Facebook from '../../assets/Facebook';
 import Instagrame from '../../assets/Instagrame';
 import Twitter from '../../assets/Twitter';
 import YouTube from '../../assets/YouTube';
-import { setLoadMore } from '../../Redux/Action';
 import './Footer.scss';
 
 const Footer = (props) => {

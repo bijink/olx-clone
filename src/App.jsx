@@ -6,10 +6,10 @@ import SignupPage from './Pages/SignupPage';
 import LoginPage from './Pages/LoginPage';
 import { AuthContext, FirebaseContext } from './Store/Context';
 import CreatePage from './Pages/CreatePage';
-import ViewPost from './Pages/ViewPost';
 import * as ReactBootstrap from 'react-bootstrap';
 import FavouritePage from './Pages/FavouritePage';
 import { UserProfilePopUpTriggerCon } from './Store/UserProfilePopUpTriggerContext';
+import ViewPostPage from './Pages/ViewPostPage';
 
 const App = () => {
    const { setUser } = useContext(AuthContext);
@@ -44,7 +44,7 @@ const App = () => {
                      <CreatePage />
                   </Route>
                   <Route path='/view' >
-                     <ViewPost />
+                     <ViewPostPage />
                   </Route>
                   <Route path='/favourite' >
                      <FavouritePage />

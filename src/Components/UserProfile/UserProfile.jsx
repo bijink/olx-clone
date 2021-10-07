@@ -37,18 +37,21 @@ const UserProfile = () => {
                   history.push('/favourite');
                }}>
                   <div className="logo">
-                     <i class="far fa-heart"></i>
+                     <i className="far fa-heart"></i>
                   </div>
                   <span>Favorite</span>
                </div>
                <div className="rows logout" onClick={() => {
                   // setUserProfilePopUpTrigger(false);
-                  firebase.auth().signOut();
-                  history.push('/');
-                  setSignUpName('');
+                  let confirmLogout = window.confirm("Are you sure you want to logout ?");
+                  if (confirmLogout) {
+                     firebase.auth().signOut();
+                     history.push('/');
+                     setSignUpName('');
+                  }
                }} >
                   <div className="logo">
-                     <i class="fas fa-sign-out-alt"></i>
+                     <i className="fas fa-sign-out-alt"></i>
                   </div>
                   <span>Logout</span>
                </div>

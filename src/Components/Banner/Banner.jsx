@@ -3,7 +3,7 @@ import './Banner.scss';
 import Arrow from '../../assets/Arrow';
 import Categories from '../Categories/Categories';
 
-const Banner = () => {
+const Banner = (props) => {
    const [catPop, setCatPop] = useState(false);
 
    return (
@@ -39,7 +39,7 @@ const Banner = () => {
                </div>
             </div>
             {catPop && <Categories />}
-            <div className="banner"></div>
+            {props.banner && <div className="banner"></div>}
          </div>
       </div>
    );

@@ -1,8 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { setLoadMore } from '../../Redux/Action';
+import { setLoadMorePost } from '../../Redux/LoadMorePost/LoadMorePostAction';
 import './Posts.scss';
-import PostsCards from './PostsCards/PostsCards';
+import Cards from '../Cards/Cards';
 
 const Posts = (props) => {
    return (
@@ -12,19 +12,21 @@ const Posts = (props) => {
                <span>Quick Menu</span>
                <span>View more</span>
             </div>
-            <div className="cardParent">
-               <PostsCards quickMenu />
+            <div className="cards">
+               <Cards quickMenu />
             </div>
          </div>
          <div className="recommendations">
             <div className="heading">
                <span>Fresh recommendations</span>
             </div>
-            <div className="cardParent">
-               <PostsCards />
+            <div className="cards">
+               <Cards />
             </div>
             <div className="loadMore">
-               <button onClick={props.setLoadMore}><span>Load more</span></button>
+               <button onClick={props.setLoadMorePost}>
+                  <span>Load more</span>
+               </button>
             </div>
          </div>
       </div>
@@ -33,7 +35,7 @@ const Posts = (props) => {
 
 const mapDispatchToProps = (dispatch) => {
    return {
-      setLoadMore: () => dispatch(setLoadMore())
+      setLoadMorePost: () => dispatch(setLoadMorePost())
    };
 };
 

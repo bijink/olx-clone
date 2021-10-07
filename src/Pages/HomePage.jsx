@@ -29,7 +29,7 @@ const HomePage = () => {
    return (
       <div className="homeParentDiv">
          <Header />
-         <Banner />
+         <Banner banner />
          <Posts />
          <OLXAd />
          <Footer />
