@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import './Header.scss';
 import OlxLogo from '../../assets/OlxLogo';
 import Search from '../../assets/Search';
@@ -11,9 +11,11 @@ import { PopUpContext } from '../../Store/PopUpContext';
 import { SignUpUsernameContext } from '../../Store/SignUpUsernameContext';
 import UserProfile from '../UserProfile/UserProfile';
 import { UserProfilePopUpTriggerCon } from '../../Store/UserProfilePopUpTriggerContext';
+import { connect } from 'react-redux';
+import { setLoadMore } from '../../Redux/Action';
 // import PopUpUserProfile from '../../PopUps/PopUpUserProfile/PopUpUserProfile';
 
-const Header = () => {
+const Header = (props) => {
    const history = useHistory();
    const { user } = useContext(AuthContext);
    const { setBtnPopUp, setPageId } = useContext(PopUpContext);
@@ -21,8 +23,10 @@ const Header = () => {
    // const { firebase } = useContext(FirebaseContext);
    const { userProfilePopUpTrigger, setUserProfilePopUpTrigger } = useContext(UserProfilePopUpTriggerCon);
 
+
    return (
       <div className="headerParentDiv" >
+
          <div className="headerChildDiv">
             <div className="brandLogo">
                <OlxLogo></OlxLogo>
@@ -76,6 +80,10 @@ const Header = () => {
       </div>
    );
 };
+
+
+
+
 
 export default Header;
 

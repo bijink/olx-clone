@@ -2,7 +2,6 @@ import React, { useContext, useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import { useHistory } from 'react-router';
 import Heart from '../../../assets/Heart';
-import { setLoadMore } from '../../../Redux/Action';
 import { FirebaseContext } from '../../../Store/Context';
 import { PostContext } from '../../../Store/PostContext';
 import './PostsCards.scss';
@@ -51,32 +50,15 @@ const PostsCards = (props) => {
 
 
 
-   const [state, setstate] = useState(1);
-
-
-   const handleClick = () => {
-      setstate(state + 2);
-   };
-
    // const index = Math.floor(Math.random() * response.data.results.length);
    // const indexs = Math.floor(Math.random() * products.length);
    // const getRandomItem = iterable => iterable.get([...iterable.keys()][Math.floor(Math.random() * iterable.size)])
    // const getRandomItem = products => products.get([...products.keys()][Math.floor(Math.random() * products.size)])
-   // props.setLoad();
-   // console.log(props.load);
 
    return (
       <div className="cardsParentDiv">
-
-         <button onClick={handleClick}>Click</button>
-         {/* <button onClick={() => props.setLoad()}>Click</button> */}
-         {/* <img src={products.url} alt="d" /> */}
-         {/* <p className="name">{products.name}dfafd</p> */}
-
          {
-            products.slice(0, (props.quickMenu ? 4 : state)).map((product, index) => {
-               // products.slice(0, (props.quickMenu ? 4 : props.load)).map((product, index) => {
-               // state2.map((product, index) => {
+            products.slice(0, (props.quickMenu ? 2 : props.noOfItemToLoad)).map((product, index) => {
                // products.map((product, index) => {
                return (
                   <div key={index} className="cards"
@@ -112,13 +94,8 @@ const PostsCards = (props) => {
 
 const mapStateToProps = (state) => {
    return {
-      load: state.load
-   };
-};
-const mapDispatchToProps = (dispatch) => {
-   return {
-      setLoad: () => dispatch(setLoadMore())
+      noOfItemToLoad: state.noOfItemToLoad
    };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(PostsCards);
+export default connect(mapStateToProps)(PostsCards);

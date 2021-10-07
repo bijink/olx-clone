@@ -1,11 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { connect } from 'react-redux';
 import Facebook from '../../assets/Facebook';
 import Instagrame from '../../assets/Instagrame';
 import Twitter from '../../assets/Twitter';
 import YouTube from '../../assets/YouTube';
+import { setLoadMore } from '../../Redux/Action';
 import './Footer.scss';
 
-const Footer = () => {
+const Footer = (props) => {
    // const date = new Date();
    // console.log(date);
    // console.log(date.toDateString());
@@ -18,8 +20,25 @@ const Footer = () => {
 
    // console.log(yesterday.toDateString());
 
+
+   // const [state, setState] = useState();
+   // const handleClick = () => {
+   //    props.setLoad();
+   //    props.load && setState(props.load);
+   //    console.log(state);
+   // };
+
+
+
    return (
       <div className="footerParentDiv">
+         {/* <button onClick={() => {
+            handleClick();
+
+         }} >ccc</button> */}
+         {/* <h3>Number of Cookies : {props.noOfItemToLoad} </h3>
+         <button onClick={props.setLoad} >Buy Cookie</button> */}
+
          <div className="content">
             <div>
                <div className="heading">
@@ -96,5 +115,15 @@ const Footer = () => {
       </div>
    );
 };
-
+// const mapStateToProps = (state) => {
+//    return {
+//       noOfItemToLoad: state.noOfItemToLoad
+//    };
+// };
+// const mapDispatchToProps = (dispatch) => {
+//    return {
+//       setLoad: () => dispatch(setLoadMore())
+//    };
+// };
+// export default connect(mapStateToProps, mapDispatchToProps)(Footer);
 export default Footer;
