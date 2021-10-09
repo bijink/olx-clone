@@ -41,9 +41,9 @@
                fill: rgba(0, 47, 52, 0.64);
                width: 24px;
                margin: -32px 8px 0 0;
-            }
-            :hover {
-               fill: #002f34;
+               &:hover {
+                  fill: #002f34;
+               }
             }
          }
          .appLink {

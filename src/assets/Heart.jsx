@@ -1,6 +1,52 @@
-import React from 'react';
+import React, { useContext, useEffect, useState } from 'react';
+import { AuthContext, FirebaseContext } from '../Store/Context';
 
-export default () => {
+export default (props) => {
+   // const { firebase } = useContext(FirebaseContext);
+   // const { user } = useContext(AuthContext);
+
+   // const [favLists, setFavLists] = useState(() => {
+   //    // getting stored toDos data from localStorage
+   //    const saved = localStorage.getItem(`OLX_${user.uid}`);
+   //    const initialValue = JSON.parse(saved);
+   //    return (initialValue || "");
+   // });
+
+   const [color, setColor] = useState('#002f34');
+
+   const changeColor = (x) => {
+      setColor(x);
+   };
+
+   // const favList = (prods) => {
+   //    // console.log(prods);
+
+   //    setFavLists([...favLists, {
+   //       name: prods.name,
+   //       category: prods.category,
+   //       price: prods.price,
+   //       url: prods.url,
+   //       userId: prods.userId,
+   //       createdAt: prods.createdAt,
+   //       favUserId: user.uid
+   //    }]);
+
+   //    // firebase.firestore().collection('favorites').add({
+   //    //    name: prods.name,
+   //    //    category: prods.category,
+   //    //    price: prods.price,
+   //    //    url: prods.url,
+   //    //    // userId: user.uid,
+   //    //    userId: prods.userId,
+   //    //    createdAt: prods.createdAt,
+   //    //    favUserId: user.uid
+   //    // });
+   // };
+
+   // useEffect(() => {
+   //    localStorage.setItem(`OLX_${user.uid}`, JSON.stringify(favLists));
+   // }, [favLists]);
+
    return (
       <svg
          width="24px"
@@ -8,6 +54,15 @@ export default () => {
          viewBox="0 0 1024 1024"
          data-aut-id="icon"
          fillRule="evenodd"
+         style={!props.fav ? { fill: color } : { fill: 'transparent' }}
+         onMouseEnter={() => changeColor('red')}
+         onMouseLeave={() => changeColor('#002f34')}
+         onClick={e => {
+            e.stopPropagation();
+            // favList(props.product);
+            // !props.fav && e.stopPropagation();
+            // !props.fav && favList(props.product);
+         }}
       >
          <path
             className="rui-77aaa"

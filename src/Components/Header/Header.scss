@@ -34,6 +34,7 @@
          .search {
             svg {
                width: 1.05rem;
+               cursor: pointer;
             }
          }
          .text {
@@ -48,6 +49,7 @@
          .arrow {
             svg {
                width: 1.2rem;
+               cursor: pointer;
             }
          }
          & ::selection {
@@ -67,29 +69,33 @@
          // margin-left: -0.5rem;
          .input {
             width: 100%;
-            height: 100%;
+            // height: 100%;
             display: flex;
             input {
                border-color: transparent;
                outline-color: transparent;
-               width: 100%;
-               align-items: center;
-               padding: 0 0.3rem;
+               width: 99%;
+               height: 2rem;
+               margin: 0 0.5rem;
+               // align-items: center;
+               // padding: 0 0.3rem;
             }
          }
          .searchAction {
             min-width: 48px;
             height: 48px;
-            position: relative;
+            // position: relative;
             display: flex;
+            justify-content: center;
+            align-items: center;
             cursor: pointer;
             background-color: #002f34;
             border-radius: 0 4px 4px 0;
             svg {
-               position: absolute;
-               top: 50%;
-               left: 50%;
-               transform: translate(-50%, -50%);
+               // position: absolute;
+               // top: 50%;
+               // left: 50%;
+               // transform: translate(-50%, -50%);
                fill: white;
             }
          }

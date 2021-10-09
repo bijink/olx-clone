@@ -13,7 +13,7 @@ const Posts = (props) => {
                <span>View more</span>
             </div>
             <div className="cards">
-               <Cards quickMenu />
+               {/* <Cards quickMenu /> */}
             </div>
          </div>
          <div className="recommendations">

@@ -14,7 +14,7 @@ const Favourite = (props) => {
             </aside>
             <div className="cardsSection">
                <div className="cards">
-                  <Cards fav />
+                  {/* <Cards fav /> */}
                </div>
                <div className="loadMore">
                   <button onClick={props.setLoadMoreFav}>

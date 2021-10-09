@@ -7,7 +7,6 @@ import PostCon from './Store/PostContext';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Loading from './Store/LoadContext';
 import PopUpCon from './Store/PopUpContext';
-// import Logged from './Store/IfLoggedIn';
 import SignUpUsername from './Store/SignUpUsernameContext';
 import UserProfilePopUpTriggerContext from './Store/UserProfilePopUpTriggerContext';
 import { Provider } from 'react-redux';
