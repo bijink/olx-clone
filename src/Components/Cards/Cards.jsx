@@ -67,7 +67,10 @@ const Cards = (props) => {
    return (
       <div className="cardsParentDiv">
          {
-            products.slice(0, (props.quickMenu ? 3 : (props.fav ? props.noOfItemToLoadFav : props.noOfItemToLoadPost)))
+            // (props.fav ? favLists : products))
+            // favLists && favLists.slice(0, (props.quickMenu ? 3 : (props.fav ? props.noOfItemToLoadFav : props.noOfItemToLoadPost)))
+            // products.slice(0, (props.quickMenu ? 3 : (props.fav ? props.noOfItemToLoadFav : props.noOfItemToLoadPost)))
+            (props.fav ? favLists && favLists : products).slice(0, (props.quickMenu ? 3 : (props.fav ? props.noOfItemToLoadFav : props.noOfItemToLoadPost)))
                .map((product, index) => {
                   // products.map((product, index) => {
                   return (
@@ -108,42 +111,6 @@ const Cards = (props) => {
                   );
                })
          }
-         {/* {
-            (props.fav && favLists && (
-               // products.slice(0, (props.quickMenu ? 3 : (props.fav ? props.noOfItemToLoadFav : props.noOfItemToLoadPost)))
-               // .map((product, index) => {
-               favLists.map((favLists, index) => {
-                  return (
-                     <div key={index} className="cardsMap"
-                     // onClick={() => {
-                     //    setPostDetails(product);
-                     //    history.push('/view');
-                     // }}
-                     >
-                        <div className="imgFav">
-                           <div className="image">
-                              <img src={favLists.url} alt="" />
-                           </div>
-                           <div
-                              // onClick={e => {
-                              //    e.stopPropagation();
-                              //    favList(product);
-                              // }}
-                              className="favorite" >
-                           </div>
-                        </div>
-                        <div className="content">
-                           <p className="price">&#x20B9; {favLists.price} </p>
-                           <p className="name">{favLists.name}</p>
-                        </div>
-                        <div className="date">
-                           <span>
-                           </span>
-                        </div>
-                     </div>
-                  );
-               })))
-         } */}
       </div >
    );
 };
