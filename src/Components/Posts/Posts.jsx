@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { setLoadMorePost } from '../../Redux/LoadMorePost/LoadMorePostAction';
 import './Posts.scss';
 import Cards from '../Cards/Cards';
 
 const Posts = (props) => {
+   const [state, setState] = useState();
    return (
       <div className="postParentDiv">
          <div className="quickMenu">
@@ -21,13 +22,16 @@ const Posts = (props) => {
                <span>Fresh recommendations</span>
             </div>
             <div className="cards">
-               <Cards />
+               <Cards state2={setState} />
             </div>
-            <div className="loadMore">
-               <button onClick={props.setLoadMorePost}>
-                  <span>Load more</span>
-               </button>
-            </div>
+            {
+               (props.noOfItemToLoadPost < state) ?
+                  <div className="loadMore">
+                     <button onClick={props.setLoadMorePost}>
+                        <span>Load more</span>
+                     </button>
+                  </div> : 'End of Page'
+            }
          </div>
       </div>
    );
@@ -38,5 +42,10 @@ const mapDispatchToProps = (dispatch) => {
       setLoadMorePost: () => dispatch(setLoadMorePost())
    };
 };
+const mapStateToProps = (state) => {
+   return {
+      noOfItemToLoadPost: state.post.noOfItemToLoadPost,
+   };
+};
 
-export default connect(null, mapDispatchToProps)(Posts);
+export default connect(mapStateToProps, mapDispatchToProps)(Posts);

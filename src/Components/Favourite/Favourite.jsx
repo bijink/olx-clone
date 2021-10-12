@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Favourite.scss';
 import Cards from '../Cards/Cards';
 import { connect } from 'react-redux';
@@ -6,6 +6,8 @@ import { setLoadMoreFav } from '../../Redux/LoadMoreFav/LoadMoreFavAction';
 // import DummyCards from '../Cards/DummyCards';
 
 const Favourite = (props) => {
+   const [state, setstate] = useState();
+   // console.log(state);
    return (
       <div className="parentDivFavourite">
          <article className="childDivFavourite">
@@ -14,13 +16,16 @@ const Favourite = (props) => {
             </aside>
             <div className="cardsSection">
                <div className="cards">
-                  <Cards fav />
+                  <Cards fav state={setstate} />
                </div>
-               <div className="loadMore">
-                  <button onClick={props.setLoadMoreFav}>
-                     <span>Load more</span>
-                  </button>
-               </div>
+               {
+                  (props.noOfItemToLoadFav < state) &&
+                  <div className="loadMore">
+                     <button onClick={props.setLoadMoreFav}>
+                        <span>Load more</span>
+                     </button>
+                  </div>
+               }
             </div>
          </article>
       </div>
@@ -32,5 +37,10 @@ const mapDispatchToProps = (dispatch) => {
       setLoadMoreFav: () => dispatch(setLoadMoreFav())
    };
 };
+const mapStateToProps = (state) => {
+   return {
+      noOfItemToLoadFav: state.favorite.noOfItemToLoadFav
+   };
+};
 
-export default connect(null, mapDispatchToProps)(Favourite);
+export default connect(mapStateToProps, mapDispatchToProps)(Favourite);

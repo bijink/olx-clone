@@ -20,6 +20,9 @@ const Cards = (props) => {
       return (initialValue || "");
    });
 
+   props.state && props.state(favLists.length);
+   props.state2 && props.state2(products.length);
+
    let today = new Date();
    let todayDateString = today.toDateString();
    let yesterday = new Date();
