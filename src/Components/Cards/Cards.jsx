@@ -26,7 +26,7 @@ const Cards = (props) => {
    yesterday.setDate(today.getDate() - 1);
    let yesterdayDateString = yesterday.toDateString();
 
-   const atDate = (createdDate) => {
+   const dateAt = (createdDate) => {
       if (createdDate === todayDateString) {
          return 'Today';
       } else if (createdDate === yesterdayDateString) {
@@ -37,8 +37,8 @@ const Cards = (props) => {
    };
 
    const favList = (prods) => {
-      const index = favLists && favLists.findIndex(obj => obj.url === prods.url);
-      if (index > -1) favLists && favLists.splice((index), 1);
+      // const index = favLists && favLists.findIndex(obj => obj.url === prods.url);
+      // if (index > -1) favLists && favLists.splice((index), 1);
 
       setFavLists([...favLists, {
          name: prods.name,
@@ -47,8 +47,16 @@ const Cards = (props) => {
          url: prods.url,
          userId: prods.userId,
          createdAt: prods.createdAt,
-         favUserId: user.uid
+         // favUserId: user.uid
       }]);
+   };
+
+   const fullHeart = (prods) => {
+      const check = favLists && favLists.filter(obj => (obj.name === prods.name));
+      // console.log(check_orders);
+      if (check[0]) {
+         return true;
+      }
    };
 
    useEffect(() => {
@@ -70,7 +78,7 @@ const Cards = (props) => {
             // (props.fav ? favLists : products))
             // favLists && favLists.slice(0, (props.quickMenu ? 3 : (props.fav ? props.noOfItemToLoadFav : props.noOfItemToLoadPost)))
             // products.slice(0, (props.quickMenu ? 3 : (props.fav ? props.noOfItemToLoadFav : props.noOfItemToLoadPost)))
-            (props.fav ? favLists && favLists : products).slice(0, (props.quickMenu ? 3 : (props.fav ? props.noOfItemToLoadFav : props.noOfItemToLoadPost)))
+            (props.fav ? favLists && favLists : products).slice(0, (props.quickMenu ? 10 : (props.fav ? props.noOfItemToLoadFav : props.noOfItemToLoadPost)))
                .map((product, index) => {
                   // products.map((product, index) => {
                   return (
@@ -86,15 +94,19 @@ const Cards = (props) => {
                            <div
                               // onClick={e => {
                               //    e.stopPropagation();
+                              //    // const index = favLists && favLists.findIndex(obj => obj.url === product.url);
+                              //    // console.log(index);
+                              //    // if (index > 1) favLists && favLists.splice((index), 1);
 
-                              //    const index = favLists && favLists.findIndex(obj => obj.url === product.url);
-                              //    if (index > -1) favLists && favLists.splice((index), 1);
-
-                              //    favList(product);
-
+                              //    // favList(product);
                               // }}
                               className="favorite" >
-                              <Heart fav={props.fav} product={product} favList={favList} />
+                              {
+                                 !fullHeart(product) ?
+                                    <Heart quickMenu={props.quickMenu} fav={props.fav} product={product} favList={favList} />
+                                    :
+                                    <Heart fullHeart quickMenu={props.quickMenu} fav={props.fav} product={product} favList={favList} />
+                              }
                            </div>
                         </div>
                         <div className="content">
@@ -104,7 +116,7 @@ const Cards = (props) => {
                         </div>
                         <div className="date">
                            <span>
-                              {atDate(product.createdAt)}
+                              {dateAt(product.createdAt)}
                            </span>
                         </div>
                      </div>

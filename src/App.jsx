@@ -1,5 +1,5 @@
 import React, { useEffect, useContext, useState } from 'react';
-import './App.scss';
+import './App.css';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import HomePage from './Pages/HomePage';
 import SignupPage from './Pages/SignupPage';
