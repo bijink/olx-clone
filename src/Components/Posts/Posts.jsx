@@ -6,6 +6,7 @@ import Cards from '../Cards/Cards';
 
 const Posts = (props) => {
    const [state, setState] = useState();
+
    return (
       <div className="postParentDiv">
          <div className="quickMenu">
@@ -27,13 +28,15 @@ const Posts = (props) => {
             {
                (props.noOfItemToLoadPost < state) ?
                   <div className="loadMore">
-                     <button onClick={props.setLoadMorePost}>
+                     <button onClick={() => {
+                        props.setLoadMorePost();
+                     }}>
                         <span>Load more</span>
                      </button>
-                  </div> : 'End of Page'
+                  </div> : <h5>End of List</h5>
             }
          </div>
-      </div>
+      </div >
    );
 };
 

@@ -8,6 +8,7 @@ import { setLoadMoreFav } from '../../Redux/LoadMoreFav/LoadMoreFavAction';
 const Favourite = (props) => {
    const [state, setstate] = useState();
    // console.log(state);
+
    return (
       <div className="parentDivFavourite">
          <article className="childDivFavourite">
@@ -19,12 +20,14 @@ const Favourite = (props) => {
                   <Cards fav state={setstate} />
                </div>
                {
-                  (props.noOfItemToLoadFav < state) &&
-                  <div className="loadMore">
-                     <button onClick={props.setLoadMoreFav}>
-                        <span>Load more</span>
-                     </button>
-                  </div>
+                  (props.noOfItemToLoadFav < state) ?
+                     <div className="loadMore">
+                        <button onClick={() => {
+                           props.setLoadMoreFav();
+                        }}>
+                           <span>Load more</span>
+                        </button>
+                     </div> : <h5>End of List</h5>
                }
             </div>
          </article>

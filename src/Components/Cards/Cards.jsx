@@ -81,7 +81,7 @@ const Cards = (props) => {
             // (props.fav ? favLists : products))
             // favLists && favLists.slice(0, (props.quickMenu ? 3 : (props.fav ? props.noOfItemToLoadFav : props.noOfItemToLoadPost)))
             // products.slice(0, (props.quickMenu ? 3 : (props.fav ? props.noOfItemToLoadFav : props.noOfItemToLoadPost)))
-            (props.fav ? favLists && favLists : products).slice(0, (props.quickMenu ? 10 : (props.fav ? props.noOfItemToLoadFav : props.noOfItemToLoadPost)))
+            (props.fav ? (favLists && favLists) : products).slice(0, (props.quickMenu ? 10 : (props.fav ? props.noOfItemToLoadFav : props.noOfItemToLoadPost)))
                .map((product, index) => {
                   // products.map((product, index) => {
                   return (
@@ -100,7 +100,6 @@ const Cards = (props) => {
                               //    // const index = favLists && favLists.findIndex(obj => obj.url === product.url);
                               //    // console.log(index);
                               //    // if (index > 1) favLists && favLists.splice((index), 1);
-
                               //    // favList(product);
                               // }}
                               className="favorite" >

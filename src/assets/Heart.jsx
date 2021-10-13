@@ -15,7 +15,7 @@ export default (props) => {
          data-aut-id="icon"
          fillRule="evenodd"
          style={!props.quickMenu && !props.fav ? { fill: color } : { fill: 'transparent' }}
-         onMouseEnter={() => changeColor('red')}
+         onMouseEnter={() => !props.fullHeart && changeColor('red')}
          onMouseLeave={() => changeColor('#002f34')}
          onClick={e => {
             !props.quickMenu && !props.fav && e.stopPropagation();

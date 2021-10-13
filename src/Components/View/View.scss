@@ -1,44 +1,58 @@
 .viewParentDiv {
-   padding-top: 4em;
+   background-color: #f2f4f5;
+   height: 100vh;
    display: flex;
+   justify-content: space-evenly;
+   align-items: center;
+   padding: 4rem 0 0 0;
+   color: #002f34;
    .imageShowDiv {
-      padding: 16px;
-      width: 70vw;
       img {
          width: 65vw;
-         height: 85vh;
+         height: calc(100vh - 6rem);
+         border-radius: 4px;
       }
    }
    .rightSection {
-      padding: 16px;
-      margin-top: 3em;
       width: 30vw;
+      height: calc(100vh - 6rem);
+      padding: 1rem;
+      border: 1px solid rgb(199, 199, 199);
+      border-radius: 4px;
+      background-color: #eeeeee;
       .productDetails {
-         &:first-child {
-            font-weight: 700;
-            margin-bottom: 8px;
-            color: #002f34;
-            font-size: 34px;
-            line-height: 32px;
-            margin-bottom: 20px;
+         padding: 0.5rem 1rem;
+         border: 1px solid rgb(199, 199, 199);
+         border-radius: 4px;
+         margin-bottom: 2rem;
+         > :first-child {
+            font-weight: 500;
+            font-size: 30px;
          }
-         border: 1px solid black;
-         padding: 6px;
-         border-radius: 6px;
-         margin-bottom: 2em;
-         width: 100%;
+         > :nth-child(2) {
+            font-weight: 700;
+            font-size: 35px;
+            margin-top: -1rem;
+         }
+         > :nth-child(3) {
+            font-size: 20px;
+         }
+         > :nth-child(4) {
+            font-size: 15px;
+            color: #00434b;
+         }
       }
       .contactDetails {
-         border: 1px solid black;
-         padding: 6px;
-         border-radius: 6px;
-         &:first-child {
+         border: 1px solid rgb(199, 199, 199);
+         border-radius: 4px;
+         padding: 0.5rem 1rem;
+         > :first-child {
+            font-size: 25px;
+            font-weight: 600;
+         }
+         > :nth-child(2) {
+            font-weight: 500;
             font-size: 20px;
-            line-height: 24px;
-            font-weight: 700;
-            color: #002f34;
-            font-weight: 400;
-            padding: 0;
          }
       }
    }

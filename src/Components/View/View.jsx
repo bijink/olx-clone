@@ -23,15 +23,17 @@ const View = () => {
             <img src={postDetails.url} alt="" />
          </div>
          <div className="rightSection">
+            <h4>Product Details</h4>
             <div className="productDetails">
                <p>&#x20B9; {postDetails.price} </p>
-               <span> {postDetails.name} </span>
+               <h1> {postDetails.name} </h1>
                <p> {postDetails.category} </p>
                <span> {postDetails.createdAt} </span>
             </div>
+            <h4>Seller Details</h4>
             {
-               userDetails && <div className="contactDetails">
-                  <p>Seller details</p>
+               userDetails &&
+               <div className="contactDetails">
                   <p> {userDetails.username} </p>
                   <p> {userDetails.phone} </p>
                </div>

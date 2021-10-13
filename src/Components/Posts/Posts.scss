@@ -80,5 +80,13 @@
             }
          }
       }
+      h5 {
+         display: flex;
+         justify-content: center;
+         align-items: center;
+         margin: 2rem auto;
+         color: #002f34;
+         cursor: default;
+      }
    }
 }

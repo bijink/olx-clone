@@ -2,7 +2,7 @@ import React from 'react';
 
 export default () => {
    return (
-      <a href="">
+      <a href="https://twitter.com/OLX_India">
          <svg
             width="48px"
             height="48px"
