@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { connect } from 'react-redux';
 import { setLoadMorePost } from '../../Redux/LoadMorePost/LoadMorePostAction';
 import './Posts.scss';

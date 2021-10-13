@@ -115,7 +115,7 @@ const Create = () => {
                      </label>
                      <input id="upload-button" style={{ display: "none" }} onChange={e => setImage(e.target.files[0])} type="file" />
                   </div>
-                  {image && <i onClick={() => setImage(null)} class="fas fa-times closeImg"></i>}
+                  {image && <i onClick={() => setImage(null)} className="fas fa-times closeImg"></i>}
                </div>
             </div>
             <button onClick={handleSubmit} className="uploadBtn">Post now</button>

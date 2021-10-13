@@ -135,7 +135,7 @@
                   height: 2.3rem;
                   background-color: cadetblue;
                   // background-color: #35d5ee;
-                  border-radius: 50%;
+                  border-radius: 50%/35%;
                   margin: 0 0.12rem;
                   display: flex;
                   justify-content: center;
@@ -145,6 +145,38 @@
                }
                svg {
                   width: 1.2rem;
+               }
+               .arrow {
+                  transition: transform;
+                  transform: rotate(0deg);
+                  animation: rotate-keyframe0 400ms;
+                  animation-timing-function: ease-in-out;
+               }
+               .arrowRotate {
+                  transition: transform;
+                  transform: rotate(180deg);
+                  animation: rotate-keyframe1 400ms;
+                  animation-timing-function: ease-in-out;
+               }
+               @keyframes rotate-keyframe0 {
+                  from {
+                     transform: rotate(180deg);
+                  }
+                  to {
+                     transform: rotate(0deg);
+                  }
+               }
+               @keyframes rotate-keyframe1 {
+                  from {
+                     transform: rotate(0deg);
+                  }
+                  to {
+                     transform: rotate(180deg);
+                  }
+               }
+               &:hover {
+                  // color: #004e57;
+                  fill: #004e57;
                }
             }
          }

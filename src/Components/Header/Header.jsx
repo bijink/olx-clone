@@ -103,7 +103,7 @@ const Login_UserProfile = (props) => {
             !userProfilePopUpTrigger ? setUserProfilePopUpTrigger(true) : setUserProfilePopUpTrigger(false);
          }}>
             {component}
-            <Arrow></Arrow>
+            <Arrow rotate={userProfilePopUpTrigger} />
          </div>
          {userProfilePopUpTrigger && <UserProfile />}
       </div>

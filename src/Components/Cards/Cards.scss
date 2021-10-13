@@ -14,6 +14,10 @@
       // height: 16.5rem;
       display: inline-block;
       // display: flex;
+      transition-duration: 250ms;
+      &:hover {
+         background-color: rgb(245, 245, 245);
+      }
       .imgFav {
          display: flex;
          justify-content: center;
@@ -28,6 +32,7 @@
                max-width: 90%;
                max-height: 75%;
                margin: 0 0 1.4rem 1.3rem;
+               border-radius: 2px;
             }
          }
          .favorite {
@@ -43,6 +48,7 @@
             overflow: hidden;
             text-overflow: ellipsis;
             // min-width: 60px;
+            width: 16rem;
          }
          .price {
             font-size: larger;
