@@ -3,8 +3,10 @@ import './View.scss';
 import { AuthContext, FirebaseContext } from '../../Store/Context';
 import { PostContext } from '../../Store/PostContext';
 import { useHistory } from 'react-router';
+import { connect } from 'react-redux';
+import { setFavLocalRemoveId } from '../../Redux/FavLocalIdRemove/FavLocalIdRemoveAction';
 
-const View = () => {
+const View = (props) => {
    const history = useHistory();
 
    const { firebase } = useContext(FirebaseContext);
@@ -43,7 +45,11 @@ const View = () => {
                      firebase.firestore().collection("products").where("url", "==", `${postDetails.url}`).get()
                         .then(querySnapshot => {
                            querySnapshot.docs[0].ref.delete();
-                        }).then(history.push('/'));
+                        }).then(() => {
+                           // console.log(postDetails.url);
+                           props.setFavLocalRemoveId(postDetails.url);
+                           history.push('/');
+                        });
                   }} >Remove Post</button>
                }
             </div>
@@ -61,4 +67,10 @@ const View = () => {
    );
 };
 
-export default View;
+const mapDispatchToProps = (dispatch) => {
+   return {
+      setFavLocalRemoveId: (id) => dispatch(setFavLocalRemoveId(id))
+   };
+};
+
+export default connect(null, mapDispatchToProps)(View);

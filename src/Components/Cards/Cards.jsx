@@ -14,13 +14,14 @@ const Cards = (props) => {
    const { user } = useContext(AuthContext);
 
    const [products, setProducts] = useState([]);
-   const [favLists, setFavLists] = useState(() => {
+   const [favLocalId, setFavLocalId] = useState(() => {
       const saved = localStorage.getItem(`OLX_${user.uid}`);
       const initialValue = JSON.parse(saved);
       return (initialValue || "");
    });
+   const [favProducts, setFavProducts] = useState([]);
 
-   props.state && props.state(favLists.length);
+   props.state && props.state(favLocalId.length);
    props.state2 && props.state2(products.length);
 
    let today = new Date();
@@ -39,24 +40,24 @@ const Cards = (props) => {
       }
    };
 
-   const favList = (prods) => {
-      // const index = favLists && favLists.findIndex(obj => obj.url === prods.url);
-      // if (index > -1) favLists && favLists.splice((index), 1);
+   const index = favLocalId && favLocalId.findIndex(obj => obj.url === props.favLocalRemoveId);
+   if (index > -1) favLocalId && favLocalId.splice((index), 1);
 
-      setFavLists([...favLists, {
-         name: prods.name,
-         category: prods.category,
-         price: prods.price,
+   const favList = (prods) => {
+      // const index = favLocalId && favLocalId.findIndex(obj => obj.url === prods.url);
+      // if (index > -1) favLocalId && favLocalId.splice((index), 1);
+
+      setFavLocalId([...favLocalId, {
+         // name: prods.name,
          url: prods.url,
-         userId: prods.userId,
-         createdAt: prods.createdAt,
+         // userId: prods.userId,
          // favUserId: user.uid
       }]);
    };
 
    const fullHeart = (prods) => {
-      const check = favLists && favLists.filter(obj => (obj.name === prods.name));
-      // console.log(check_orders);
+      const check = favLocalId && favLocalId.filter(obj => (obj.url === prods.url));
+      // console.log(check);
       if (check[0]) {
          return true;
       }
@@ -72,18 +73,29 @@ const Cards = (props) => {
          });
          setProducts(allPost);
       });
-      localStorage.setItem(`OLX_${user.uid}`, JSON.stringify(favLists));
-   }, [favLists]);
+
+      localStorage.setItem(`OLX_${user.uid}`, JSON.stringify(favLocalId));
+
+      for (let i = 0; i < favLocalId.length; i++) {
+         const li = favLocalId.map(obj => obj);
+         firebase.firestore().collection("products").where("url", "==", `${li[i].url}`).get()
+            .then(querySnapshot => {
+               querySnapshot.forEach(doc => {
+                  // console.log(doc.data());
+                  const docs = doc.data();
+                  (favProducts.length < favLocalId.length) && setFavProducts(item => [...item, docs]);
+               });
+            });
+      }
+   }, [favLocalId]);
 
    return (
       <div className="cardsParentDiv">
          {
-            // (props.fav ? favLists : products))
-            // favLists && favLists.slice(0, (props.quickMenu ? 3 : (props.fav ? props.noOfItemToLoadFav : props.noOfItemToLoadPost)))
+            // (props.fav ? favLocalId : products))
             // products.slice(0, (props.quickMenu ? 3 : (props.fav ? props.noOfItemToLoadFav : props.noOfItemToLoadPost)))
-            (props.fav ? (favLists && favLists) : products).slice(0, (props.quickMenu ? 10 : (props.fav ? props.noOfItemToLoadFav : props.noOfItemToLoadPost)))
+            (props.fav ? favProducts : products).slice(0, (props.quickMenu ? 10 : (props.fav ? props.noOfItemToLoadFav : props.noOfItemToLoadPost)))
                .map((product, index) => {
-                  // products.map((product, index) => {
                   return (
                      <div key={index} className="cardsMap"
                         onClick={() => {
@@ -97,10 +109,12 @@ const Cards = (props) => {
                            <div
                               // onClick={e => {
                               //    e.stopPropagation();
-                              //    // const index = favLists && favLists.findIndex(obj => obj.url === product.url);
+                              //    // const index = favLocalId && favLocalId.findIndex(obj => obj.url === product.url);
                               //    // console.log(index);
-                              //    // if (index > 1) favLists && favLists.splice((index), 1);
+                              //    // if (index > 1) favLocalId && favLocalId.splice((index), 1);
                               //    // favList(product);
+                              //    // console.log(product);
+                              //    foo();
                               // }}
                               className="favorite" >
                               {
@@ -132,7 +146,8 @@ const Cards = (props) => {
 const mapStateToProps = (state) => {
    return {
       noOfItemToLoadPost: state.post.noOfItemToLoadPost,
-      noOfItemToLoadFav: state.favorite.noOfItemToLoadFav
+      noOfItemToLoadFav: state.favorite.noOfItemToLoadFav,
+      favLocalRemoveId: state.favLocalRemoveId.favLocalRemoveId
    };
 };
 

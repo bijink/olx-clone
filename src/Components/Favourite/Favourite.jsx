@@ -13,7 +13,6 @@ const Favourite = (props) => {
       <div className="parentDivFavourite">
          <article className="childDivFavourite">
             <aside className="sideBar">
-               1111111111
             </aside>
             <div className="cardsSection">
                <div className="cards">
