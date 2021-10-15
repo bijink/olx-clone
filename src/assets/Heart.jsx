@@ -1,6 +1,9 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
+import { AuthContext } from '../Store/Context';
 
 export default (props) => {
+   const { user } = useContext(AuthContext);
+
    const [color, setColor] = useState('#002f34');
 
    const changeColor = (x) => {
@@ -14,13 +17,11 @@ export default (props) => {
          viewBox="0 0 1024 1024"
          data-aut-id="icon"
          fillRule="evenodd"
-         // style={!props.quickMenu && !props.fav ? { fill: color } : { fill: 'transparent' }}
-         style={!props.quickMenu ? { fill: color } : { fill: 'transparent' }}
+         style={(user && !props.quickMenu) ? { fill: color } : { fill: 'transparent' }}
          onMouseEnter={() => !props.fullHeart && changeColor('red')}
          onMouseLeave={() => changeColor('#002f34')}
          onClick={e => {
-            // !props.quickMenu && !props.fav && e.stopPropagation();
-            !props.quickMenu && e.stopPropagation();
+            user && !props.quickMenu && e.stopPropagation();
             !props.fullHeart && props.addFavList(props.product);
             props.fullHeart && props.removeFavList(props.product);
          }}

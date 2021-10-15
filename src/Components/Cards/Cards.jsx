@@ -15,12 +15,12 @@ const Cards = (props) => {
 
    const [products, setProducts] = useState([]);
    const [favLocalId, setFavLocalId] = useState(() => {
-      const saved = localStorage.getItem(`OLX_${user.uid}`);
+      const saved = localStorage.getItem(user && `OLX_${user.uid}`);
       const initialValue = JSON.parse(saved);
       return (initialValue || "");
    });
    const [favProducts, setFavProducts] = useState([]);
-   //A state only for re-render app when product removed from localStorage(favLocalId)
+   // A state only for re-render heart icon when product removed from localStorage(favLocalId)
    const [renderState, setRenderState] = useState(false);
 
    props.state && props.state(favLocalId.length);
@@ -42,11 +42,11 @@ const Cards = (props) => {
       }
    };
 
-   //To remove product from localStorage(favLocalId) when product removed globally
+   // To remove product from localStorage(favLocalId) when product removed globally
    const index = favLocalId && favLocalId.findIndex(obj => obj.url === props.favLocalRemoveId);
    if (index > -1) favLocalId && favLocalId.splice((index), 1);
 
-   //To add product id to localStorage(favLocalId)
+   // To add product id to localStorage(favLocalId)
    const addFavList = (prods) => {
       setFavLocalId([...favLocalId, {
          // name: prods.name,
@@ -54,18 +54,24 @@ const Cards = (props) => {
       }]);
    };
 
-   //To remove product id from localStorage(favLocalId) when unclicked heart icon
+   // To remove product id from localStorage(favLocalId) when unclicked heart icon
    const removeFavList = (prods) => {
       const index = favLocalId && favLocalId.findIndex(obj => obj.url === prods.url);
       // console.log(index);
       if (index > -1) favLocalId && favLocalId.splice((index), 1);
       localStorage.setItem(`OLX_${user.uid}`, JSON.stringify(favLocalId));
 
-      //Just for re-render app
+      // Only for re-render heart icon
       renderState ? setRenderState(false) : setRenderState(true);
+
+      // To reload favorite list when product removed from localStorage
+      if (props.fav) {
+         if (favLocalId.length === 0) history.go(-1);
+         else history.go(0);
+      }
    };
 
-   //To check wheather a product is in localStorage or not , To show color filled heart icon and lined heart icon
+   // To check wheather a product is in localStorage or not , To show color filled heart icon and lined heart icon
    const fullHeart = (prods) => {
       const check = favLocalId && favLocalId.filter(obj => (obj.url === prods.url));
       // console.log(check);
@@ -83,9 +89,9 @@ const Cards = (props) => {
          setProducts(allPost);
       });
 
-      localStorage.setItem(`OLX_${user.uid}`, JSON.stringify(favLocalId));
+      user && localStorage.setItem(`OLX_${user.uid}`, JSON.stringify(favLocalId));
 
-      //To get() product from firestore at favorite page, correspondent to data in localStorage(favLocalId) 
+      // To get() product from firestore at favorite page, correspondent to data in localStorage(favLocalId) 
       for (let i = 0; i < favLocalId.length; i++) {
          const li = favLocalId.map(obj => obj);
          firebase.firestore().collection("products").where("url", "==", `${li[i].url}`).get()

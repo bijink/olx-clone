@@ -11,14 +11,16 @@ const View = (props) => {
 
    const { firebase } = useContext(FirebaseContext);
    const { postDetails } = useContext(PostContext);
-   const [userDetails, setUserDetails] = useState();
    const { user } = useContext(AuthContext);
+
+   const [userDetails, setUserDetails] = useState([]);
 
    useEffect(() => {
       const { userId } = postDetails;
       firebase.firestore().collection('users').where('id', '==', userId).get().then((response) => {
          response.forEach(doc => {
             setUserDetails(doc.data());
+            // console.log(doc.data());
          });
       });
    }, []);
@@ -32,13 +34,13 @@ const View = (props) => {
             <div className="rightSection">
                <h4>Seller Details</h4>
                {
-                  userDetails &&
                   <div className="contactDetails">
                      <p> Name : {userDetails.username} </p>
                      <p> Phone : {userDetails.phone} </p>
                   </div>
-               }{
-                  (user.uid === postDetails.userId) &&
+               }
+               {
+                  ((user && user.uid) === postDetails.userId) &&
                   // console.log(user.uid);
                   // console.log(postDetails.userId);
                   <button className="deleteBtn" onClick={() => {
