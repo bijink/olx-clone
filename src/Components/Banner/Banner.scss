@@ -3,7 +3,7 @@
    .childDivBanner {
       .menuBar {
          display: flex;
-         justify-content: start;
+         // justify-content: flex-start;
          padding: 10px 0 10px 35px;
          // width: 100%;
          .categoryMenu {
@@ -64,7 +64,7 @@
             // padding: 0 0 0 2rem;
             padding: 0 0 0 1.5rem;
             display: flex;
-            justify-content: start;
+            justify-content: flex-start;
             align-items: center;
             width: calc(100% - 152px);
             > :first-child {
