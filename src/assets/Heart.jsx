@@ -19,7 +19,8 @@ export default (props) => {
          onMouseLeave={() => changeColor('#002f34')}
          onClick={e => {
             !props.quickMenu && !props.fav && e.stopPropagation();
-            !props.fullHeart && props.favList(props.product);
+            !props.fullHeart && props.addFavList(props.product);
+            props.fullHeart && props.removeFavList(props.product);
          }}
       >
          {

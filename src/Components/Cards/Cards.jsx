@@ -20,6 +20,8 @@ const Cards = (props) => {
       return (initialValue || "");
    });
    const [favProducts, setFavProducts] = useState([]);
+   //A state only for re-render app when product removed from localStorage(favLocalId)
+   const [renderState, setRenderState] = useState(false);
 
    props.state && props.state(favLocalId.length);
    props.state2 && props.state2(products.length);
@@ -40,27 +42,34 @@ const Cards = (props) => {
       }
    };
 
+   //To remove product from localStorage(favLocalId) when product removed globally
    const index = favLocalId && favLocalId.findIndex(obj => obj.url === props.favLocalRemoveId);
    if (index > -1) favLocalId && favLocalId.splice((index), 1);
 
-   const favList = (prods) => {
-      // const index = favLocalId && favLocalId.findIndex(obj => obj.url === prods.url);
-      // if (index > -1) favLocalId && favLocalId.splice((index), 1);
-
+   //To add product id to localStorage(favLocalId)
+   const addFavList = (prods) => {
       setFavLocalId([...favLocalId, {
          // name: prods.name,
          url: prods.url,
-         // userId: prods.userId,
-         // favUserId: user.uid
       }]);
    };
 
+   //To remove product id from localStorage(favLocalId) when unclicked heart icon
+   const removeFavList = (prods) => {
+      const index = favLocalId && favLocalId.findIndex(obj => obj.url === prods.url);
+      // console.log(index);
+      if (index > -1) favLocalId && favLocalId.splice((index), 1);
+      localStorage.setItem(`OLX_${user.uid}`, JSON.stringify(favLocalId));
+
+      //Just for re-render app
+      renderState ? setRenderState(false) : setRenderState(true);
+   };
+
+   //To check wheather a product is in localStorage or not , To show color filled heart icon and lined heart icon
    const fullHeart = (prods) => {
       const check = favLocalId && favLocalId.filter(obj => (obj.url === prods.url));
       // console.log(check);
-      if (check[0]) {
-         return true;
-      }
+      if (check[0]) return true;
    };
 
    useEffect(() => {
@@ -76,6 +85,7 @@ const Cards = (props) => {
 
       localStorage.setItem(`OLX_${user.uid}`, JSON.stringify(favLocalId));
 
+      //To get() product from firestore at favorite page, correspondent to data in localStorage(favLocalId) 
       for (let i = 0; i < favLocalId.length; i++) {
          const li = favLocalId.map(obj => obj);
          firebase.firestore().collection("products").where("url", "==", `${li[i].url}`).get()
@@ -92,8 +102,6 @@ const Cards = (props) => {
    return (
       <div className="cardsParentDiv">
          {
-            // (props.fav ? favLocalId : products))
-            // products.slice(0, (props.quickMenu ? 3 : (props.fav ? props.noOfItemToLoadFav : props.noOfItemToLoadPost)))
             (props.fav ? favProducts : products).slice(0, (props.quickMenu ? 10 : (props.fav ? props.noOfItemToLoadFav : props.noOfItemToLoadPost)))
                .map((product, index) => {
                   return (
@@ -106,22 +114,12 @@ const Cards = (props) => {
                            <div className="image">
                               <img src={product.url} alt="" />
                            </div>
-                           <div
-                              // onClick={e => {
-                              //    e.stopPropagation();
-                              //    // const index = favLocalId && favLocalId.findIndex(obj => obj.url === product.url);
-                              //    // console.log(index);
-                              //    // if (index > 1) favLocalId && favLocalId.splice((index), 1);
-                              //    // favList(product);
-                              //    // console.log(product);
-                              //    foo();
-                              // }}
-                              className="favorite" >
+                           <div className="favorite" >
                               {
                                  !fullHeart(product) ?
-                                    <Heart quickMenu={props.quickMenu} fav={props.fav} product={product} favList={favList} />
+                                    <Heart quickMenu={props.quickMenu} fav={props.fav} product={product} addFavList={addFavList} />
                                     :
-                                    <Heart fullHeart quickMenu={props.quickMenu} fav={props.fav} product={product} favList={favList} />
+                                    <Heart fullHeart quickMenu={props.quickMenu} fav={props.fav} product={product} removeFavList={removeFavList} />
                               }
                            </div>
                         </div>
