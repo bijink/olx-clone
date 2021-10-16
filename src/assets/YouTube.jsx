@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default () => {
+const YouTube = () => {
    return (
       <a href="https://www.youtube.com/user/OLXInTv">
          <svg
@@ -18,3 +18,5 @@ export default () => {
       </a>
    );
 };
+
+export default YouTube;

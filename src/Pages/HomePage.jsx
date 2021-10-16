@@ -20,9 +20,9 @@ const HomePage = () => {
    //pageId is a "simple string" decleared directly through correspontent setState function.
 
    var component;
-   if (pageId == 'login') {
+   if (pageId === 'login') {
       component = <LoginPage />;
-   } else if (pageId == 'signup') {
+   } else if (pageId === 'signup') {
       component = <SignupPage />;
    }
 

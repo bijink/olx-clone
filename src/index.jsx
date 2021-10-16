@@ -7,10 +7,11 @@ import PostCon from './Store/PostContext';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Loading from './Store/LoadContext';
 import PopUpCon from './Store/PopUpContext';
-import SignUpUsername from './Store/SignUpUsernameContext';
+// import SignUpUsername from './Store/SignUpUsernameContext';
 import UserProfilePopUpTriggerContext from './Store/UserProfilePopUpTriggerContext';
 import { Provider } from 'react-redux';
 import store from './Redux/Store';
+import SignUpUsernameContextCon from './Store/SignUpUsernameContext';
 
 ReactDOM.render(
    <React.StrictMode>
@@ -19,13 +20,13 @@ ReactDOM.render(
             <PostCon>
                <Loading>
                   <PopUpCon>
-                     <SignUpUsername>
+                     <SignUpUsernameContextCon>
                         <UserProfilePopUpTriggerContext>
                            <Provider store={store}>
                               <App />
                            </Provider>
                         </UserProfilePopUpTriggerContext>
-                     </SignUpUsername>
+                     </SignUpUsernameContextCon>
                   </PopUpCon>
                </Loading>
             </PostCon>

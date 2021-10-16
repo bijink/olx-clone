@@ -2,7 +2,7 @@ import React, { useContext, useState } from 'react';
 import './Signup.scss';
 import Logo from '../../olx-logo.png';
 // import Logo from '../../../public/Images/olx-logo.png';
-import { AuthContext, FirebaseContext } from '../../Store/Context';
+import { FirebaseContext } from '../../Store/Context';
 import { useHistory } from 'react-router-dom';
 import { PopUpContext } from '../../Store/PopUpContext';
 import { SignUpUsernameContext } from '../../Store/SignUpUsernameContext';
@@ -15,7 +15,7 @@ const Signup = () => {
    const [password, setPassword] = useState('');
    const { firebase } = useContext(FirebaseContext);
    const { setBtnPopUp, setPageId } = useContext(PopUpContext);
-   const { setUser } = useContext(AuthContext);
+   // const { setUser } = useContext(AuthContext);
    const { setSignUpName } = useContext(SignUpUsernameContext);
 
    const handleSubmit = (e) => {
@@ -51,7 +51,7 @@ const Signup = () => {
       <div className="signupParentDiv">
          <i class="fas fa-times btnClose" onClick={() => setBtnPopUp(false)}></i>
          <div className="imgDiv">
-            <img src={Logo}></img>
+            <img src={Logo} alt="OLX"></img>
          </div>
          <h4 align='center' >Signup</h4>
          <form onSubmit={handleSubmit}>

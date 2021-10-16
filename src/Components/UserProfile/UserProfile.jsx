@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { useHistory } from 'react-router-dom';
 import { AuthContext, FirebaseContext } from '../../Store/Context';
 import { SignUpUsernameContext } from '../../Store/SignUpUsernameContext';
-import { UserProfilePopUpTriggerCon } from '../../Store/UserProfilePopUpTriggerContext';
+// import { UserProfilePopUpTriggerCon } from '../../Store/UserProfilePopUpTriggerContext';
 import './UserProfile.scss';
 
 
@@ -10,8 +10,8 @@ const UserProfile = () => {
    const { user } = useContext(AuthContext);
    const { firebase } = useContext(FirebaseContext);
    const history = useHistory();
-   const { signUpName, setSignUpName } = useContext(SignUpUsernameContext);
-   const { userProfilePopUpTrigger, setUserProfilePopUpTrigger } = useContext(UserProfilePopUpTriggerCon);
+   const { setSignUpName } = useContext(SignUpUsernameContext);
+   // const { userProfilePopUpTrigger, setUserProfilePopUpTrigger } = useContext(UserProfilePopUpTriggerCon);
 
    // const u = firebase.auth().currentUser;
    // console.log(u);
@@ -48,6 +48,9 @@ const UserProfile = () => {
                      firebase.auth().signOut();
                      history.push('/');
                      setSignUpName('');
+                     // location.reload();
+                     // history.go(+1);
+                     // window.location.reload();
                   }
                }} >
                   <div className="logo">

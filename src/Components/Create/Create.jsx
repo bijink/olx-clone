@@ -104,7 +104,7 @@ const Create = () => {
                         {
                            image ?
                               <>
-                                 <img src={image ? URL.createObjectURL(image) : ''} />
+                                 <img src={image ? URL.createObjectURL(image) : ''} alt="" />
                               </>
                               :
                               <div>

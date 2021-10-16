@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default () => {
+const Facebook = () => {
    return (
       <a href="https://www.facebook.com/olxindia/">
          <svg
@@ -19,3 +19,5 @@ export default () => {
       </a>
    );
 };
+
+export default Facebook;

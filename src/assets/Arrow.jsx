@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default (props) => {
+const Arrow = (props) => {
    return (
       <svg
          width="24px"
@@ -17,3 +17,5 @@ export default (props) => {
       </svg>
    );
 };
+
+export default Arrow;

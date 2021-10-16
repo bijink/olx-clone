@@ -23,7 +23,7 @@ const View = (props) => {
             // console.log(doc.data());
          });
       });
-   }, []);
+   }, [firebase, postDetails]);
 
    return (
       <div className="viewParentDiv">

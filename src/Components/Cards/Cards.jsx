@@ -66,7 +66,7 @@ const Cards = (props) => {
 
       // To reload favorite list when product removed from localStorage
       if (props.fav) {
-         if (favLocalId.length === 0) history.go(-1);
+         if (favLocalId.length === 0) history.push('/');
          else history.go(0);
       }
    };
@@ -103,7 +103,7 @@ const Cards = (props) => {
                });
             });
       }
-   }, [favLocalId]);
+   }, [favLocalId, favLocalId.length, firebase, user]);
 
    return (
       <div className="cardsParentDiv">

@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default () => {
+const Twitter = () => {
    return (
       <a href="https://twitter.com/OLX_India">
          <svg
@@ -18,3 +18,5 @@ export default () => {
       </a>
    );
 };
+
+export default Twitter;

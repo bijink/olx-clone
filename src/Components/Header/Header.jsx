@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext } from 'react';
 import './Header.scss';
 import OlxLogo from '../../assets/OlxLogo';
 import Search from '../../assets/Search';
@@ -6,12 +6,11 @@ import Arrow from '../../assets/Arrow';
 import SellButton from '../../assets/SellButton';
 import SellButtonPlus from '../../assets/SellButtonPlus';
 import { useHistory } from 'react-router-dom';
-import { AuthContext, FirebaseContext } from '../../Store/Context';
+import { AuthContext } from '../../Store/Context';
 import { PopUpContext } from '../../Store/PopUpContext';
 import { SignUpUsernameContext } from '../../Store/SignUpUsernameContext';
 import UserProfile from '../UserProfile/UserProfile';
 import { UserProfilePopUpTriggerCon } from '../../Store/UserProfilePopUpTriggerContext';
-import { connect } from 'react-redux';
 // import PopUpUserProfile from '../../PopUps/PopUpUserProfile/PopUpUserProfile';
 
 const Header = (props) => {
@@ -20,7 +19,7 @@ const Header = (props) => {
    const { setBtnPopUp, setPageId } = useContext(PopUpContext);
    const { signUpName } = useContext(SignUpUsernameContext);
    // const { firebase } = useContext(FirebaseContext);
-   const { userProfilePopUpTrigger, setUserProfilePopUpTrigger } = useContext(UserProfilePopUpTriggerCon);
+   // const { userProfilePopUpTrigger, setUserProfilePopUpTrigger } = useContext(UserProfilePopUpTriggerCon);
 
 
    return (
@@ -55,7 +54,7 @@ const Header = (props) => {
             <div className="loginPage">
                {
                   user ?
-                     (user.displayName ? <Login_UserProfile value1={user} /> : <Login_UserProfile value2={signUpName} />)
+                     (user.displayName ? <LoginUserProfile value1={user} /> : <LoginUserProfile value2={signUpName} />)
                      :
                      <span className="login" onClick={() => {
                         // history.push('/login');
@@ -87,7 +86,7 @@ export default Header;
 
 /* ***** */
 
-const Login_UserProfile = (props) => {
+const LoginUserProfile = (props) => {
    const { userProfilePopUpTrigger, setUserProfilePopUpTrigger } = useContext(UserProfilePopUpTriggerCon);
 
    var component;

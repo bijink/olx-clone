@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react';
 import { AuthContext } from '../Store/Context';
 
-export default (props) => {
+const Heart = (props) => {
    const { user } = useContext(AuthContext);
 
    const [color, setColor] = useState('#002f34');
@@ -41,3 +41,5 @@ export default (props) => {
       </svg >
    );
 };
+
+export default Heart;

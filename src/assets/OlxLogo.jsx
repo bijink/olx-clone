@@ -1,7 +1,7 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
 
-export default () => {
+const OlxLogo = () => {
    const history = useHistory();
 
    return (
@@ -21,3 +21,5 @@ export default () => {
       </svg>
    );
 };
+
+export default OlxLogo;

@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default () => {
+const SellButtonPlus = () => {
    return (
       <svg
          width="16px"
@@ -16,3 +16,5 @@ export default () => {
       </svg>
    );
 };
+
+export default SellButtonPlus;
