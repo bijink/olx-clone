@@ -103,7 +103,8 @@ const Cards = (props) => {
                });
             });
       }
-   }, [favLocalId, favLocalId.length, favProducts.length, firebase, user]);
+      // }, [favLocalId, favProducts.length, firebase, user]);
+   }, [favLocalId, firebase]);
 
    return (
       <div className="cardsParentDiv">

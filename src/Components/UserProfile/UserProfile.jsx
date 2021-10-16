@@ -45,11 +45,13 @@ const UserProfile = () => {
                   // setUserProfilePopUpTrigger(false);
                   let confirmLogout = window.confirm("Are you sure you want to logout ?");
                   if (confirmLogout) {
+                     // setValue(null);
                      firebase.auth().signOut();
                      history.push('/');
+                     // history.push('/login');
                      setSignUpName('');
                      // location.reload();
-                     // history.go(+1);
+                     // history.go(0);
                      // window.location.reload();
                   }
                }} >

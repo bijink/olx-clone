@@ -19,6 +19,7 @@ const Login = () => {
       // console.log(email, password);
       firebase.auth().signInWithEmailAndPassword(email, password).then(() => {
          history.push('/');
+         history.go(0);
       }).catch(error => {
          // Handle Errors here.
          var errorCode = error.code;
@@ -28,7 +29,7 @@ const Login = () => {
          } else {
             alert(errorMessage);
          }
-         console.log(error);
+         // console.log(error);
       });
    };
 

@@ -35,6 +35,7 @@ const Signup = () => {
                phone: phone
             }).then(() => {
                history.push('/');
+               history.go(0);
             });
          });
       });
