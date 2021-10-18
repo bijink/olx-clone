@@ -13,13 +13,21 @@ const Login = () => {
    const { setBtnPopUp, setPageId } = useContext(PopUpContext);
    // const { setUser } = useContext(AuthContext);
 
+   const handleLogin = () => {
+      setTimeout(() => {
+         // A fake path directory to work as a reload
+         history.push('/redirect');
+         history.push('/');
+      }, 0);
+   };
+
    const handleSubmit = (e) => {
       e.preventDefault();
       setBtnPopUp(false);
       // console.log(email, password);
       firebase.auth().signInWithEmailAndPassword(email, password).then(() => {
-         history.push('/');
-         history.go(0);
+         handleLogin();
+         // history.push('/');
       }).catch(error => {
          // Handle Errors here.
          var errorCode = error.code;

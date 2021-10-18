@@ -18,15 +18,18 @@ const Signup = () => {
    // const { setUser } = useContext(AuthContext);
    const { setSignUpName } = useContext(SignUpUsernameContext);
 
+   const handleSignup = () => {
+      setTimeout(function () {
+         // A fake path directory to work as a reload
+         history.push('/redirect');
+         history.push('/');
+      }, 0);
+   };
+
    const handleSubmit = (e) => {
       e.preventDefault();
       setBtnPopUp(false);
       setSignUpName(username);
-      // setBtnPopUp(true);
-      // setPageId('login');
-      // setUser(user)
-      // console.log(username, email, phone, password);
-      // console.log(firebase);
       firebase.auth().createUserWithEmailAndPassword(email, password).then(result => {
          result.user.updateProfile({ displayName: username }).then(() => {
             firebase.firestore().collection('users').add({
@@ -34,8 +37,8 @@ const Signup = () => {
                username: username,
                phone: phone
             }).then(() => {
-               history.push('/');
-               history.go(0);
+               handleSignup();
+               // history.push('/');
             });
          });
       });

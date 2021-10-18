@@ -52,6 +52,7 @@ const Cards = (props) => {
          // name: prods.name,
          url: prods.url,
       }]);
+      // console.log(user.uid);
    };
 
    // To remove product id from localStorage(favLocalId) when unclicked heart icon
@@ -67,7 +68,12 @@ const Cards = (props) => {
       // To reload favorite list when product removed from localStorage
       if (props.fav) {
          if (favLocalId.length === 0) history.push('/');
-         else history.go(0);
+         else {
+            setTimeout(() => {
+               history.push('/');
+               history.push('/favourite');
+            }, 0);
+         }
       }
    };
 
@@ -103,6 +109,9 @@ const Cards = (props) => {
                });
             });
       }
+      // return () => {
+      //    user;
+      // };
       // }, [favLocalId, favProducts.length, firebase, user]);
    }, [favLocalId, firebase]);
 
