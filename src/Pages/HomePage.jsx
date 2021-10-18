@@ -9,17 +9,12 @@ import { useContext } from 'react';
 import { PopUpContext } from '../Store/PopUpContext';
 import LoginPage from './LoginPage';
 import PopUpSignLog from '../PopUps/PopUpSignLog/PopUpSignLog';
-// import PopUp from '../PopUps/PopUpSignLog';
-// import { useState } from 'react';
-// import PopUpUserProfile from '../PopUps/PopUpUserProfile/PopUpUserProfile';
-// import UserProfile from '../Components/UserProfile/UserProfile';
-// import PopUpSignLog from '../PopUps/PopUpSignLog/PopUpSignLog';
 
 const HomePage = () => {
    const { btnPopUp, pageId } = useContext(PopUpContext);
-   //pageId is a "simple string" decleared directly through correspontent setState function.
 
    var component;
+   //pageId is a "simple string" decleared directly through correspondent setState function.
    if (pageId === 'login') {
       component = <LoginPage />;
    } else if (pageId === 'signup') {
@@ -43,4 +38,3 @@ const HomePage = () => {
 };
 
 export default HomePage;
-

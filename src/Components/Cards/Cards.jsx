@@ -1,10 +1,10 @@
 import React, { useContext, useEffect, useState } from 'react';
+import './Cards.scss';
 import { connect } from 'react-redux';
 import { useHistory } from 'react-router';
 import Heart from '../../assets/Heart';
 import { AuthContext, FirebaseContext } from '../../Store/Context';
 import { PostContext } from '../../Store/PostContext';
-import './Cards.scss';
 
 const Cards = (props) => {
    const history = useHistory();
@@ -109,9 +109,6 @@ const Cards = (props) => {
                });
             });
       }
-      // return () => {
-      //    user;
-      // };
       // }, [favLocalId, favProducts.length, firebase, user]);
    }, [favLocalId, firebase]);
 

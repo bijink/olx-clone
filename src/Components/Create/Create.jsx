@@ -7,18 +7,18 @@ import { LoadContext } from '../../Store/LoadContext';
 import LoadingBar from 'react-top-loading-bar';
 
 const Create = () => {
+   const history = useHistory();
+
+   const { firebase } = useContext(FirebaseContext);
+   const { user } = useContext(AuthContext);
+   const { loading, setLoading } = useContext(LoadContext);
+
    const [name, setName] = useState('');
    const [category, setCategory] = useState('');
    const [price, setPrice] = useState('');
    const [image, setImage] = useState(null);
    const date = new Date();
-
-   const { firebase } = useContext(FirebaseContext);
-   const { user } = useContext(AuthContext);
-   const { loading, setLoading } = useContext(LoadContext);
    // const [loading, setLoading] = useState(0);
-
-   const history = useHistory();
 
    const handleSubmit = () => {
       if ((name !== '') && (category !== '') && (price !== '') && (image !== null)) {
@@ -39,6 +39,8 @@ const Create = () => {
                });
             });
          });
+      } else {
+         alert('Please fill the form');
       }
    };
 
@@ -50,7 +52,6 @@ const Create = () => {
             height='3px'
             shadow={false}
             progress={loading}
-         // onLoaderFinished={() => setLoading(100)}
          />
          <Header />
          <div className="parentDivCreate">
@@ -62,9 +63,9 @@ const Create = () => {
                   <input
                      className="input"
                      type="text"
-                     id="fname"
-                     name="Name"
-                     defaultValue="John"
+                     // id="fname"
+                     // defaultValue="John"
+                     name="name"
                      value={name}
                      onChange={e => setName(e.target.value)}
                   />
@@ -74,9 +75,9 @@ const Create = () => {
                   <input
                      className="input"
                      type="text"
-                     id="fname"
+                     // id="fname"
+                     // defaultValue="John"
                      name="category"
-                     defaultValue="John"
                      value={category}
                      onChange={e => setCategory(e.target.value)}
                   />
@@ -88,7 +89,7 @@ const Create = () => {
                      <input
                         className="inputPrice"
                         type="number"
-                        id="fname"
+                        // id="fname"
                         name="Price"
                         value={price}
                         onWheel={e => e.target.blur()}

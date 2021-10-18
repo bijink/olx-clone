@@ -11,16 +11,15 @@ import { PopUpContext } from '../../Store/PopUpContext';
 import { SignUpUsernameContext } from '../../Store/SignUpUsernameContext';
 import UserProfile from '../UserProfile/UserProfile';
 import { UserProfilePopUpTriggerCon } from '../../Store/UserProfilePopUpTriggerContext';
-// import PopUpUserProfile from '../../PopUps/PopUpUserProfile/PopUpUserProfile';
 
 const Header = (props) => {
    const history = useHistory();
+
    const { user } = useContext(AuthContext);
    const { setBtnPopUp, setPageId } = useContext(PopUpContext);
    const { signUpName } = useContext(SignUpUsernameContext);
    // const { firebase } = useContext(FirebaseContext);
    // const { userProfilePopUpTrigger, setUserProfilePopUpTrigger } = useContext(UserProfilePopUpTriggerCon);
-
 
    return (
       <div className="headerParentDiv" >
@@ -77,10 +76,6 @@ const Header = (props) => {
       </div>
    );
 };
-
-
-
-
 
 export default Header;
 

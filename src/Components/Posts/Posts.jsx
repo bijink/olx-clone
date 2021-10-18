@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
+import './Posts.scss';
 import { connect } from 'react-redux';
 import { setLoadMorePost } from '../../Redux/LoadMorePost/LoadMorePostAction';
-import './Posts.scss';
 import Cards from '../Cards/Cards';
 
 const Posts = (props) => {

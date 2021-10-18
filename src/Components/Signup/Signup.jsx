@@ -1,7 +1,6 @@
 import React, { useContext, useState } from 'react';
 import './Signup.scss';
 import Logo from '../../olx-logo.png';
-// import Logo from '../../../public/Images/olx-logo.png';
 import { FirebaseContext } from '../../Store/Context';
 import { useHistory } from 'react-router-dom';
 import { PopUpContext } from '../../Store/PopUpContext';
@@ -9,14 +8,16 @@ import { SignUpUsernameContext } from '../../Store/SignUpUsernameContext';
 
 const Signup = () => {
    const history = useHistory();
-   const [username, setUsername] = useState('');
-   const [email, setEmail] = useState('');
-   const [phone, setPhone] = useState('');
-   const [password, setPassword] = useState('');
+
    const { firebase } = useContext(FirebaseContext);
    const { setBtnPopUp, setPageId } = useContext(PopUpContext);
    // const { setUser } = useContext(AuthContext);
    const { setSignUpName } = useContext(SignUpUsernameContext);
+
+   const [username, setUsername] = useState('');
+   const [email, setEmail] = useState('');
+   const [phone, setPhone] = useState('');
+   const [password, setPassword] = useState('');
 
    const handleSignup = () => {
       setTimeout(function () {
@@ -30,18 +31,24 @@ const Signup = () => {
       e.preventDefault();
       setBtnPopUp(false);
       setSignUpName(username);
-      firebase.auth().createUserWithEmailAndPassword(email, password).then(result => {
-         result.user.updateProfile({ displayName: username }).then(() => {
-            firebase.firestore().collection('users').add({
-               id: result.user.uid,
-               username: username,
-               phone: phone
-            }).then(() => {
-               handleSignup();
-               // history.push('/');
+      if (password.length >= 8) {
+         firebase.auth().createUserWithEmailAndPassword(email, password).then(result => {
+            result.user.updateProfile({ displayName: username }).then(() => {
+               firebase.firestore().collection('users').add({
+                  id: result.user.uid,
+                  username: username,
+                  phone: phone
+               }).then(() => {
+                  handleSignup();
+                  // history.push('/');
+               });
             });
          });
-      });
+      } else {
+         alert('Password must exceed 8 character');
+         setBtnPopUp(true);
+         setPageId('signup');
+      }
    };
 
    const handleSubmit2 = (e) => {
@@ -64,10 +71,10 @@ const Signup = () => {
             <input
                className="input"
                type="text"
-               id="fname"
                name="name"
                required
-               defaultValue="John"
+               // id="fname"
+               // defaultValue="John"
                value={username}
                onChange={e => setUsername(e.target.value)}
             />
@@ -77,10 +84,10 @@ const Signup = () => {
             <input
                className="input"
                type="email"
-               id="fname"
                name="email"
                required
-               defaultValue="John"
+               // id="fname"
+               // defaultValue="John"
                placeholder="example@email.com"
                value={email}
                onChange={e => setEmail(e.target.value)}
@@ -91,10 +98,10 @@ const Signup = () => {
             <input
                className="input"
                type="number"
-               id="lname"
                name="phone"
                required
-               defaultValue="Doe"
+               // id="lname"
+               // defaultValue="Doe"
                value={phone}
                onChange={e => setPhone(e.target.value)}
             />
@@ -104,10 +111,10 @@ const Signup = () => {
             <input
                className="input"
                type="password"
-               id="lname"
                name="password"
                required
-               defaultValue="Doe"
+               // id="lname"
+               // defaultValue="Doe"
                value={password}
                onChange={e => setPassword(e.target.value)}
             />

@@ -15,6 +15,7 @@ const App = () => {
    const { setUser } = useContext(AuthContext);
    const { firebase } = useContext(FirebaseContext);
    const { userProfilePopUpTrigger, setUserProfilePopUpTrigger } = useContext(UserProfilePopUpTriggerCon);
+
    const [loading, setLoading] = useState(null);
 
    useEffect(() => {
@@ -22,8 +23,6 @@ const App = () => {
          setUser(user);
          setLoading(true);
       });
-      // const u = firebase.auth().currentUser;
-      // console.log(u);
    });
 
    return (
@@ -33,12 +32,6 @@ const App = () => {
                <Router>
                   <Route exact path='/'>
                      <HomePage />
-                  </Route>
-                  <Route path='/signup' >
-                     <SignupPage />
-                  </Route>
-                  <Route path='/login' >
-                     <LoginPage />
                   </Route>
                   <Route path='/create' >
                      <CreatePage />

@@ -7,11 +7,13 @@ import { PopUpContext } from '../../Store/PopUpContext';
 
 const Login = () => {
    const history = useHistory();
-   const [email, setEmail] = useState('');
-   const [password, setPassword] = useState('');
+
    const { firebase } = useContext(FirebaseContext);
    const { setBtnPopUp, setPageId } = useContext(PopUpContext);
    // const { setUser } = useContext(AuthContext);
+
+   const [email, setEmail] = useState('');
+   const [password, setPassword] = useState('');
 
    const handleLogin = () => {
       setTimeout(() => {
@@ -61,9 +63,9 @@ const Login = () => {
             <input
                className="input"
                type="email"
-               id="fname"
+               // id="fname"
+               // defaultValue="John"
                name="email"
-               defaultValue="John"
                placeholder="example@email.com"
                value={email}
                onChange={e => setEmail(e.target.value)}
@@ -74,9 +76,9 @@ const Login = () => {
             <input
                className="input"
                type="password"
-               id="lname"
+               // id="lname"
+               // defaultValue="Doe"
                name="password"
-               defaultValue="Doe"
                value={password}
                onChange={e => setPassword(e.target.value)}
             />

@@ -1,24 +1,20 @@
 import React, { useContext } from 'react';
+import './UserProfile.scss';
 import { useHistory } from 'react-router-dom';
 import { AuthContext, FirebaseContext } from '../../Store/Context';
 import { SignUpUsernameContext } from '../../Store/SignUpUsernameContext';
 // import { UserProfilePopUpTriggerCon } from '../../Store/UserProfilePopUpTriggerContext';
-import './UserProfile.scss';
 
 
 const UserProfile = () => {
+   const history = useHistory();
+
    const { user } = useContext(AuthContext);
    const { firebase } = useContext(FirebaseContext);
-   const history = useHistory();
    const { setSignUpName } = useContext(SignUpUsernameContext);
    // const { userProfilePopUpTrigger, setUserProfilePopUpTrigger } = useContext(UserProfilePopUpTriggerCon);
 
-   // const u = firebase.auth().currentUser;
-   // console.log(u);
-   // const uu = u.email;
-
    return (
-
       <div className="userProfileParentDiv">
          <div className="userProfileChildDiv">
             <div className="userDetails">
@@ -50,9 +46,6 @@ const UserProfile = () => {
                      history.push('/');
                      // history.push('/login');
                      setSignUpName('');
-                     // location.reload();
-                     // history.go(0);
-                     // window.location.reload();
                   }
                }} >
                   <div className="logo">

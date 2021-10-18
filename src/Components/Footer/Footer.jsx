@@ -1,9 +1,9 @@
 import React from 'react';
+import './Footer.scss';
 import Facebook from '../../assets/Facebook';
 import Instagrame from '../../assets/Instagrame';
 import Twitter from '../../assets/Twitter';
 import YouTube from '../../assets/YouTube';
-import './Footer.scss';
 
 const Footer = (props) => {
    return (
