@@ -15,6 +15,19 @@ const View = (props) => {
 
    const [userDetails, setUserDetails] = useState([]);
 
+   const handlePostDelete = () => {
+      firebase.firestore().collection("products").where("url", "==", `${postDetails.url}`).get()
+         .then(querySnapshot => {
+            querySnapshot.docs[0].ref.delete();
+            let imageRef = firebase.storage().refFromURL(postDetails.url);
+            imageRef.delete();
+         }).then(() => {
+            // console.log(postDetails.url);
+            props.setFavLocalRemoveId(postDetails.url);
+            history.push('/');
+         });
+   };
+
    useEffect(() => {
       const { userId } = postDetails;
       firebase.firestore().collection('users').where('id', '==', userId).get().then((response) => {
@@ -41,17 +54,8 @@ const View = (props) => {
                }
                {
                   ((user && user.uid) === postDetails.userId) &&
-                  // console.log(user.uid);
-                  // console.log(postDetails.userId);
                   <button className="deleteBtn" onClick={() => {
-                     firebase.firestore().collection("products").where("url", "==", `${postDetails.url}`).get()
-                        .then(querySnapshot => {
-                           querySnapshot.docs[0].ref.delete();
-                        }).then(() => {
-                           // console.log(postDetails.url);
-                           props.setFavLocalRemoveId(postDetails.url);
-                           history.push('/');
-                        });
+                     handlePostDelete();
                   }} >Remove Post</button>
                }
             </div>

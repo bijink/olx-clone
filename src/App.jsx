@@ -2,8 +2,6 @@ import React, { useEffect, useContext, useState } from 'react';
 import './App.css';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import HomePage from './Pages/HomePage';
-import SignupPage from './Pages/SignupPage';
-import LoginPage from './Pages/LoginPage';
 import { AuthContext, FirebaseContext } from './Store/Context';
 import CreatePage from './Pages/CreatePage';
 import * as ReactBootstrap from 'react-bootstrap';
