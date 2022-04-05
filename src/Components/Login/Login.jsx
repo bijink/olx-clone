@@ -1,6 +1,6 @@
 import React, { useState, useContext } from 'react';
 import './Login.scss';
-import Logo from '../../olx-logo.png';
+// import Logo from '/img/olx-logo.png';
 import { FirebaseContext } from '../../Store/Context';
 import { useHistory } from 'react-router-dom';
 import { PopUpContext } from '../../Store/PopUpContext';
@@ -52,9 +52,9 @@ const Login = () => {
 
    return (
       <div className="loginParentDiv">
-         <i class="fas fa-times btnClose" onClick={() => setBtnPopUp(false)}></i>
+         <i className="fas fa-times btnClose" onClick={() => setBtnPopUp(false)}></i>
          <div className="imgDiv">
-            <img src={Logo} alt="OLX"></img>
+            <img src='/img/olx-logo.png' alt="OLX"></img>
          </div>
          <h4 align='center' >Login</h4>
          <form onSubmit={handleSubmit}>

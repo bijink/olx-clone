@@ -12,6 +12,7 @@ import { SignUpUsernameContext } from '../../Store/SignUpUsernameContext';
 import UserProfile from '../UserProfile/UserProfile';
 import { UserProfilePopUpTriggerCon } from '../../Store/UserProfilePopUpTriggerContext';
 
+
 const Header = (props) => {
    const history = useHistory();
 
@@ -21,56 +22,57 @@ const Header = (props) => {
    // const { firebase } = useContext(FirebaseContext);
    // const { userProfilePopUpTrigger, setUserProfilePopUpTrigger } = useContext(UserProfilePopUpTriggerCon);
 
+
+
    return (
       <div className="headerParentDiv" >
-         <div className="headerChildDiv">
-            <div className="brandLogo">
-               <OlxLogo></OlxLogo>
+         <div className="brandLogo">
+            <OlxLogo></OlxLogo>
+         </div>
+         <div className="placeSearch">
+            <div className="search">
+               <Search></Search>
             </div>
-            <div className="placeSearch">
-               <div className="search">
-                  <Search></Search>
-               </div>
-               <div className="text">
-                  <input type="text" placeholder="Search city, area or locality" />
-               </div>
-               <div className="arrow">
-                  <Arrow></Arrow>
-               </div>
+            <div className="text">
+               <input type="text" placeholder="Search city, area or locality" />
+               {/* <input type="text" placeholder="Search city" /> */}
             </div>
-            <div className="productSearch">
-               <div className="input">
-                  <input type="text" placeholder="Find car,mobile phone and more..." />
-               </div>
-               <div className="searchAction">
-                  <Search color="#ffffff"></Search>
-               </div>
-            </div>
-            <div className="language">
-               <span> ENGLISH </span>
+            <div className="arrow">
                <Arrow></Arrow>
             </div>
-            <div className="loginPage">
-               {
-                  user ?
-                     (user.displayName ? <LoginUserProfile value1={user} /> : <LoginUserProfile value2={signUpName} />)
-                     :
-                     <span className="login" onClick={() => {
-                        // history.push('/login');
-                        setBtnPopUp(true);
-                        setPageId('login');
-                     }}>Login</span>
-               }
+         </div>
+         <div className="productSearch">
+            <div className="input">
+               <input type="text" placeholder="Find car,mobile phone and more..." />
             </div>
+            <div className="searchAction">
+               <Search color="#ffffff"></Search>
+            </div>
+         </div>
+         <div className="language">
+            <span>ENGLISH</span>
+            <Arrow></Arrow>
+         </div>
+         <div className="loginPage">
+            {
+               user ?
+                  (user.displayName ? <LoginUserProfile value1={user} /> : <LoginUserProfile value2={signUpName} />)
+                  :
+                  <span className="login" onClick={() => {
+                     // history.push('/login');
+                     setBtnPopUp(true);
+                     setPageId('login');
+                  }}>Login</span>
+            }
+         </div>
 
-            <div className="sellMenu" onClick={() => {
-               user ? history.push('/create') : alert('Please Login to sell item.');
-            }}>
-               <SellButton></SellButton>
-               <div className="sellMenuContent">
-                  <SellButtonPlus></SellButtonPlus>
-                  <span>SELL</span>
-               </div>
+         <div className="sellMenu" onClick={() => {
+            user ? history.push('/create') : alert('Please Login to sell item.');
+         }}>
+            <SellButton></SellButton>
+            <div className="sellMenuContent">
+               <SellButtonPlus></SellButtonPlus>
+               <span>SELL</span>
             </div>
          </div>
       </div>

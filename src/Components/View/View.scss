@@ -101,3 +101,29 @@
       }
    }
 }
+
+@media screen and (max-width: 768px) {
+   .viewParentDiv {
+      display: flex;
+      flex-direction: column;
+      .topSection {
+         display: flex;
+         flex-direction: column;
+         .imageShowDiv {
+            margin-bottom: 1rem;
+            img {
+               width: 100%;
+            }
+         }
+         .rightSection {
+            width: 100%;
+            height: 17rem;
+            .deleteBtn {
+               left: 2rem;
+               bottom: 2rem;
+               width: fit-content;
+            }
+         }
+      }
+   }
+}

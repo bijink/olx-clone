@@ -11,7 +11,8 @@ input[type="number"] {
 }
 .signupParentDiv {
    border: 1px solid black;
-   width: max-content;
+   // width: max-content;
+   width: 24rem;
    padding: 10px;
    border-radius: 6px;
    background-color: #fff;
@@ -34,7 +35,8 @@ input[type="number"] {
       border-left-color: transparent;
       border-right-color: transparent;
       outline-color: transparent;
-      width: 24rem;
+      // width: 24rem;
+      width: 100%;
    }
    button {
       width: 100%;
@@ -65,5 +67,11 @@ input[type="number"] {
             background-color: honeydew;
          }
       }
+   }
+}
+
+@media screen and (max-width: 576px) {
+   .signupParentDiv {
+      width: 90vw;
    }
 }

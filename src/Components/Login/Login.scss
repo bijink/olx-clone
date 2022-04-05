@@ -1,9 +1,10 @@
 .loginParentDiv {
    border: 1px solid black;
-   width: max-content;
+   // width: max-content;
    padding: 10px;
    border-radius: 6px;
    background-color: #fff;
+   width: 24rem;
    .btnClose {
       font-size: 1.5rem;
       margin-left: 95%;
@@ -15,7 +16,6 @@
       justify-content: center;
       img {
          width: 200px;
-         height: 200px;
       }
    }
    .input {
@@ -23,7 +23,7 @@
       border-left-color: transparent;
       border-right-color: transparent;
       outline-color: transparent;
-      width: 24rem;
+      width: 100%;
    }
    button {
       width: 100%;
@@ -55,5 +55,11 @@
             background-color: honeydew;
          }
       }
+   }
+}
+
+@media screen and (max-width: 576px) {
+   .loginParentDiv {
+      width: 90vw;
    }
 }

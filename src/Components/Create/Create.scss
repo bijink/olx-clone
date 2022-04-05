@@ -114,3 +114,32 @@
       }
    }
 }
+
+@media screen and (max-width: 800px) {
+   .parentDivCreate {
+      .parentDetailDiv {
+         .addDetails {
+            .input {
+               // width: 15rem;
+               width: 15rem;
+            }
+            .priceDiv {
+               // width: 15rem;
+               width: 15rem;
+               .inputPrice {
+                  width: 13rem;
+               }
+            }
+         }
+      }
+   }
+}
+@media screen and (max-width: 576px) {
+   .parentDivCreate {
+      top: 65%;
+      .parentDetailDiv {
+         flex-direction: column;
+         align-items: center;
+      }
+   }
+}

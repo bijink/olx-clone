@@ -5,7 +5,7 @@ import Instagrame from '../../assets/Instagrame';
 import Twitter from '../../assets/Twitter';
 import YouTube from '../../assets/YouTube';
 
-const Footer = (props) => {
+const Footer = () => {
    return (
       <div className="footerParentDiv">
          <div className="content">
@@ -79,7 +79,7 @@ const Footer = (props) => {
          </div>
          <div className="footer">
             <p><span>Other Countries</span>Pakistan - South Africa - Indonesia</p>
-            <p><span>Free Classifieds in India</span>. © 2006-2021 OLX</p>
+            <p><span>Free Classifieds in India.</span> © 2006-2021 OLX</p>
          </div>
       </div>
    );

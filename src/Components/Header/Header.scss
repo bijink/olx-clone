@@ -1,219 +1,215 @@
+$input_text_fontSize :1.05rem;
+
 .headerParentDiv {
+   width: 100%;
+   position: fixed;
+   display: flex;
+   justify-content: space-around;
+   align-items: center;
    padding: 0.6rem 2.5%;
    background-color: whitesmoke;
-   position: fixed;
-   width: 100%;
-   // height: 5rem;
-   z-index: 999;
    box-shadow: 0 0 5px gray;
-   .headerChildDiv {
-      width: 100%;
+   z-index: 999;
+   > * {
+      margin: 0 0.5rem;
+   }
+   .brandLogo {
+      fill: #002f34;
+   }
+   .placeSearch {
+      width: 18rem;
+      height: 48px;
       display: flex;
-      justify-content: center;
+      justify-content: space-evenly;
       align-items: center;
-      > * {
-         margin: 0 0.5rem;
+      border: 2px solid #002f34;
+      border-radius: 4px;
+      background-color: white;
+      padding: 0 .2rem;
+      .search,
+      .arrow {
+         svg {
+            width: 1.3rem;
+            cursor: pointer;
+         }
       }
-      .brandLogo {
-         margin: 0 2.5% 0 0;
-         fill: #002f34;
+      .text {
+         input {
+            border-color: transparent;
+            outline-color: transparent;
+            width: 13rem;
+            font-size: $input_text_fontSize;
+         }
       }
-      .placeSearch {
-         width: 17rem;
+   }
+   .productSearch {
+      width: 30rem;
+      height: 48px;
+      border: 2px solid #002f34;
+      border-radius: 4px;
+      background-color: white;
+      display: flex;
+      align-items: center;
+      .input {
+         width: 100%;
+         display: flex;
+         input {
+            border-color: transparent;
+            outline-color: transparent;
+            width: 100%;
+            margin: 0 0.3rem;
+            font-size: $input_text_fontSize;
+         }
+      }
+      .searchAction {
+         min-width: 48px;
          height: 48px;
          display: flex;
          justify-content: center;
          align-items: center;
-         border: 2px solid #002f34;
-         border-radius: 4px;
-         background-color: white;
-         .search {
-            svg {
-               width: 1.05rem;
-               cursor: pointer;
-            }
-         }
-         .text {
-            input {
-               border-color: transparent;
-               outline-color: transparent;
-               width: 12.5rem;
-               height: 2rem;
-               margin: 0 0.5rem;
-            }
-         }
-         .arrow {
-            svg {
-               width: 1.2rem;
-               cursor: pointer;
-            }
-         }
-         & ::selection {
-            border-color: #23e5db;
-            // outline-color: #23e5db;
+         cursor: pointer;
+         background-color: #002f34;
+         border-radius: 0 4px 4px 0;
+         svg {
+            fill: white;
          }
       }
-      .productSearch {
-         width: 30rem;
-         height: 48px;
-         border: 2px solid #002f34;
-         border-radius: 4px;
-         background-color: white;
-         display: flex;
-         align-items: center;
-         justify-content: space-between;
-         // margin-left: -0.5rem;
-         .input {
-            width: 100%;
-            // height: 100%;
-            display: flex;
-            input {
-               border-color: transparent;
-               outline-color: transparent;
-               width: 99%;
-               height: 2rem;
-               margin: 0 0.5rem;
-               // align-items: center;
-               // padding: 0 0.3rem;
-            }
-         }
-         .searchAction {
-            min-width: 48px;
-            height: 48px;
-            // position: relative;
+   }
+   .language {
+      height: 48px;
+      display: flex;
+      align-items: center;
+      span {
+         font-size: 15px;
+         white-space: normal;
+         font-weight: bolder;
+         margin-right: 5px;
+      }
+      svg {
+         cursor: pointer;
+      }
+   }
+   .loginPage {
+      cursor: pointer;
+      .parentUserProfile {
+         .childUserProfile {
             display: flex;
             justify-content: center;
             align-items: center;
-            cursor: pointer;
-            background-color: #002f34;
-            border-radius: 0 4px 4px 0;
-            svg {
-               fill: white;
-            }
-         }
-      }
-      .language {
-         height: 48px;
-         display: flex;
-         align-items: center;
-         margin: 0 1rem;
-         span {
-            font-size: 15px;
-            white-space: normal;
-            text-overflow: ellipsis;
-            font-weight: bolder;
-            margin-right: 5px;
-         }
-      }
-      .loginPage {
-         cursor: pointer;
-         margin: 0 1.5rem;
-
-         .parentUserProfile {
-            .childUserProfile {
+            .icon {
+               width: 2.3rem;
+               height: 2.3rem;
+               background-color: cadetblue;
+               border-radius: 50%/35%;
+               margin: 0 0.12rem;
                display: flex;
                justify-content: center;
                align-items: center;
-               .icon {
-                  width: 2.3rem;
-                  height: 2.3rem;
-                  background-color: cadetblue;
-                  // background-color: #35d5ee;
-                  border-radius: 50%/35%;
-                  margin: 0 0.12rem;
-                  display: flex;
-                  justify-content: center;
-                  h1 {
-                     font-size: 1.8rem;
-                  }
-               }
-               svg {
-                  width: 1.2rem;
-               }
-               .arrow {
-                  transition: transform;
-                  transform: rotate(0deg);
-                  animation: rotate-keyframe0 400ms;
-                  animation-timing-function: ease-in-out;
-               }
-               .arrowRotate {
-                  transition: transform;
-                  transform: rotate(180deg);
-                  animation: rotate-keyframe1 400ms;
-                  animation-timing-function: ease-in-out;
-               }
-               @keyframes rotate-keyframe0 {
-                  from {
-                     transform: rotate(180deg);
-                  }
-                  to {
-                     transform: rotate(0deg);
-                  }
-               }
-               @keyframes rotate-keyframe1 {
-                  from {
-                     transform: rotate(0deg);
-                  }
-                  to {
-                     transform: rotate(180deg);
-                  }
-               }
-               &:hover {
-                  // color: #004e57;
-                  fill: #004e57;
+               h1 {
+                  font-size: 1.8rem;
+                  margin-bottom: 0;
                }
             }
-         }
-         .login {
-            color: black;
-            text-decoration: 2px underline;
+            svg {
+               width: 1.2rem;
+            }
+            .arrow {
+               transition: transform;
+               transform: rotate(0deg);
+               animation: rotate-keyframe0 400ms;
+               animation-timing-function: ease-in-out;
+            }
+            .arrowRotate {
+               transition: transform;
+               transform: rotate(180deg);
+               animation: rotate-keyframe1 400ms;
+               animation-timing-function: ease-in-out;
+            }
+            @keyframes rotate-keyframe0 {
+               from {
+                  transform: rotate(180deg);
+               }
+               to {
+                  transform: rotate(0deg);
+               }
+            }
+            @keyframes rotate-keyframe1 {
+               from {
+                  transform: rotate(0deg);
+               }
+               to {
+                  transform: rotate(180deg);
+               }
+            }
+            &:hover {
+               fill: #004e57;
+            }
          }
       }
-      .sellMenu {
-         position: relative;
-         cursor: pointer;
-         // margin: 0 0 0 1.8rem;
-         .all {
-            fill: white;
+      .login {
+         color: black;
+         text-decoration: 2px underline;
+      }
+   }
+   .sellMenu {
+      position: relative;
+      cursor: pointer;
+      .all {
+         fill: white;
+      }
+      .top {
+         fill: #23e5db;
+      }
+      .left {
+         fill: #ffce32;
+      }
+      .right {
+         fill: #3a77ff;
+      }
+      .sellMenuContent {
+         display: flex;
+         position: absolute;
+         top: 50%;
+         left: 50%;
+         transform: translate(-50%, -50%);
+         font-size: 14px;
+         font-weight: 700;
+         letter-spacing: 0.5px;
+         color: #002f34;
+         svg {
+            margin-top: 2px;
          }
-         .top {
-            fill: #23e5db;
-         }
-         .left {
-            fill: #ffce32;
-         }
-         .right {
-            fill: #3a77ff;
-         }
-         .sellMenuContent {
-            display: flex;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            font-size: 14px;
-            font-weight: 700;
-            letter-spacing: 0.5px;
-            color: #002f34;
-            svg {
-               margin-top: 2px;
-            }
-            span {
-               margin-left: 5px;
-            }
+         span {
+            margin-left: 5px;
          }
       }
    }
 }
 
-@media only screen and (max-width: 700px) {
-   .placeSearch {
-      display: none;
+
+@media only screen and (max-width: 576px) {
+   .headerParentDiv {
+      justify-content: space-between;
+      > :nth-child(5) {
+         order: 1;
+      }
+      .language {
+         display: none;
+      }
    }
-   .productSearch {
-      display: none;
+}
+// @media only screen and (min-width: 576px) and (max-width:768px) {
+@media only screen and (max-width:768px) {
+   .headerParentDiv {
+      .productSearch {
+         display: none;
+      }
    }
-   .sellMenu {
-      display: none;
+}
+@media only screen and (max-width:992px) {
+   .headerParentDiv {
+      .placeSearch {
+         display: none;
+      }
    }
 }

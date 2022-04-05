@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { setLoadMorePost } from '../../Redux/LoadMorePost/LoadMorePostAction';
 import Cards from '../Cards/Cards';
 
+
 const Posts = (props) => {
    const [state, setState] = useState();
 

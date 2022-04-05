@@ -1,6 +1,6 @@
 .parentDivOLXAd {
    .appAd {
-      background: rgba(0, 47, 52, 0.03);
+      background-color: rgba(0, 47, 52, 0.03);
       height: 198px;
       display: grid;
       grid-template-columns: 42% 30.7% 0.3% 27%;
@@ -63,27 +63,49 @@
    .parentDivOLXAd {
       .appAd {
          display: grid;
-         grid-template-columns: 72.7% 0.3% 27%;
+         grid-template-columns: 70% 0.3% 29.7%;
          .adText {
             display: none;
          }
       }
    }
 }
-@media screen and (max-width: 520px) {
+@media screen and (max-width: 576px) {
    .parentDivOLXAd {
       .appAd {
+         grid-template-columns: 0% 0% 100%;
          .line {
             display: none;
+         }
+         .linksParent {
+            .linksChild {
+               .links {
+                  display: flex;
+                  > * {
+                     margin-right: .5rem;
+                  }
+                  a {
+                     text-decoration: none;
+                     img {
+                        width: 8rem;
+                        margin: 0.15rem 0;
+                     }
+                  }
+               }
+            }
          }
       }
    }
 }
-@media screen and (max-width: 270px) {
+@media screen and (max-width: 300px) {
    .parentDivOLXAd {
       .appAd {
-         .adImg {
-            display: none;
+         .linksParent {
+            .linksChild {
+               .links {
+                  display: block;
+               }
+            }
          }
       }
    }

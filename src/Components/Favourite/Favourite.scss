@@ -12,7 +12,8 @@
          .cards {
             display: flex;
             flex-wrap: wrap;
-            margin: 0 4rem;
+            // margin: 0 4rem;
+            margin: 0 4vw;
          }
          .loadMore {
             display: flex;
@@ -40,6 +41,15 @@
             cursor: default;
             color: #002f34;
          }
+      }
+   }
+}
+
+@media screen and (max-width: 576px) {
+   .parentDivFavourite {
+      .childDivFavourite {
+         display: grid;
+         grid-template-columns: 0 auto;
       }
    }
 }

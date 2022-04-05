@@ -28,11 +28,8 @@ const HomePage = () => {
          <Posts />
          <OLXAd />
          <Footer />
-         {
-            btnPopUp ? <PopUpSignLog>
-               {component}
-            </PopUpSignLog> : ''
-         }
+         {btnPopUp ?
+            <PopUpSignLog>{component}</PopUpSignLog> : ''}
       </div >
    );
 };
