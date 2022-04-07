@@ -4,11 +4,14 @@ import { FirebaseContext } from '../../Store/Context';
 import { useNavigate } from 'react-router-dom';
 import { PopUpContext } from '../../Store/PopUpContext';
 import { SignUpUsernameContext } from '../../Store/SignUpUsernameContext';
+import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
+import { auth, colRefUsers } from '../../Firebase/Config';
+import { addDoc } from 'firebase/firestore';
 
 const Signup = () => {
    const navigate = useNavigate();
 
-   const { firebase } = useContext(FirebaseContext);
+   // const { firebase } = useContext(FirebaseContext);
    const { setBtnPopUp, setPageId } = useContext(PopUpContext);
    // const { setUser } = useContext(AuthContext);
    const { setSignUpName } = useContext(SignUpUsernameContext);
@@ -31,17 +34,32 @@ const Signup = () => {
       setBtnPopUp(false);
       setSignUpName(username);
       if (password.length >= 8) {
-         firebase.auth().createUserWithEmailAndPassword(email, password).then(result => {
-            result.user.updateProfile({ displayName: username }).then(() => {
-               firebase.firestore().collection('users').add({
-                  id: result.user.uid,
+         // firebase.auth().createUserWithEmailAndPassword(email, password).then(result => {
+         //    result.user.updateProfile({ displayName: username }).then(() => {
+         //       firebase.firestore().collection('users').add({
+         //          id: result.user.uid,
+         //          username: username,
+         //          phone: phone
+         //       }).then(() => {
+         //          handleSignup();
+         //          // navigate('/');
+         //       });
+         //    });
+         // });
+
+         createUserWithEmailAndPassword(auth, email, password).then((cred) => {
+            console.log('user Created : ', cred);
+            updateProfile(auth.currentUser, { displayName: username }).then(() => {
+               addDoc(colRefUsers, {
+                  id: cred.user.uid,
                   username: username,
                   phone: phone
                }).then(() => {
                   handleSignup();
-                  // navigate('/');
                });
             });
+         }).catch((err) => {
+            console.log(err.message);
          });
       } else {
          alert('Password must exceed 8 character');
@@ -59,7 +77,7 @@ const Signup = () => {
 
    return (
       <div className="signupParentDiv">
-         <i class="fas fa-times btnClose" onClick={() => setBtnPopUp(false)}></i>
+         <i className="fas fa-times btnClose" onClick={() => setBtnPopUp(false)}></i>
          <div className="imgDiv">
             <img src='/img/olx-logo.png' alt="OLX"></img>
          </div>

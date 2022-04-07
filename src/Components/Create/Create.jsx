@@ -4,12 +4,15 @@ import Header from '../Header/Header';
 import { FirebaseContext, AuthContext } from '../../Store/Context';
 import { useNavigate } from 'react-router-dom';
 import { LoadContext } from '../../Store/LoadContext';
-import LoadingBar from 'react-top-loading-bar';
+// import LoadingBar from 'react-top-loading-bar';
+import { addDoc, doc, serverTimestamp, updateDoc } from 'firebase/firestore';
+import { colRef, db, storage } from '../../Firebase/Config';
+import { getDownloadURL, ref, uploadBytes, uploadString } from 'firebase/storage';
 
 const Create = () => {
    const navigate = useNavigate();
 
-   const { firebase } = useContext(FirebaseContext);
+   // const { firebase } = useContext(FirebaseContext);
    const { user } = useContext(AuthContext);
    const { loading, setLoading } = useContext(LoadContext);
 
@@ -17,22 +20,26 @@ const Create = () => {
    const [category, setCategory] = useState('');
    const [price, setPrice] = useState('');
    const [image, setImage] = useState(null);
+   // console.log(image);
    const date = new Date();
    // const [loading, setLoading] = useState(0);
 
    const handleSubmit = () => {
       if ((name !== '') && (category !== '') && (price !== '') && (image !== null)) {
          setLoading(98);
-         firebase.storage().ref(`/images/${image.name}`).put(image).then(({ ref }) => {
-            ref.getDownloadURL().then(url => {
-               // console.log(url);
-               firebase.firestore().collection('products').add({
+
+         const imageRef = ref(storage, `/images/${user.uid}/PRODUCT_IMG:${image.name}`);
+         uploadBytes(imageRef, image).then((snapshot) => {
+            // uploadString(imageRef, image).then((snapshot) => {
+            getDownloadURL(imageRef).then(url => {
+               addDoc(colRef, {
                   name,
                   category,
                   price,
                   url,
                   userId: user.uid,
-                  createdAt: date.toDateString()
+                  createdDate: date.toDateString(),
+                  createdTime: serverTimestamp(),
                }).then(() => {
                   navigate('/');
                   setLoading(0);
@@ -40,19 +47,19 @@ const Create = () => {
             });
          });
       } else {
-         alert('Please fill the form');
+         alert('Please fill all fields');
       }
    };
 
    return (
       <Fragment>
-         <LoadingBar
+         {/* <LoadingBar
             color='#00e8dc'
             loaderSpeed='10000'
             height='3px'
             shadow={false}
             progress={loading}
-         />
+         /> */}
          <Header />
          <div className="parentDivCreate">
             <h1>POST YOUR AD</h1>

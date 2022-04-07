@@ -5,15 +5,19 @@ import { useNavigate } from 'react-router';
 import Heart from '../../assets/Heart';
 import { AuthContext, FirebaseContext } from '../../Store/Context';
 import { PostContext } from '../../Store/PostContext';
+import { colRef } from '../../Firebase/Config';
+import { onSnapshot, orderBy, query, where } from 'firebase/firestore';
 
 const Cards = (props) => {
    const navigate = useNavigate();
 
-   const { firebase } = useContext(FirebaseContext);
+   // const { firebase } = useContext(FirebaseContext);
    const { setPostDetails } = useContext(PostContext);
    const { user } = useContext(AuthContext);
 
    const [products, setProducts] = useState([]);
+   // console.log(products);
+   // console.log(products[13]?.createdTime.seconds);
    const [favLocalId, setFavLocalId] = useState(() => {
       const saved = localStorage.getItem(user && `OLX_${user.uid}`);
       const initialValue = JSON.parse(saved);
@@ -85,7 +89,19 @@ const Cards = (props) => {
    };
 
    useEffect(() => {
-      firebase.firestore().collection('products').get().then((snapshot) => {
+      // firebase.firestore().collection('products').get().then((snapshot) => {
+      //    const allPost = snapshot.docs.map((product) => {
+      //       return {
+      //          ...product.data(),
+      //          id: product.id
+      //       };
+      //    });
+      //    setProducts(allPost);
+      // });
+
+      const queryOrder = query(colRef, orderBy('createdTime', 'desc'));
+      onSnapshot(queryOrder, (snapshot) => {
+         // onSnapshot(colRef, (snapshot) => {
          const allPost = snapshot.docs.map((product) => {
             return {
                ...product.data(),
@@ -100,17 +116,32 @@ const Cards = (props) => {
       // To get() product from firestore at favorite page, correspondent to data in localStorage(favLocalId) 
       for (let i = 0; i < favLocalId.length; i++) {
          const li = favLocalId.map(obj => obj);
-         firebase.firestore().collection("products").where("url", "==", `${li[i].url}`).get()
-            .then(querySnapshot => {
-               querySnapshot.forEach(doc => {
-                  // console.log(doc.data());
-                  const docs = doc.data();
-                  (favProducts.length < favLocalId.length) && setFavProducts(item => [...item, docs]);
-               });
+
+         // firebase.firestore().collection("products").where("url", "==", `${li[i].url}`).get()
+         //    .then(querySnapshot => {
+         //       querySnapshot.forEach(doc => {
+         //          // console.log(doc.data());
+         //          const docs = doc.data();
+         //          (favProducts.length < favLocalId.length) && setFavProducts(item => [...item, docs]);
+         //       });
+         //    });
+
+         // const filter = query(colRef, where("url", "==", `${li[i].url}`), orderBy('createdTime', 'desc'));
+         const filter = query(colRef, where("url", "==", `${li[i].url}`));
+         onSnapshot(filter, (querySnapshot) => {
+            querySnapshot.forEach(doc => {
+               // console.log(doc.data());
+               const docs = doc.data();
+               (favProducts.length < favLocalId.length) && setFavProducts(item => [...item, docs]);
             });
+         });
+
+
+
       }
       // }, [favLocalId, favProducts.length, firebase, user]);
-   }, [favLocalId, firebase]);
+      // }, [favLocalId, firebase]);
+   }, []);
 
    return (
       <div className="cardsParentDiv">
@@ -125,7 +156,7 @@ const Cards = (props) => {
                         }}>
                         <div className="imgFav">
                            <div className="image">
-                              <img src={product.url} alt="" />
+                              <img src={product?.url} alt="" />
                            </div>
                            <div className="favorite" >
                               {

@@ -22,7 +22,7 @@ const Header = (props) => {
    // const { firebase } = useContext(FirebaseContext);
    // const { userProfilePopUpTrigger, setUserProfilePopUpTrigger } = useContext(UserProfilePopUpTriggerCon);
 
-   console.log(user);
+   // console.log(user);
 
    return (
       <div className="headerParentDiv" >

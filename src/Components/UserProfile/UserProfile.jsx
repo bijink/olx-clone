@@ -3,6 +3,8 @@ import './UserProfile.scss';
 import { useNavigate } from 'react-router-dom';
 import { AuthContext, FirebaseContext } from '../../Store/Context';
 import { SignUpUsernameContext } from '../../Store/SignUpUsernameContext';
+import { signOut } from 'firebase/auth';
+import { auth } from '../../Firebase/Config';
 // import { UserProfilePopUpTriggerCon } from '../../Store/UserProfilePopUpTriggerContext';
 
 
@@ -10,7 +12,7 @@ const UserProfile = () => {
    const navigate = useNavigate();
 
    const { user } = useContext(AuthContext);
-   const { firebase } = useContext(FirebaseContext);
+   // const { firebase } = useContext(FirebaseContext);
    const { setSignUpName } = useContext(SignUpUsernameContext);
    // const { userProfilePopUpTrigger, setUserProfilePopUpTrigger } = useContext(UserProfilePopUpTriggerCon);
 
@@ -41,11 +43,21 @@ const UserProfile = () => {
                   // setUserProfilePopUpTrigger(false);
                   let confirmLogout = window.confirm("Are you sure you want to logout ?");
                   if (confirmLogout) {
-                     // setValue(null);
-                     firebase.auth().signOut();
-                     navigate('/');
-                     // navigate('/login');
-                     setSignUpName('');
+                     // // setValue(null);
+                     // firebase.auth().signOut();
+                     // navigate('/');
+                     // // navigate('/login');
+                     // setSignUpName('');
+
+
+                     signOut(auth).then(() => {
+                        // console.log('The user signed out');
+                        navigate('/');
+                        // navigate('/login');
+                        setSignUpName('');
+                     }).catch(err => {
+                        console.log(err.message);
+                     });
                   }
                }} >
                   <div className="logo">

@@ -5,38 +5,74 @@ import { PostContext } from '../../Store/PostContext';
 import { useNavigate } from 'react-router';
 import { connect } from 'react-redux';
 import { setFavLocalRemoveId } from '../../Redux/FavLocalIdRemove/FavLocalIdRemoveAction';
+import { deleteDoc, doc, onSnapshot, query, where } from 'firebase/firestore';
+import { colRef, colRefUsers, db } from '../../Firebase/Config';
 
 const View = (props) => {
    const navigate = useNavigate();
 
-   const { firebase } = useContext(FirebaseContext);
+   // const { firebase } = useContext(FirebaseContext);
    const { postDetails } = useContext(PostContext);
+   // console.log(postDetails);
    const { user } = useContext(AuthContext);
 
    const [userDetails, setUserDetails] = useState([]);
 
    const handlePostDelete = () => {
-      firebase.firestore().collection("products").where("url", "==", `${postDetails.url}`).get()
-         .then(querySnapshot => {
-            querySnapshot.docs[0].ref.delete();
-            let imageRef = firebase.storage().refFromURL(postDetails.url);
-            imageRef.delete();
-         }).then(() => {
-            // console.log(postDetails.url);
-            props.setFavLocalRemoveId(postDetails.url);
-            navigate('/');
-         });
+      // firebase.firestore().collection("products").where("url", "==", `${postDetails.url}`).get()
+      //    .then(querySnapshot => {
+      //       querySnapshot.docs[0].ref.delete();
+      //       let imageRef = firebase.storage().refFromURL(postDetails.url);
+      //       imageRef.delete();
+      //    }).then(() => {
+      //       // console.log(postDetails.url);
+      //       props.setFavLocalRemoveId(postDetails.url);
+      //       navigate('/');
+      //    });
+
+      // const imageRef = ref(storage, `posts/${id}/image`);
+      // const deletePost = async () => {
+      //    await deleteDoc(doc(db, 'posts', id));
+      //    deleteObject(imageRef);
+      // };
+
+      const filter1 = query(colRef, where("url", "==", `${postDetails.url}`));
+      onSnapshot(colRef, filter1, (snapshot) => {
+
+
+         snapshot.docs[0].ref.delete();
+         // console.log(snapshot.docs[0]);
+         // deleteDoc(doc(db, 'products', postDetails.url));
+
+         // let imageRef = firebase.storage().refFromURL(postDetails.url);
+         // imageRef.delete();
+
+
+      }).then(() => {
+         // console.log(postDetails.url);
+         props.setFavLocalRemoveId(postDetails.url);
+         navigate('/');
+      });
    };
 
    useEffect(() => {
       const { userId } = postDetails;
-      firebase.firestore().collection('users').where('id', '==', userId).get().then((response) => {
-         response.forEach(doc => {
+
+      // firebase.firestore().collection('users').where('id', '==', userId).get().then((response) => {
+      //    response.forEach(doc => {
+      //       setUserDetails(doc.data());
+      //       // console.log(doc.data());
+      //    });
+      // });
+
+      const filter2 = query(colRefUsers, where('id', '==', userId));
+      onSnapshot(colRef, filter2, (snapshot) => {
+         snapshot.forEach(doc => {
             setUserDetails(doc.data());
             // console.log(doc.data());
          });
       });
-   }, [firebase, postDetails]);
+   }, [postDetails]);
 
    return (
       <div className="viewParentDiv">
@@ -48,7 +84,7 @@ const View = (props) => {
                <h4>Seller Details</h4>
                {
                   <div className="contactDetails">
-                     <p> Name : {userDetails.username} </p>
+                     <p> Name : {userDetails?.username} </p>
                      <p> Phone : {userDetails.phone} </p>
                   </div>
                }

@@ -4,11 +4,13 @@ import './Login.scss';
 import { FirebaseContext } from '../../Store/Context';
 import { useNavigate } from 'react-router-dom';
 import { PopUpContext } from '../../Store/PopUpContext';
+import { auth } from '../../Firebase/Config';
+import { signInWithEmailAndPassword } from 'firebase/auth';
 
 const Login = () => {
    const navigate = useNavigate();
 
-   const { firebase } = useContext(FirebaseContext);
+   // const { firebase } = useContext(FirebaseContext);
    const { setBtnPopUp, setPageId } = useContext(PopUpContext);
    // const { setUser } = useContext(AuthContext);
 
@@ -27,9 +29,25 @@ const Login = () => {
       e.preventDefault();
       setBtnPopUp(false);
       // console.log(email, password);
-      firebase.auth().signInWithEmailAndPassword(email, password).then(() => {
+      // firebase.auth().signInWithEmailAndPassword(email, password).then(() => {
+      //    handleLogin();
+      //    // navigate('/');
+      // }).catch(error => {
+      //    // Handle Errors here.
+      //    var errorCode = error.code;
+      //    var errorMessage = error.message;
+      //    if (errorCode === 'auth/wrong-password') {
+      //       alert('Wrong password.');
+      //    } else {
+      //       alert(errorMessage);
+      //    }
+      //    // console.log(error);
+      // });
+
+      signInWithEmailAndPassword(auth, email, password).then((cred) => {
+         // console.log("user Logged in :", cred.user);
          handleLogin();
-         // navigate('/');
+         //    // navigate('/');
       }).catch(error => {
          // Handle Errors here.
          var errorCode = error.code;
