@@ -2,12 +2,12 @@ import React, { useContext, useEffect, useState } from 'react';
 import './View.scss';
 import { AuthContext, FirebaseContext } from '../../Store/Context';
 import { PostContext } from '../../Store/PostContext';
-import { useHistory } from 'react-router';
+import { useNavigate } from 'react-router';
 import { connect } from 'react-redux';
 import { setFavLocalRemoveId } from '../../Redux/FavLocalIdRemove/FavLocalIdRemoveAction';
 
 const View = (props) => {
-   const history = useHistory();
+   const navigate = useNavigate();
 
    const { firebase } = useContext(FirebaseContext);
    const { postDetails } = useContext(PostContext);
@@ -24,7 +24,7 @@ const View = (props) => {
          }).then(() => {
             // console.log(postDetails.url);
             props.setFavLocalRemoveId(postDetails.url);
-            history.push('/');
+            navigate('/');
          });
    };
 

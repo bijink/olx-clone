@@ -2,12 +2,12 @@ import React, { Fragment, useContext, useState } from 'react';
 import './Create.scss';
 import Header from '../Header/Header';
 import { FirebaseContext, AuthContext } from '../../Store/Context';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { LoadContext } from '../../Store/LoadContext';
 import LoadingBar from 'react-top-loading-bar';
 
 const Create = () => {
-   const history = useHistory();
+   const navigate = useNavigate();
 
    const { firebase } = useContext(FirebaseContext);
    const { user } = useContext(AuthContext);
@@ -34,7 +34,7 @@ const Create = () => {
                   userId: user.uid,
                   createdAt: date.toDateString()
                }).then(() => {
-                  history.push('/');
+                  navigate('/');
                   setLoading(0);
                });
             });

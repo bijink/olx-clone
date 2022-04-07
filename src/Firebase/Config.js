@@ -1,18 +1,12 @@
-import firebase from "firebase";
-import 'firebase/auth';
-import 'firebase/firestore';
-import 'firebase/storage';
+// Import the functions you need from the SDKs you need
+import { initializeApp } from "firebase/app";
+import { getFirestore } from "firebase/firestore";
+import { getStorage } from "firebase/storage";
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
 
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+// Your web app's Firebase configuration
 const firebaseConfig = {
-   // apiKey: process.env.FIREBASE_API_KEY,
-   // authDomain: "olx2-f5b61.firebaseapp.com",
-   // projectId: "olx2-f5b61",
-   // storageBucket: "olx2-f5b61.appspot.com",
-   // messagingSenderId: "503067130869",
-   // appId: "1:503067130869:web:e1a6ebd59030185a837ebc",
-   // measurementId: "G-36SBFFZLB0"
-
    apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
    authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
    projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID,
@@ -21,4 +15,15 @@ const firebaseConfig = {
    appId: process.env.REACT_APP_FIREBASE_APP_ID,
 };
 
-export default firebase.initializeApp(firebaseConfig);
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+
+// Initialize Services
+const db = getFirestore();
+const storage = getStorage();
+// const auth = getAuth();
+
+// Collection Ref
+// const colRef = collection(db, 'books');
+
+export { app, db, storage };

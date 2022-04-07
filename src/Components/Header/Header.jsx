@@ -5,7 +5,7 @@ import Search from '../../assets/Search';
 import Arrow from '../../assets/Arrow';
 import SellButton from '../../assets/SellButton';
 import SellButtonPlus from '../../assets/SellButtonPlus';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Store/Context';
 import { PopUpContext } from '../../Store/PopUpContext';
 import { SignUpUsernameContext } from '../../Store/SignUpUsernameContext';
@@ -14,7 +14,7 @@ import { UserProfilePopUpTriggerCon } from '../../Store/UserProfilePopUpTriggerC
 
 
 const Header = (props) => {
-   const history = useHistory();
+   const navigate = useNavigate();
 
    const { user } = useContext(AuthContext);
    const { setBtnPopUp, setPageId } = useContext(PopUpContext);
@@ -22,7 +22,7 @@ const Header = (props) => {
    // const { firebase } = useContext(FirebaseContext);
    // const { userProfilePopUpTrigger, setUserProfilePopUpTrigger } = useContext(UserProfilePopUpTriggerCon);
 
-
+   console.log(user);
 
    return (
       <div className="headerParentDiv" >
@@ -59,7 +59,7 @@ const Header = (props) => {
                   (user.displayName ? <LoginUserProfile value1={user} /> : <LoginUserProfile value2={signUpName} />)
                   :
                   <span className="login" onClick={() => {
-                     // history.push('/login');
+                     // navigate('/login');
                      setBtnPopUp(true);
                      setPageId('login');
                   }}>Login</span>
@@ -67,7 +67,7 @@ const Header = (props) => {
          </div>
 
          <div className="sellMenu" onClick={() => {
-            user ? history.push('/create') : alert('Please Login to sell item.');
+            user ? navigate('/create') : alert('Please Login to sell item.');
          }}>
             <SellButton></SellButton>
             <div className="sellMenuContent">

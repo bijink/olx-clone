@@ -1,13 +1,13 @@
 import React, { useContext, useEffect, useState } from 'react';
 import './Cards.scss';
 import { connect } from 'react-redux';
-import { useHistory } from 'react-router';
+import { useNavigate } from 'react-router';
 import Heart from '../../assets/Heart';
 import { AuthContext, FirebaseContext } from '../../Store/Context';
 import { PostContext } from '../../Store/PostContext';
 
 const Cards = (props) => {
-   const history = useHistory();
+   const navigate = useNavigate();
 
    const { firebase } = useContext(FirebaseContext);
    const { setPostDetails } = useContext(PostContext);
@@ -67,11 +67,11 @@ const Cards = (props) => {
 
       // To reload favorite list when product removed from localStorage
       if (props.fav) {
-         if (favLocalId.length === 0) history.push('/');
+         if (favLocalId.length === 0) navigate('/');
          else {
             setTimeout(() => {
-               history.push('/');
-               history.push('/favourite');
+               navigate('/');
+               navigate('/favourite');
             }, 0);
          }
       }
@@ -121,7 +121,7 @@ const Cards = (props) => {
                      <div key={index} className="cardsMap"
                         onClick={() => {
                            setPostDetails(product);
-                           history.push('/view');
+                           navigate('/view');
                         }}>
                         <div className="imgFav">
                            <div className="image">

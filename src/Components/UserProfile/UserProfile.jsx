@@ -1,13 +1,13 @@
 import React, { useContext } from 'react';
 import './UserProfile.scss';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { AuthContext, FirebaseContext } from '../../Store/Context';
 import { SignUpUsernameContext } from '../../Store/SignUpUsernameContext';
 // import { UserProfilePopUpTriggerCon } from '../../Store/UserProfilePopUpTriggerContext';
 
 
 const UserProfile = () => {
-   const history = useHistory();
+   const navigate = useNavigate();
 
    const { user } = useContext(AuthContext);
    const { firebase } = useContext(FirebaseContext);
@@ -30,7 +30,7 @@ const UserProfile = () => {
             <div className="features">
                <div className="rows favourite" onClick={() => {
                   // setUserProfilePopUpTrigger(false);
-                  history.push('/favourite');
+                  navigate('/favourite');
                }}>
                   <div className="logo">
                      <i className="far fa-heart"></i>
@@ -43,8 +43,8 @@ const UserProfile = () => {
                   if (confirmLogout) {
                      // setValue(null);
                      firebase.auth().signOut();
-                     history.push('/');
-                     // history.push('/login');
+                     navigate('/');
+                     // navigate('/login');
                      setSignUpName('');
                   }
                }} >

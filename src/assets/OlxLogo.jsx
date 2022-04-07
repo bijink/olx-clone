@@ -1,8 +1,8 @@
 import React from 'react';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const OlxLogo = () => {
-   const history = useHistory();
+   const navigate = useNavigate();
 
    return (
       <svg
@@ -12,7 +12,7 @@ const OlxLogo = () => {
          viewBox="0 0 1024 1024"
          data-aut-id="icon"
          fillRule="evenodd"
-         onClick={() => history.push('/')}
+         onClick={() => navigate('/')}
       >
          <path
             className="rui-77aaa"

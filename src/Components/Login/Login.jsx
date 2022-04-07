@@ -2,11 +2,11 @@ import React, { useState, useContext } from 'react';
 import './Login.scss';
 // import Logo from '/img/olx-logo.png';
 import { FirebaseContext } from '../../Store/Context';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { PopUpContext } from '../../Store/PopUpContext';
 
 const Login = () => {
-   const history = useHistory();
+   const navigate = useNavigate();
 
    const { firebase } = useContext(FirebaseContext);
    const { setBtnPopUp, setPageId } = useContext(PopUpContext);
@@ -18,8 +18,8 @@ const Login = () => {
    const handleLogin = () => {
       setTimeout(() => {
          // A fake path directory to work as a reload
-         history.push('/redirect');
-         history.push('/');
+         navigate('/redirect');
+         navigate('/');
       }, 0);
    };
 
@@ -29,7 +29,7 @@ const Login = () => {
       // console.log(email, password);
       firebase.auth().signInWithEmailAndPassword(email, password).then(() => {
          handleLogin();
-         // history.push('/');
+         // navigate('/');
       }).catch(error => {
          // Handle Errors here.
          var errorCode = error.code;
@@ -45,7 +45,7 @@ const Login = () => {
 
    const handleSubmit2 = (e) => {
       e.preventDefault();
-      // history.push('/signup');
+      // navigate('/signup');
       setBtnPopUp(true);
       setPageId('signup');
    };

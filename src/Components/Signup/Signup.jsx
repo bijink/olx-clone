@@ -1,12 +1,12 @@
 import React, { useContext, useState } from 'react';
 import './Signup.scss';
 import { FirebaseContext } from '../../Store/Context';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { PopUpContext } from '../../Store/PopUpContext';
 import { SignUpUsernameContext } from '../../Store/SignUpUsernameContext';
 
 const Signup = () => {
-   const history = useHistory();
+   const navigate = useNavigate();
 
    const { firebase } = useContext(FirebaseContext);
    const { setBtnPopUp, setPageId } = useContext(PopUpContext);
@@ -21,8 +21,8 @@ const Signup = () => {
    const handleSignup = () => {
       setTimeout(function () {
          // A fake path directory to work as a reload
-         history.push('/redirect');
-         history.push('/');
+         navigate('/redirect');
+         navigate('/');
       }, 0);
    };
 
@@ -39,7 +39,7 @@ const Signup = () => {
                   phone: phone
                }).then(() => {
                   handleSignup();
-                  // history.push('/');
+                  // navigate('/');
                });
             });
          });
@@ -52,7 +52,7 @@ const Signup = () => {
 
    const handleSubmit2 = (e) => {
       e.preventDefault();
-      // history.push('/login');
+      // navigate('/login');
       setBtnPopUp(true);
       setPageId('login');
    };
