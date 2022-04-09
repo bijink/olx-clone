@@ -1,13 +1,17 @@
 import React, { useState } from 'react';
 import './Favourite.scss';
 import Cards from '../Cards/Cards';
-import { connect } from 'react-redux';
-import { setLoadMoreFav } from '../../Redux/LoadMoreFav/LoadMoreFavAction';
+import { useDispatch, useSelector } from 'react-redux';
+import { setLoadMoreFav } from '../../Redux/Actions/PostLoadMore.action';
 // import DummyCards from '../Cards/DummyCards';
 
-const Favourite = (props) => {
+const Favourite = () => {
    const [state, setstate] = useState();
    // console.log(state);
+
+   const noOfItemToLoad_fav = useSelector(state => state.postLoadMore.noOfItemToLoad_fav);
+   const dispatch = useDispatch();
+
 
    return (
       <div className="parentDivFavourite">
@@ -19,10 +23,12 @@ const Favourite = (props) => {
                   <Cards fav state={setstate} />
                </div>
                {
-                  (props.noOfItemToLoadFav < state) ?
+                  // (props.noOfItemToLoadFav < state) ?
+                  (noOfItemToLoad_fav < state) ?
                      <div className="loadMore">
                         <button onClick={() => {
-                           props.setLoadMoreFav();
+                           // props.setLoadMoreFav();
+                           dispatch(setLoadMoreFav());
                         }}>
                            <span>Load more</span>
                         </button>
@@ -34,15 +40,4 @@ const Favourite = (props) => {
    );
 };
 
-const mapDispatchToProps = (dispatch) => {
-   return {
-      setLoadMoreFav: () => dispatch(setLoadMoreFav())
-   };
-};
-const mapStateToProps = (state) => {
-   return {
-      noOfItemToLoadFav: state.favorite.noOfItemToLoadFav
-   };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(Favourite);
+export default Favourite;

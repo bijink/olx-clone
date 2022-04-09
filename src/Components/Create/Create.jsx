@@ -1,9 +1,9 @@
 import React, { Fragment, useContext, useState } from 'react';
 import './Create.scss';
 import Header from '../Header/Header';
-import { FirebaseContext, AuthContext } from '../../Store/Context';
+import { AuthContext } from '../../Context/AuthContext';
 import { useNavigate } from 'react-router-dom';
-import { LoadContext } from '../../Store/LoadContext';
+// import { LoadContext } from '../../Store/LoadContext';
 // import LoadingBar from 'react-top-loading-bar';
 import { addDoc, doc, serverTimestamp, updateDoc } from 'firebase/firestore';
 import { colRef, db, storage } from '../../Firebase/Config';
@@ -14,7 +14,7 @@ const Create = () => {
 
    // const { firebase } = useContext(FirebaseContext);
    const { user } = useContext(AuthContext);
-   const { loading, setLoading } = useContext(LoadContext);
+   // const { loading, setLoading } = useContext(LoadContext);
 
    const [name, setName] = useState('');
    const [category, setCategory] = useState('');
@@ -26,7 +26,7 @@ const Create = () => {
 
    const handleSubmit = () => {
       if ((name !== '') && (category !== '') && (price !== '') && (image !== null)) {
-         setLoading(98);
+         // setLoading(98);
 
          const imageRef = ref(storage, `/images/${user.uid}/PRODUCT_IMG:${image.name}`);
          uploadBytes(imageRef, image).then((snapshot) => {
@@ -42,7 +42,7 @@ const Create = () => {
                   createdTime: serverTimestamp(),
                }).then(() => {
                   navigate('/');
-                  setLoading(0);
+                  // setLoading(0);
                });
             });
          });

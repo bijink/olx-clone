@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-import { AuthContext } from '../Store/Context';
+import { AuthContext } from '../Context/AuthContext';
 
 const Heart = (props) => {
    const { user } = useContext(AuthContext);

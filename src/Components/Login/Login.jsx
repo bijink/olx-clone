@@ -1,17 +1,24 @@
 import React, { useState, useContext } from 'react';
 import './Login.scss';
 // import Logo from '/img/olx-logo.png';
-import { FirebaseContext } from '../../Store/Context';
+// import { FirebaseContext } from '../../Store/AuthContext';
 import { useNavigate } from 'react-router-dom';
-import { PopUpContext } from '../../Store/PopUpContext';
+// import { PopUpContext } from '../../Store/PopUpContext';
 import { auth } from '../../Firebase/Config';
 import { signInWithEmailAndPassword } from 'firebase/auth';
+// import { toggleSigninLoginPopup } from '../../Redux/Actions/ToggleStates.action';
+import { useDispatch } from 'react-redux';
+import { toggleSigninLoginPopup } from '../../Redux/Actions';
+// import { toggleSigninLoginPopup } from '../../Redux';
+// import { toggleSigninLoginPopup } from '../../Redux/index';
 
 const Login = () => {
    const navigate = useNavigate();
 
+   const dispatch = useDispatch();
+
    // const { firebase } = useContext(FirebaseContext);
-   const { setBtnPopUp, setPageId } = useContext(PopUpContext);
+   // const { setBtnPopUp, setPageId } = useContext(PopUpContext);
    // const { setUser } = useContext(AuthContext);
 
    const [email, setEmail] = useState('');
@@ -27,7 +34,9 @@ const Login = () => {
 
    const handleSubmit = (e) => {
       e.preventDefault();
-      setBtnPopUp(false);
+      // setBtnPopUp(false);
+      dispatch(toggleSigninLoginPopup());
+
       // console.log(email, password);
       // firebase.auth().signInWithEmailAndPassword(email, password).then(() => {
       //    handleLogin();
@@ -64,13 +73,16 @@ const Login = () => {
    const handleSubmit2 = (e) => {
       e.preventDefault();
       // navigate('/signup');
-      setBtnPopUp(true);
-      setPageId('signup');
+      // setBtnPopUp(true);
+      // setPageId('signup');
+
+      dispatch(toggleSigninLoginPopup('signup'));
    };
 
    return (
       <div className="loginParentDiv">
-         <i className="fas fa-times btnClose" onClick={() => setBtnPopUp(false)}></i>
+         {/* <i className="fas fa-times btnClose" onClick={() => setBtnPopUp(false)}></i> */}
+         <i className="fas fa-times btnClose" onClick={() => dispatch(toggleSigninLoginPopup())}></i>
          <div className="imgDiv">
             <img src='/img/olx-logo.png' alt="OLX"></img>
          </div>

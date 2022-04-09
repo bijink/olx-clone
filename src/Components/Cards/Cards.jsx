@@ -1,10 +1,10 @@
 import React, { useContext, useEffect, useState } from 'react';
 import './Cards.scss';
-import { connect } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router';
 import Heart from '../../assets/Heart';
-import { AuthContext, FirebaseContext } from '../../Store/Context';
-import { PostContext } from '../../Store/PostContext';
+import { AuthContext } from '../../Context/AuthContext';
+import { PostDetailsContext } from '../../Context/PostDetailsContext';
 import { colRef } from '../../Firebase/Config';
 import { onSnapshot, orderBy, query, where } from 'firebase/firestore';
 
@@ -12,7 +12,7 @@ const Cards = (props) => {
    const navigate = useNavigate();
 
    // const { firebase } = useContext(FirebaseContext);
-   const { setPostDetails } = useContext(PostContext);
+   const { setPostDetails } = useContext(PostDetailsContext);
    const { user } = useContext(AuthContext);
 
    const [products, setProducts] = useState([]);
@@ -26,6 +26,9 @@ const Cards = (props) => {
    const [favProducts, setFavProducts] = useState([]);
    // A state only for re-render heart icon when product removed from localStorage(favLocalId)
    const [renderState, setRenderState] = useState(false);
+
+   const noOfItemToLoad_post = useSelector(state => state.postLoadMore.noOfItemToLoad_post);
+   const noOfItemToLoad_fav = useSelector(state => state.postLoadMore.noOfItemToLoad_fav);
 
    props.state && props.state(favLocalId.length);
    props.state2 && props.state2(products.length);
@@ -143,10 +146,12 @@ const Cards = (props) => {
       // }, [favLocalId, firebase]);
    }, []);
 
+
    return (
       <div className="cardsParentDiv">
          {
-            (props.fav ? favProducts : products).slice(0, (props.quickMenu ? 10 : (props.fav ? props.noOfItemToLoadFav : props.noOfItemToLoadPost)))
+            // (props.fav ? favProducts : products).slice(0, (props.quickMenu ? 10 : (props.fav ? props.noOfItemToLoadFav : props.noOfItemToLoadPost)))
+            (props.fav ? favProducts : products).slice(0, (props.quickMenu ? 10 : (props.fav ? noOfItemToLoad_fav : noOfItemToLoad_post)))
                .map((product, index) => {
                   return (
                      <div key={index} className="cardsMap"
@@ -185,12 +190,5 @@ const Cards = (props) => {
    );
 };
 
-const mapStateToProps = (state) => {
-   return {
-      noOfItemToLoadPost: state.post.noOfItemToLoadPost,
-      noOfItemToLoadFav: state.favorite.noOfItemToLoadFav,
-      favLocalRemoveId: state.favLocalRemoveId.favLocalRemoveId
-   };
-};
 
-export default connect(mapStateToProps)(Cards);
+export default Cards;

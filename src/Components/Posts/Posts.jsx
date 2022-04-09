@@ -1,12 +1,16 @@
 import React, { useState } from 'react';
 import './Posts.scss';
-import { connect } from 'react-redux';
-import { setLoadMorePost } from '../../Redux/LoadMorePost/LoadMorePostAction';
+import { useDispatch, useSelector } from 'react-redux';
 import Cards from '../Cards/Cards';
+import { setLoadMorePost } from '../../Redux/Actions/PostLoadMore.action';
 
 
-const Posts = (props) => {
+const Posts = () => {
    const [state, setState] = useState();
+   // console.log(state);
+
+   const noOfItemToLoad_post = useSelector(state => state.postLoadMore.noOfItemToLoad_post);
+   const dispatch = useDispatch();
 
    return (
       <div className="postParentDiv">
@@ -27,10 +31,12 @@ const Posts = (props) => {
                <Cards state2={setState} />
             </div>
             {
-               (props.noOfItemToLoadPost < state) ?
+               // (props.noOfItemToLoadPost < state) ?
+               (noOfItemToLoad_post < state) ?
                   <div className="loadMore">
                      <button onClick={() => {
-                        props.setLoadMorePost();
+                        // props.setLoadMorePost();
+                        dispatch(setLoadMorePost());
                      }}>
                         <span>Load more</span>
                      </button>
@@ -41,15 +47,4 @@ const Posts = (props) => {
    );
 };
 
-const mapDispatchToProps = (dispatch) => {
-   return {
-      setLoadMorePost: () => dispatch(setLoadMorePost())
-   };
-};
-const mapStateToProps = (state) => {
-   return {
-      noOfItemToLoadPost: state.post.noOfItemToLoadPost,
-   };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(Posts);
+export default Posts;

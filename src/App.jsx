@@ -1,44 +1,35 @@
-import React, { useEffect, useContext, useState } from 'react';
+import { useEffect, useContext } from 'react';
 import './App.scss';
 import { Routes, Route } from 'react-router-dom';
 import HomePage from './Pages/HomePage';
-import { AuthContext, FirebaseContext } from './Store/Context';
+import { AuthContext } from './Context/AuthContext';
 import CreatePage from './Pages/CreatePage';
-// import * as ReactBootstrap from 'react-bootstrap';
 import FavouritePage from './Pages/FavouritePage';
-import { UserProfilePopUpTriggerCon } from './Store/UserProfilePopUpTriggerContext';
 import ViewPostPage from './Pages/ViewPostPage';
 import { auth } from './Firebase/Config';
-import { signOut } from 'firebase/auth';
+import { useDispatch, useSelector } from 'react-redux';
+import { toggleUserDetailsDropdown } from './Redux/Actions';
 
 
 const App = () => {
    const { setUser } = useContext(AuthContext);
-   // const { firebase } = useContext(FirebaseContext);
-   const { userProfilePopUpTrigger, setUserProfilePopUpTrigger } = useContext(UserProfilePopUpTriggerCon);
 
-   const [loading, setLoading] = useState(null);
+   const isUserDetailsDropdown = useSelector(state => state.userDetailsDropdown.userDetailsDropdown);
+   // console.log(isUserDetailsDropdown);
+
+   const dispatch = useDispatch();
+
 
    useEffect(() => {
-      // firebase.auth().onAuthStateChanged(user => {
       auth.onAuthStateChanged(user => {
          setUser(user);
-         setLoading(true);
+         // setLoading(true);
       });
-
-      // signOut(auth).then(() => {
-      //    // console.log('The user signed out');
-      // }).catch(err => {
-      //    console.log(err.message);
-      // });
    });
 
-   // console.log(auth?.currentUser?.email);
-   // console.log(auth.currentUser);
-   // console.log(auth);
 
    return (
-      <div onClick={() => userProfilePopUpTrigger && setUserProfilePopUpTrigger(false)}>
+      <div onClick={() => isUserDetailsDropdown && dispatch(toggleUserDetailsDropdown())}>
          <Routes>
             <Route exact path='/' element={<HomePage />} />
             <Route exact path='/create' element={<CreatePage />} />

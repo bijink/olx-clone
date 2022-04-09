@@ -6,23 +6,29 @@ import Arrow from '../../assets/Arrow';
 import SellButton from '../../assets/SellButton';
 import SellButtonPlus from '../../assets/SellButtonPlus';
 import { useNavigate } from 'react-router-dom';
-import { AuthContext } from '../../Store/Context';
-import { PopUpContext } from '../../Store/PopUpContext';
-import { SignUpUsernameContext } from '../../Store/SignUpUsernameContext';
+import { AuthContext } from '../../Context/AuthContext';
+import { SignUpUsernameContext } from '../../Context/SignUpUsernameContext';
 import UserProfile from '../UserProfile/UserProfile';
-import { UserProfilePopUpTriggerCon } from '../../Store/UserProfilePopUpTriggerContext';
+import { useDispatch, useSelector } from 'react-redux';
+import { toggleSigninLoginPopup, toggleUserDetailsDropdown } from '../../Redux/Actions';
+// import { toggleSigninLoginPopup, toggleUserDetailsDropdown } from '../../Redux/index';
+// import { toggleSigninLoginPopup, toggleUserDetailsDropdown } from '../../Redux/Actions/ToggleStates.action';
 
 
-const Header = (props) => {
+const Header = () => {
    const navigate = useNavigate();
 
    const { user } = useContext(AuthContext);
-   const { setBtnPopUp, setPageId } = useContext(PopUpContext);
+   // const { setBtnPopUp, setPageId } = useContext(PopUpContext);
    const { signUpName } = useContext(SignUpUsernameContext);
    // const { firebase } = useContext(FirebaseContext);
    // const { userProfilePopUpTrigger, setUserProfilePopUpTrigger } = useContext(UserProfilePopUpTriggerCon);
 
    // console.log(user);
+
+   const dispatch = useDispatch();
+
+
 
    return (
       <div className="headerParentDiv" >
@@ -35,7 +41,6 @@ const Header = (props) => {
             </div>
             <div className="text">
                <input type="text" placeholder="Search city, area or locality" />
-               {/* <input type="text" placeholder="Search city" /> */}
             </div>
             <div className="arrow">
                <Arrow></Arrow>
@@ -60,8 +65,10 @@ const Header = (props) => {
                   :
                   <span className="login" onClick={() => {
                      // navigate('/login');
-                     setBtnPopUp(true);
-                     setPageId('login');
+                     // setBtnPopUp(true);
+                     // setPageId('login');
+
+                     dispatch(toggleSigninLoginPopup('login'));
                   }}>Login</span>
             }
          </div>
@@ -84,7 +91,9 @@ export default Header;
 /* ***** */
 
 const LoginUserProfile = (props) => {
-   const { userProfilePopUpTrigger, setUserProfilePopUpTrigger } = useContext(UserProfilePopUpTriggerCon);
+   // const { userProfilePopUpTrigger, setUserProfilePopUpTrigger } = useContext(UserProfilePopUpTriggerCon);
+   const isUserDetailsDropdown = useSelector(state => state.userDetailsDropdown.userDetailsDropdown);
+   const dispatch = useDispatch();
 
    var component;
    if (props.value1) {
@@ -94,14 +103,16 @@ const LoginUserProfile = (props) => {
    }
 
    return (
-      <div className="parentUserProfile">
-         <div className="childUserProfile" onClick={() => {
-            !userProfilePopUpTrigger ? setUserProfilePopUpTrigger(true) : setUserProfilePopUpTrigger(false);
-         }}>
+      <div className="parentUserProfile" onClick={() => {
+         dispatch(toggleUserDetailsDropdown(isUserDetailsDropdown ? false : true));
+      }}>
+         <div className="childUserProfile">
             {component}
-            <Arrow rotate={userProfilePopUpTrigger} />
+            {/* <Arrow rotate={userProfilePopUpTrigger} /> */}
+            <Arrow rotate={isUserDetailsDropdown} />
          </div>
-         {userProfilePopUpTrigger && <UserProfile />}
+         {/* {userProfilePopUpTrigger && <UserProfile />} */}
+         {isUserDetailsDropdown && <UserProfile />}
       </div>
    );
 };

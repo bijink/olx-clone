@@ -1,18 +1,25 @@
 import React, { useContext, useState } from 'react';
 import './Signup.scss';
-import { FirebaseContext } from '../../Store/Context';
+// import { FirebaseContext } from '../../Store/AuthContext';
 import { useNavigate } from 'react-router-dom';
-import { PopUpContext } from '../../Store/PopUpContext';
-import { SignUpUsernameContext } from '../../Store/SignUpUsernameContext';
+// import { PopUpContext } from '../../Store/PopUpContext';
+import { SignUpUsernameContext } from '../../Context/SignUpUsernameContext';
 import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
 import { auth, colRefUsers } from '../../Firebase/Config';
 import { addDoc } from 'firebase/firestore';
+import { useDispatch } from 'react-redux';
+import { toggleSigninLoginPopup } from '../../Redux/Actions';
+// import { toggleSigninLoginPopup } from '../../Redux/index';
+// import { toggleSigninLoginPopup } from '../../Redux/Actions/ToggleStates.action';
 
 const Signup = () => {
    const navigate = useNavigate();
 
+   const dispatch = useDispatch();
+
+
    // const { firebase } = useContext(FirebaseContext);
-   const { setBtnPopUp, setPageId } = useContext(PopUpContext);
+   // const { setBtnPopUp, setPageId } = useContext(PopUpContext);
    // const { setUser } = useContext(AuthContext);
    const { setSignUpName } = useContext(SignUpUsernameContext);
 
@@ -31,7 +38,9 @@ const Signup = () => {
 
    const handleSubmit = (e) => {
       e.preventDefault();
-      setBtnPopUp(false);
+      // setBtnPopUp(false);
+      dispatch(toggleSigninLoginPopup());
+
       setSignUpName(username);
       if (password.length >= 8) {
          // firebase.auth().createUserWithEmailAndPassword(email, password).then(result => {
@@ -63,21 +72,25 @@ const Signup = () => {
          });
       } else {
          alert('Password must exceed 8 character');
-         setBtnPopUp(true);
-         setPageId('signup');
+         // setBtnPopUp(true);
+         // setPageId('signup');
+         dispatch(toggleSigninLoginPopup('signup'));
       }
    };
 
    const handleSubmit2 = (e) => {
       e.preventDefault();
       // navigate('/login');
-      setBtnPopUp(true);
-      setPageId('login');
+      // setBtnPopUp(true);
+      // setPageId('login');
+
+      dispatch(toggleSigninLoginPopup('login'));
    };
 
    return (
       <div className="signupParentDiv">
-         <i className="fas fa-times btnClose" onClick={() => setBtnPopUp(false)}></i>
+         {/* <i className="fas fa-times btnClose" onClick={() => setBtnPopUp(false)}></i> */}
+         <i className="fas fa-times btnClose" onClick={() => dispatch(toggleSigninLoginPopup())}></i>
          <div className="imgDiv">
             <img src='/img/olx-logo.png' alt="OLX"></img>
          </div>

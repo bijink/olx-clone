@@ -1,9 +1,8 @@
-import { useState } from "react";
-import { createContext } from "react";
+import { createContext, useState } from "react";
 
 export const SignUpUsernameContext = createContext();
 
-const SignUpUsernameContextCon = ({ children }) => {
+const SignUpUsernameContextProvider = ({ children }) => {
    const [signUpName, setSignUpName] = useState('');
 
    return (
@@ -13,4 +12,4 @@ const SignUpUsernameContextCon = ({ children }) => {
    );
 };
 
-export default SignUpUsernameContextCon;
+export default SignUpUsernameContextProvider;

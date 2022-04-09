@@ -1,8 +1,8 @@
 import React, { useContext } from 'react';
 import './UserProfile.scss';
 import { useNavigate } from 'react-router-dom';
-import { AuthContext, FirebaseContext } from '../../Store/Context';
-import { SignUpUsernameContext } from '../../Store/SignUpUsernameContext';
+import { AuthContext, FirebaseContext } from '../../Context/AuthContext';
+import { SignUpUsernameContext } from '../../Context/SignUpUsernameContext';
 import { signOut } from 'firebase/auth';
 import { auth } from '../../Firebase/Config';
 // import { UserProfilePopUpTriggerCon } from '../../Store/UserProfilePopUpTriggerContext';

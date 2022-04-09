@@ -1,9 +1,8 @@
 import { createContext, useState } from 'react';
 
-// export const FirebaseContext = createContext(null);
 export const AuthContext = createContext(null);
 
-const Context = ({ children }) => {
+const AuthContextProvider = ({ children }) => {
    const [user, setUser] = useState(null);
 
    return (
@@ -13,4 +12,4 @@ const Context = ({ children }) => {
    );
 };
 
-export default Context;
+export default AuthContextProvider;

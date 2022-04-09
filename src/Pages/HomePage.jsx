@@ -1,25 +1,18 @@
-import React from 'react';
 import Header from '../Components/Header/Header';
 import Banner from '../Components/Banner/Banner';
 import Posts from '../Components/Posts/Posts';
 import Footer from '../Components/Footer/Footer';
 import OLXAd from '../Components/AppAd/OLXAd';
 import SignupPage from './SignupPage';
-import { useContext } from 'react';
-import { PopUpContext } from '../Store/PopUpContext';
 import LoginPage from './LoginPage';
 import PopUpSignLog from '../PopUps/PopUpSignLog/PopUpSignLog';
+import { useSelector } from 'react-redux';
+
 
 const HomePage = () => {
-   const { btnPopUp, pageId } = useContext(PopUpContext);
+   const isOpen_popup = useSelector(state => state.signinLoginPopup.signupLoginPopup.isOpen);
+   const pageId_popup = useSelector(state => state.signinLoginPopup.signupLoginPopup.pageId);
 
-   var component;
-   //pageId is a "simple string" decleared directly through correspondent setState function.
-   if (pageId === 'login') {
-      component = <LoginPage />;
-   } else if (pageId === 'signup') {
-      component = <SignupPage />;
-   }
 
    return (
       <div className="homeParentDiv">
@@ -28,8 +21,11 @@ const HomePage = () => {
          <Posts />
          <OLXAd />
          <Footer />
-         {btnPopUp ?
-            <PopUpSignLog>{component}</PopUpSignLog> : ''}
+
+         {isOpen_popup &&
+            <PopUpSignLog>
+               {((pageId_popup === 'login') && <LoginPage />) || ((pageId_popup === 'signup') && <SignupPage />)}
+            </PopUpSignLog>}
       </div >
    );
 };

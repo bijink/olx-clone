@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import './View.scss';
-import { AuthContext, FirebaseContext } from '../../Store/Context';
-import { PostContext } from '../../Store/PostContext';
+import { AuthContext } from '../../Context/AuthContext';
+import { PostDetailsContext } from '../../Context/PostDetailsContext';
 import { useNavigate } from 'react-router';
 import { connect } from 'react-redux';
 import { setFavLocalRemoveId } from '../../Redux/FavLocalIdRemove/FavLocalIdRemoveAction';
@@ -12,9 +12,10 @@ const View = (props) => {
    const navigate = useNavigate();
 
    // const { firebase } = useContext(FirebaseContext);
-   const { postDetails } = useContext(PostContext);
+   const { postDetails } = useContext(PostDetailsContext);
    // console.log(postDetails);
    const { user } = useContext(AuthContext);
+   // console.log(user);
 
    const [userDetails, setUserDetails] = useState([]);
 
