@@ -3,7 +3,8 @@ import { SET_LOADMORE_POST, SET_LOADMORE_FAV } from '../Actions/PostLoadMore.act
 const initialState = {
    // noOfItemToLoad_post: 16,
    noOfItemToLoad_post: 2,
-   noOfItemToLoad_fav: 12,
+   // noOfItemToLoad_fav: 12,
+   noOfItemToLoad_fav: 2,
 };
 
 const postLoadMoreReducer = (state = initialState, action) => {
@@ -15,7 +16,8 @@ const postLoadMoreReducer = (state = initialState, action) => {
       };
       case SET_LOADMORE_FAV: return {
          ...state,
-         noOfItemToLoad_fav: state.noOfItemToLoad_fav + 12
+         // noOfItemToLoad_fav: state.noOfItemToLoad_fav + 12
+         noOfItemToLoad_fav: state.noOfItemToLoad_fav + 1
       };
       default: return state;
    }

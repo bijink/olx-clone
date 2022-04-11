@@ -15,8 +15,6 @@ const App = () => {
    const { setUser } = useContext(AuthContext);
 
    const isUserDetailsDropdown = useSelector(state => state.userDetailsDropdown.userDetailsDropdown);
-   // console.log(isUserDetailsDropdown);
-
    const dispatch = useDispatch();
 
 
@@ -32,9 +30,9 @@ const App = () => {
       <div onClick={() => isUserDetailsDropdown && dispatch(toggleUserDetailsDropdown())}>
          <Routes>
             <Route exact path='/' element={<HomePage />} />
-            <Route exact path='/create' element={<CreatePage />} />
-            <Route exact path='/view' element={<ViewPostPage />} />
-            <Route exact path='/favourite' element={<FavouritePage />} />
+            <Route path='create' element={<CreatePage />} />
+            <Route path='view' element={<ViewPostPage />} />
+            <Route path='favourite' element={<FavouritePage />} />
          </Routes>
       </div>
    );

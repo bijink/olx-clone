@@ -26,22 +26,20 @@
             }
          }
       }
-      .cards {
-         .cardsParentDiv {
-            display: flex;
-            overflow-x: scroll;
-            // overflow-y: hidden;
-            scrollbar-width: none;
-            // padding: 0.5rem 0.6rem;
-            &::-webkit-scrollbar {
-               display: none;
-            }
-            > :first-child {
-               margin-left: 0;
-            }
-            > :last-child {
-               margin-right: 0;
-            }
+      &__cards {
+         display: flex;
+         overflow-x: scroll;
+         // overflow-y: hidden;
+         scrollbar-width: none;
+         // padding: 0.5rem 0.6rem;
+         &::-webkit-scrollbar {
+            display: none;
+         }
+         > :first-child {
+            margin-left: 0;
+         }
+         > :last-child {
+            margin-right: 0;
          }
       }
    }
@@ -57,6 +55,12 @@
          font-size: 24px;
          color: #002f34;
          margin: 0 0 0 0.5rem;
+      }
+      &__cards {
+         display: flex;
+         flex-direction: row;
+         flex-wrap: wrap;
+         justify-content: center;
       }
       .loadMore {
          button {
@@ -76,7 +80,7 @@
             }
          }
       }
-      h5 {
+      .postEnd {
          display: flex;
          justify-content: center;
          align-items: center;

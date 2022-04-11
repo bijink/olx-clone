@@ -1,16 +1,31 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './Favourite.scss';
 import Cards from '../Cards/Cards';
 import { useDispatch, useSelector } from 'react-redux';
-import { setLoadMoreFav } from '../../Redux/Actions/PostLoadMore.action';
-// import DummyCards from '../Cards/DummyCards';
+import { onSnapshot, orderBy, query } from 'firebase/firestore';
+import { colRef } from '../../Firebase/Config';
+import { setLoadMoreFav } from '../../Redux/Actions';
+
 
 const Favourite = () => {
-   const [state, setstate] = useState();
-   // console.log(state);
+   const [products, setProducts] = useState([]);
 
    const noOfItemToLoad_fav = useSelector(state => state.postLoadMore.noOfItemToLoad_fav);
    const dispatch = useDispatch();
+
+
+   useEffect(() => {
+      const queryOrder = query(colRef, orderBy('createdTime', 'desc'));
+      onSnapshot(queryOrder, (snapshot) => {
+         const allPost = snapshot.docs.map((product) => {
+            return {
+               ...product.data(),
+               id: product.id
+            };
+         });
+         setProducts(allPost);
+      });
+   }, []);
 
 
    return (
@@ -20,20 +35,21 @@ const Favourite = () => {
             </aside>
             <div className="cardsSection">
                <div className="cards">
-                  <Cards fav state={setstate} />
+                  {products.slice(0, noOfItemToLoad_fav).map(product => (
+                     <Cards key={product.id} product={product} page_favourite />
+                  ))}
                </div>
-               {
-                  // (props.noOfItemToLoadFav < state) ?
-                  (noOfItemToLoad_fav < state) ?
-                     <div className="loadMore">
-                        <button onClick={() => {
-                           // props.setLoadMoreFav();
-                           dispatch(setLoadMoreFav());
-                        }}>
-                           <span>Load more</span>
-                        </button>
-                     </div> : <h5>End of List</h5>
-               }
+               {(products.length > noOfItemToLoad_fav) ? (
+                  <div className="loadMore">
+                     <button onClick={() => {
+                        dispatch(setLoadMoreFav());
+                     }}>
+                        <span>Load more</span>
+                     </button>
+                  </div>
+               ) : (
+                  <h5 className='postEnd'>End of List</h5>
+               )}
             </div>
          </article>
       </div>
