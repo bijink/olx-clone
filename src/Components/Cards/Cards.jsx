@@ -58,7 +58,7 @@ const Cards = ({ product, page_favourite }) => {
             <div className="cardsParentDiv"
                onClick={() => {
                   setPostDetails(product);
-                  !isHeart && navigate('/view');
+                  !isHeart && navigate(`/view?product=${product.productID}`);
                }}>
                <div className="imgFav">
                   <div className="image">

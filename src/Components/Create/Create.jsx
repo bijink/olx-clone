@@ -3,48 +3,48 @@ import './Create.scss';
 import Header from '../Header/Header';
 import { AuthContext } from '../../Context/AuthContext';
 import { useNavigate } from 'react-router-dom';
-// import { LoadContext } from '../../Store/LoadContext';
-// import LoadingBar from 'react-top-loading-bar';
-import { addDoc, doc, serverTimestamp, updateDoc } from 'firebase/firestore';
-import { colRef, db, storage } from '../../Firebase/Config';
-import { getDownloadURL, ref, uploadBytes, uploadString } from 'firebase/storage';
+import { addDoc, collection, doc, serverTimestamp, updateDoc } from 'firebase/firestore';
+import { db, storage } from '../../Firebase/Config';
+import { getDownloadURL, ref, uploadBytes } from 'firebase/storage';
+
 
 const Create = () => {
    const navigate = useNavigate();
 
-   // const { firebase } = useContext(FirebaseContext);
    const { user } = useContext(AuthContext);
-   // const { loading, setLoading } = useContext(LoadContext);
 
    const [name, setName] = useState('');
    const [category, setCategory] = useState('');
    const [price, setPrice] = useState('');
    const [image, setImage] = useState(null);
-   // console.log(image);
+
    const date = new Date();
-   // const [loading, setLoading] = useState(0);
+
 
    const handleSubmit = () => {
       if ((name !== '') && (category !== '') && (price !== '') && (image !== null)) {
-         // setLoading(98);
-
-         const imageRef = ref(storage, `/images/${user.uid}/PRODUCT_IMG:${image.name}`);
-         uploadBytes(imageRef, image).then((snapshot) => {
+         addDoc(collection(db, 'products'), {
+            name,
+            imgTitle: image.name,
+            category,
+            price,
+            userId: user.uid,
+            createdDate: date.toDateString(),
+            createdTime: serverTimestamp(),
+         }).then((res) => {
+            // console.log('id::', res.id);
+            const imageRef = ref(storage, `/images/${user.uid}/PRODUCT_IMG:${res.id}`);
             // uploadString(imageRef, image).then((snapshot) => {
-            getDownloadURL(imageRef).then(url => {
-               addDoc(colRef, {
-                  name,
-                  category,
-                  price,
-                  url,
-                  userId: user.uid,
-                  createdDate: date.toDateString(),
-                  createdTime: serverTimestamp(),
-               }).then(() => {
-                  navigate('/');
-                  // setLoading(0);
+            uploadBytes(imageRef, image).then((snapshot) => {
+               getDownloadURL(imageRef).then(url => {
+                  updateDoc(doc(db, 'products', res.id), {
+                     url,
+                     productID: res.id,
+                  });
                });
             });
+         }).then(() => {
+            navigate('/');
          });
       } else {
          alert('Please fill all fields');
