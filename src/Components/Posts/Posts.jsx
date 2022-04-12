@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react';
 import './Posts.scss';
 import { useDispatch, useSelector } from 'react-redux';
 import Cards from '../Cards/Cards';
-import { onSnapshot, orderBy, query } from 'firebase/firestore';
-import { colRef } from '../../Firebase/Config';
+import { collection, onSnapshot, orderBy, query } from 'firebase/firestore';
+import { db } from '../../Firebase/Config';
 import { setLoadMorePost } from '../../Redux/Actions';
 
 
@@ -15,7 +15,7 @@ const Posts = () => {
 
 
    useEffect(() => {
-      const queryOrder = query(colRef, orderBy('createdTime', 'desc'));
+      const queryOrder = query(collection(db, 'products'), orderBy('createdTime', 'desc'));
       onSnapshot(queryOrder, (snapshot) => {
          const allPost = snapshot.docs.map((product) => {
             return {

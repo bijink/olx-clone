@@ -91,8 +91,8 @@ $input_text_fontSize :1.05rem;
    }
    .loginPage {
       cursor: pointer;
-      .parentUserProfile {
-         .childUserProfile {
+      .userIconParent {
+         .userIconChild {
             display: flex;
             justify-content: center;
             align-items: center;
@@ -148,7 +148,8 @@ $input_text_fontSize :1.05rem;
       }
       .login {
          color: black;
-         text-decoration: 2px underline;
+         // text-decoration: 2px underline;
+         font-weight: 900;
       }
    }
    .sellMenu {

@@ -1,12 +1,9 @@
-// Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-import { collection, getFirestore } from "firebase/firestore";
+import { getFirestore } from "firebase/firestore";
 import { getStorage } from "firebase/storage";
 import { getAuth } from 'firebase/auth';
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
 
-// App Firebase configuration
+// Firebase configuration
 const firebaseConfig = {
    apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
    authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
@@ -24,8 +21,4 @@ const db = getFirestore();
 const storage = getStorage();
 const auth = getAuth();
 
-// Collection Ref
-const colRef = collection(db, 'products');
-const colRefUsers = collection(db, 'users');
-
-export { app, db, storage, auth, colRef, colRefUsers };
+export { app, db, storage, auth };

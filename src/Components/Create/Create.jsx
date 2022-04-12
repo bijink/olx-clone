@@ -17,12 +17,15 @@ const Create = () => {
    const [category, setCategory] = useState('');
    const [price, setPrice] = useState('');
    const [image, setImage] = useState(null);
+   const [loading, setLoading] = useState(false);
 
    const date = new Date();
 
 
    const handleSubmit = () => {
-      if ((name !== '') && (category !== '') && (price !== '') && (image !== null)) {
+      if (((name && category && price) !== '') && (image !== null)) {
+         setLoading(true);
+
          addDoc(collection(db, 'products'), {
             name,
             imgTitle: image.name,
@@ -40,29 +43,24 @@ const Create = () => {
                   updateDoc(doc(db, 'products', res.id), {
                      url,
                      productID: res.id,
+                  }).then(() => {
+                     setLoading(false);
+                     navigate('/');
                   });
                });
             });
-         }).then(() => {
-            navigate('/');
          });
       } else {
          alert('Please fill all fields');
       }
    };
 
+
    return (
       <Fragment>
-         {/* <LoadingBar
-            color='#00e8dc'
-            loaderSpeed='10000'
-            height='3px'
-            shadow={false}
-            progress={loading}
-         /> */}
          <Header />
          <div className="parentDivCreate">
-            <h1>POST YOUR AD</h1>
+            <h1>POST YOUR PRODUCT</h1>
             <div className="parentDetailDiv">
                <div className="addDetails">
                   <label htmlFor="fname">Name</label>
@@ -70,8 +68,6 @@ const Create = () => {
                   <input
                      className="input"
                      type="text"
-                     // id="fname"
-                     // defaultValue="John"
                      name="name"
                      value={name}
                      onChange={e => setName(e.target.value)}
@@ -82,8 +78,6 @@ const Create = () => {
                   <input
                      className="input"
                      type="text"
-                     // id="fname"
-                     // defaultValue="John"
                      name="category"
                      value={category}
                      onChange={e => setCategory(e.target.value)}
@@ -96,7 +90,6 @@ const Create = () => {
                      <input
                         className="inputPrice"
                         type="number"
-                        // id="fname"
                         name="Price"
                         value={price}
                         onWheel={e => e.target.blur()}
@@ -126,7 +119,9 @@ const Create = () => {
                   {image && <i onClick={() => setImage(null)} className="fas fa-times closeImg"></i>}
                </div>
             </div>
-            <button onClick={handleSubmit} className="uploadBtn">Post now</button>
+            <button disabled={loading} onClick={handleSubmit} className="uploadBtn">{
+               !loading ? 'Post now' : `Posting...`
+            }</button>
          </div>
       </Fragment >
    );

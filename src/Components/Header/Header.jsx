@@ -7,27 +7,18 @@ import SellButton from '../../assets/SellButton';
 import SellButtonPlus from '../../assets/SellButtonPlus';
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Context/AuthContext';
-import { SignUpUsernameContext } from '../../Context/SignUpUsernameContext';
 import UserProfile from '../UserProfile/UserProfile';
 import { useDispatch, useSelector } from 'react-redux';
 import { toggleSigninLoginPopup, toggleUserDetailsDropdown } from '../../Redux/Actions';
-// import { toggleSigninLoginPopup, toggleUserDetailsDropdown } from '../../Redux/index';
-// import { toggleSigninLoginPopup, toggleUserDetailsDropdown } from '../../Redux/Actions/ToggleStates.action';
 
 
-const Header = () => {
+const Header = ({ page_home }) => {
    const navigate = useNavigate();
 
    const { user } = useContext(AuthContext);
-   // const { setBtnPopUp, setPageId } = useContext(PopUpContext);
-   const { signUpName } = useContext(SignUpUsernameContext);
-   // const { firebase } = useContext(FirebaseContext);
-   // const { userProfilePopUpTrigger, setUserProfilePopUpTrigger } = useContext(UserProfilePopUpTriggerCon);
 
-   // console.log(user);
-
+   const isUserDetailsDropdown = useSelector(state => state.userDetailsDropdown.userDetailsDropdown);
    const dispatch = useDispatch();
-
 
 
    return (
@@ -58,19 +49,23 @@ const Header = () => {
             <span>ENGLISH</span>
             <Arrow></Arrow>
          </div>
-         <div className="loginPage">
-            {
-               user ?
-                  (user.displayName ? <LoginUserProfile value1={user} /> : <LoginUserProfile value2={signUpName} />)
-                  :
-                  <span className="login" onClick={() => {
-                     // navigate('/login');
-                     // setBtnPopUp(true);
-                     // setPageId('login');
 
-                     dispatch(toggleSigninLoginPopup('login'));
-                  }}>Login</span>
-            }
+         <div className="loginPage">
+            {user?.displayName ? (
+               <div className="userIconParent" onClick={() => {
+                  dispatch(toggleUserDetailsDropdown(isUserDetailsDropdown ? false : true));
+               }}>
+                  <div className="userIconChild">
+                     <div className="icon"><h1>{user.displayName.charAt(0).toUpperCase()}</h1></div>
+                     <Arrow rotate={isUserDetailsDropdown} />
+                  </div>
+                  {isUserDetailsDropdown && <UserProfile />}
+               </div>
+            ) : (page_home && (
+               <span className="login" onClick={() => {
+                  dispatch(toggleSigninLoginPopup('login'));
+               }}>Login</span>)
+            )}
          </div>
 
          <div className="sellMenu" onClick={() => {
@@ -87,32 +82,3 @@ const Header = () => {
 };
 
 export default Header;
-
-/* ***** */
-
-const LoginUserProfile = (props) => {
-   // const { userProfilePopUpTrigger, setUserProfilePopUpTrigger } = useContext(UserProfilePopUpTriggerCon);
-   const isUserDetailsDropdown = useSelector(state => state.userDetailsDropdown.userDetailsDropdown);
-   const dispatch = useDispatch();
-
-   var component;
-   if (props.value1) {
-      component = <div className="icon"><h1>{props.value1 && props.value1.displayName.charAt(0).toUpperCase()}</h1></div>;
-   } else if (props.value2) {
-      component = <div className="icon"><h1>{props.value2.charAt(0).toUpperCase()}</h1></div>;
-   }
-
-   return (
-      <div className="parentUserProfile" onClick={() => {
-         dispatch(toggleUserDetailsDropdown(isUserDetailsDropdown ? false : true));
-      }}>
-         <div className="childUserProfile">
-            {component}
-            {/* <Arrow rotate={userProfilePopUpTrigger} /> */}
-            <Arrow rotate={isUserDetailsDropdown} />
-         </div>
-         {/* {userProfilePopUpTrigger && <UserProfile />} */}
-         {isUserDetailsDropdown && <UserProfile />}
-      </div>
-   );
-};

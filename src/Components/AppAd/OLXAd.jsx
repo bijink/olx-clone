@@ -1,6 +1,7 @@
 import React from 'react';
 import './OLXAd.scss';
 
+
 const OLXAd = () => {
    return (
       <div className="parentDivOLXAd">

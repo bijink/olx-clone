@@ -21,10 +21,13 @@ const View = () => {
 
 
    const handlePostDelete = () => {
-      const imageRef = ref(storage, `images/${user.uid}/PRODUCT_IMG:${productDetails.productID}`);
-      deleteDoc(doc(db, 'products', productDetails.productID)).then(() => deleteObject(imageRef)).then(() => {
-         navigate('/');
-      });
+      let confirmDelete = window.confirm("Confirm delete...");
+      if (confirmDelete) {
+         const imageRef = ref(storage, `images/${user.uid}/PRODUCT_IMG:${productDetails.productID}`);
+         deleteDoc(doc(db, 'products', productDetails.productID)).then(() => deleteObject(imageRef)).then(() => {
+            navigate('/');
+         });
+      }
    };
 
 
@@ -37,7 +40,7 @@ const View = () => {
             // console.log('product::', doc.id);
             // setProductID(doc.id);
 
-            const query2 = query(collection(db, 'users'), where('id', '==', (doc.data().userId)));
+            const query2 = query(collection(db, 'users'), where('userId', '==', (doc.data().userId)));
             onSnapshot(query2, (snapshot) => {
                snapshot.forEach(doc => {
                   // console.log('userDetails::', doc.data());

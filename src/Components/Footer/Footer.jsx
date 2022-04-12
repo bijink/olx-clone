@@ -5,6 +5,7 @@ import Instagrame from '../../assets/Instagrame';
 import Twitter from '../../assets/Twitter';
 import YouTube from '../../assets/YouTube';
 
+
 const Footer = () => {
    return (
       <div className="footerParentDiv">

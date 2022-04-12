@@ -9,6 +9,7 @@ import ViewPostPage from './Pages/ViewPostPage';
 import { auth } from './Firebase/Config';
 import { useDispatch, useSelector } from 'react-redux';
 import { toggleUserDetailsDropdown } from './Redux/Actions';
+import { signOut } from 'firebase/auth';
 
 
 const App = () => {
@@ -21,15 +22,15 @@ const App = () => {
    useEffect(() => {
       auth.onAuthStateChanged(user => {
          setUser(user);
-         // setLoading(true);
       });
+      // signOut(auth);
    });
 
 
    return (
       <div onClick={() => isUserDetailsDropdown && dispatch(toggleUserDetailsDropdown())}>
          <Routes>
-            <Route exact path='/' element={<HomePage />} />
+            <Route path='/' element={<HomePage />} exact />
             <Route path='create' element={<CreatePage />} />
             <Route path='view' element={<ViewPostPage />} />
             <Route path='favourite' element={<FavouritePage />} />

@@ -3,6 +3,7 @@ import './Banner.scss';
 import Arrow from '../../assets/Arrow';
 import Categories from '../Categories/Categories';
 
+
 const Banner = (props) => {
    const [catPop, setCatPop] = useState(false);
 

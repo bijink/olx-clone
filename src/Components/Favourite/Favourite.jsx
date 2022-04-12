@@ -2,9 +2,9 @@ import React, { useEffect, useState } from 'react';
 import './Favourite.scss';
 import Cards from '../Cards/Cards';
 import { useDispatch, useSelector } from 'react-redux';
-import { onSnapshot, orderBy, query } from 'firebase/firestore';
-import { colRef } from '../../Firebase/Config';
+import { collection, onSnapshot, orderBy, query } from 'firebase/firestore';
 import { setLoadMoreFav } from '../../Redux/Actions';
+import { db } from '../../Firebase/Config';
 
 
 const Favourite = () => {
@@ -15,7 +15,7 @@ const Favourite = () => {
 
 
    useEffect(() => {
-      const queryOrder = query(colRef, orderBy('createdTime', 'desc'));
+      const queryOrder = query(collection(db, 'products'), orderBy('createdTime', 'desc'));
       onSnapshot(queryOrder, (snapshot) => {
          const allPost = snapshot.docs.map((product) => {
             return {

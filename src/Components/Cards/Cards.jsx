@@ -2,7 +2,6 @@ import React, { useContext, useEffect, useState } from 'react';
 import './Cards.scss';
 import { useNavigate } from 'react-router';
 import Heart from '../../assets/Heart';
-import { PostDetailsContext } from '../../Context/PostDetailsContext';
 import { AuthContext } from '../../Context/AuthContext';
 import { db } from '../../Firebase/Config';
 import { collection, deleteDoc, doc, onSnapshot, setDoc } from 'firebase/firestore';
@@ -12,7 +11,6 @@ const Cards = ({ product, page_favourite }) => {
    const navigate = useNavigate();
 
    const { user } = useContext(AuthContext);
-   const { setPostDetails } = useContext(PostDetailsContext);
 
    const [isHeart, setIsHeart] = useState(false);
    const [favorite, setFavorite] = useState([]);
@@ -57,7 +55,6 @@ const Cards = ({ product, page_favourite }) => {
          {(!page_favourite ? product : (product && hasFavorite)) && (
             <div className="cardsParentDiv"
                onClick={() => {
-                  setPostDetails(product);
                   !isHeart && navigate(`/view?product=${product.productID}`);
                }}>
                <div className="imgFav">

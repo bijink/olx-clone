@@ -9,62 +9,56 @@ input {
 input[type="number"] {
    -moz-appearance: textfield;
 }
+
 .signupParentDiv {
-   border: 1px solid black;
-   // width: max-content;
    width: 24rem;
-   padding: 10px;
    border-radius: 6px;
    background-color: #fff;
-   .btnClose {
-      font-size: 1.5rem;
-      margin-left: 95%;
-      color: rgb(80, 80, 80);
-      cursor: pointer;
-   }
    .imgDiv {
       display: flex;
       justify-content: center;
+      padding-top: 1rem;
+      padding-bottom: 2rem;
       img {
          width: 200px;
-         height: 200px;
       }
    }
-   .input {
-      border-top-color: transparent;
-      border-left-color: transparent;
-      border-right-color: transparent;
-      outline-color: transparent;
-      // width: 24rem;
-      width: 100%;
-   }
-   button {
-      width: 100%;
-      height: 48px;
-      border-radius: 6px;
-      border-color: transparent;
-      background-color: #002f34;
-      color: whitesmoke;
-      font-weight: 900;
-      margin-bottom: 0.2rem;
-      &:hover {
-         color: #002f34;
-         border: 2px solid #002f34;
-         background-color: honeydew;
+   .signin {
+      .input {
+         border-color: transparent;
+         border-bottom-color: gray;
+         outline-color: transparent;
+         width: 100%;
       }
-   }
-   a {
-      display: flex;
-      justify-content: center;
-      cursor: pointer;
+      button {
+         width: 100%;
+         height: 48px;
+         border-radius: 6px;
+         border-color: transparent;
+         background-color: #002f34;
+         color: whitesmoke;
+         font-weight: 900;
+         margin-bottom: 0.2rem;
+         &:hover {
+            color: #002f34;
+            border: 2px solid #002f34;
+            background-color: honeydew;
+         }
+      }
    }
    .login {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding-top: .8rem;
       button {
+         border-color: transparent;
+         background-color: transparent;
          color: #002f34;
-         background-color: #fff;
-         border: 2px solid #002f34;
+         font-weight: 900;
+         margin-bottom: 0.2rem;
          &:hover {
-            background-color: honeydew;
+            color: #277a83;
          }
       }
    }
