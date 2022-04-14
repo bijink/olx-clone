@@ -32,6 +32,8 @@ const View = () => {
 
 
    useEffect(() => {
+      !productIdParam && navigate('/');
+
       const query1 = query(collection(db, 'products'), where('productID', '==', productIdParam));
       onSnapshot(query1, (snapshot) => {
          snapshot.forEach(doc => {
@@ -49,7 +51,7 @@ const View = () => {
             });
          });
       });
-   }, [productIdParam]);
+   }, [productIdParam, navigate]);
 
 
    return (

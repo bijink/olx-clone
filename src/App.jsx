@@ -9,7 +9,6 @@ import ViewPostPage from './Pages/ViewPostPage';
 import { auth } from './Firebase/Config';
 import { useDispatch, useSelector } from 'react-redux';
 import { toggleUserDetailsDropdown } from './Redux/Actions';
-import { signOut } from 'firebase/auth';
 
 
 const App = () => {
@@ -23,7 +22,6 @@ const App = () => {
       auth.onAuthStateChanged(user => {
          setUser(user);
       });
-      // signOut(auth);
    });
 
 

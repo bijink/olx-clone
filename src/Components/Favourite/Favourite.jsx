@@ -31,8 +31,7 @@ const Favourite = () => {
    return (
       <div className="parentDivFavourite">
          <article className="childDivFavourite">
-            <aside className="sideBar">
-            </aside>
+            <aside className="sideBar"></aside>
             <div className="cardsSection">
                <div className="cards">
                   {products.slice(0, noOfItemToLoad_fav).map(product => (

@@ -1,7 +1,8 @@
 .parentDivFavourite {
    .childDivFavourite {
       display: grid;
-      grid-template-columns: 16rem auto;
+      // grid-template-columns: 16rem auto;
+      grid-template-columns: 0 auto;
       .sideBar {
          height: 100%;
          background-color: #ebeeef;
@@ -11,6 +12,7 @@
       .cardsSection {
          .cards {
             display: flex;
+            justify-content: center;
             flex-wrap: wrap;
             // margin: 0 4rem;
             margin: 0 4vw;

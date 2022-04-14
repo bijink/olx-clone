@@ -42,14 +42,37 @@ $input_text_fontSize :1.05rem;
          }
       }
    }
+   .searchAction {
+      min-width: 48px;
+      height: 48px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      background-color: #002f34;
+      border-radius: 4px;
+      margin-right: -.65rem;
+      svg {
+         fill: white;
+      }
+   }
    .productSearch {
-      width: 30rem;
+      flex-grow: 1;
+      // width: 30rem;
       height: 48px;
       border: 2px solid #002f34;
-      border-radius: 4px;
+      // border-radius: 4px;
+      border-radius: 0 4px 4px 0;
       background-color: white;
       display: flex;
       align-items: center;
+      .search {
+         svg {
+            width: 1.3rem;
+            // cursor: pointer;
+            margin-left: .5rem;
+         }
+      }
       .input {
          width: 100%;
          display: flex;
@@ -61,19 +84,19 @@ $input_text_fontSize :1.05rem;
             font-size: $input_text_fontSize;
          }
       }
-      .searchAction {
-         min-width: 48px;
-         height: 48px;
-         display: flex;
-         justify-content: center;
-         align-items: center;
-         cursor: pointer;
-         background-color: #002f34;
-         border-radius: 0 4px 4px 0;
-         svg {
-            fill: white;
-         }
-      }
+      // .searchAction {
+      //    min-width: 48px;
+      //    height: 48px;
+      //    display: flex;
+      //    justify-content: center;
+      //    align-items: center;
+      //    cursor: pointer;
+      //    background-color: #002f34;
+      //    border-radius: 0 4px 4px 0;
+      //    svg {
+      //       fill: white;
+      //    }
+      // }
    }
    .language {
       height: 48px;

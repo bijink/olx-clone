@@ -1,0 +1,75 @@
+p {
+   margin: 0;
+   padding: 0;
+}
+.searchList {
+   position: fixed;
+   top: 4.3rem;
+   left: 10vw;
+   background-color: #eeeeeeec;
+   border-radius: 4px;
+   box-shadow: 0 0 4px rgb(98, 98, 98);
+   color: #002f34;
+   .searchList__total {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #cfcfcf;
+      padding: 5px;
+      &--text,
+      &--number,
+      &--noMatch {
+         font-size: small;
+      }
+      &--number {
+         font-weight: 700;
+         padding-left: 3.5px;
+      }
+   }
+   &__item {
+      max-height: 60vh;
+      width: 80vw;
+      position: relative;
+      overflow: scroll;
+      overflow-x: hidden;
+      .product {
+         transition-duration: 200ms;
+         display: flex;
+         justify-content: center;
+         align-items: center;
+         cursor: pointer;
+         &__img {
+            padding: 5px;
+            img {
+               width: 3.5rem;
+               aspect-ratio: 1;
+            }
+         }
+         &__text {
+            flex-grow: 1;
+            padding: 2px;
+            &--name {
+               font-size: 20px;
+               font-weight: 600;
+            }
+            &--category {
+               font-size: 14px;
+            }
+         }
+         &:hover {
+            background-color: #59a0a8;
+         }
+      }
+   }
+}
+.searchList::after {
+   bottom: 100%;
+   right: 45vw;
+   content: "";
+   height: 0;
+   width: 0;
+   position: absolute;
+   pointer-events: none;
+   border: 12px solid transparent;
+   border-bottom-color: #cfcfcf;
+}
