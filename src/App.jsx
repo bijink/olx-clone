@@ -1,18 +1,15 @@
+import { CreatePage, FavouritePage, HomePage, ViewPostPage } from './pages';
 import { useEffect, useContext } from 'react';
 import './App.scss';
 import { Routes, Route } from 'react-router-dom';
-import HomePage from './Pages/HomePage';
-import { AuthContext } from './Context/AuthContext';
-import CreatePage from './Pages/CreatePage';
-import FavouritePage from './Pages/FavouritePage';
-import ViewPostPage from './Pages/ViewPostPage';
-import { auth } from './Firebase/Config';
+import { authContext } from './context';
+import { auth } from './config/firebase.config';
 import { useDispatch, useSelector } from 'react-redux';
-import { toggleUserDetailsDropdown } from './Redux/Actions';
+import { toggleUserDetailsDropdown } from './redux/actions';
 
 
 const App = () => {
-   const { setUser } = useContext(AuthContext);
+   const { setUser } = useContext(authContext);
 
    const isUserDetailsDropdown = useSelector(state => state.userDetailsDropdown.userDetailsDropdown);
    const dispatch = useDispatch();

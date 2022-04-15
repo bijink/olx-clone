@@ -2,8 +2,8 @@ import { createRoot } from 'react-dom/client';
 import App from './App';
 import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
-import store from './Redux/Store/Store';
-import AuthContextProvider from './Context/AuthContext';
+import store from './redux/store/store';
+import AuthContextProvider from './context/auth.context';
 
 const container = document.getElementById('root');
 const root = createRoot(container);
