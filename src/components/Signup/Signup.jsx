@@ -5,6 +5,7 @@ import { auth, db } from '../../config/firebase.config';
 import { addDoc, collection } from 'firebase/firestore';
 import { useDispatch } from 'react-redux';
 import { toggleSignupLoginPopup } from '../../redux/actions';
+import OLXLogo from '../../assets/image/olx-logo.webp';
 
 
 const Signup = () => {
@@ -53,7 +54,7 @@ const Signup = () => {
    return (
       <div className="signupParentDiv">
          <div className="imgDiv">
-            <img src='/img/olx-logo.png' alt="OLX"></img>
+            <img src={OLXLogo} alt="OLX"></img>
          </div>
          <h4 align='center'>Signup</h4>
          <form className="signin" onSubmit={handleSubmit1}>

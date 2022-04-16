@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import './Banner.scss';
 import Arrow from '../../assets/icons/Arrow';
 import Categories from '../Categories';
+import BannerPosterLg from '../../assets/image/banner_poster-lg.webp';
+import BannerPosterSm from '../../assets/image/banner_poster-sm.webp';
 
 
 const Banner = (props) => {
@@ -27,8 +29,8 @@ const Banner = (props) => {
          </div>
          {catPop && <Categories />}
          {props.banner && <div className="banner">
-            <img className='banner_poster-lg' src="/img/banner_poster-lg.png" alt="" />
-            <img className='banner_poster-sm' src="/img/banner_poster-sm.png" alt="" />
+            <img className='banner_poster-lg' src={BannerPosterLg} alt="" />
+            <img className='banner_poster-sm' src={BannerPosterSm} alt="" />
          </div>}
       </div>
    );

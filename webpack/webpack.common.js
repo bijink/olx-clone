@@ -23,6 +23,10 @@ module.exports = {
             test: /\.(s[ac]ss)$/,
             use: ['style-loader', 'css-loader', 'sass-loader']
          },
+         {
+            test: /\.(?:ico|gif|png|jpg|jpeg|webp)$/i,
+            type: 'asset/resource',
+         },
       ],
    },
    output: {
@@ -38,4 +42,9 @@ module.exports = {
    devServer: {
       historyApiFallback: true,
    },
+   performance: {
+      hints: false,
+      maxEntrypointSize: 512000,
+      maxAssetSize: 512000
+   }
 };
