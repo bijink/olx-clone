@@ -1,7 +1,5 @@
 {
-   "projects": {
-      "default": "fir-r-test-711b7",
-      "prod": "olx-clone-6faa4"
-   },
-   "targets": {}
+  "projects": {
+    "default": "olx-clone-c35e1"
+  }
 }

@@ -3,7 +3,7 @@
    "version": "1.0.1",
    "private": true,
    "main": "index.js",
-   "repository": "https://github.com/bijink/OLX-clone.git",
+   "repository": "https://github.com/bijink/olx-clone.git",
    "author": "Bijin K",
    "license": "MIT",
    "scripts": {
@@ -54,7 +54,7 @@
       "sass-loader": "12.6.0",
       "style-loader": "3.3.1",
       "webpack": "5.71.0",
-      "webpack-cli": "4.9.2",
+      "webpack-cli": "^5.0.1",
       "webpack-dev-server": "4.8.0"
    }
 }
